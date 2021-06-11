@@ -11,6 +11,15 @@ namespace
 {
     using INTEGER = int64_t;
     const INTEGER DEFAULT_CAPACITY = 8;
+    class exception: public std::exception
+    {
+        std::string message;
+    public:
+        exception(std::string msg = ""): message("Exception: " + msg) { ; }
+        virtual const char* what() const throw() {
+            return message.c_str();
+        }
+    };
 }
 
 namespace self
@@ -23,7 +32,7 @@ class DynamicArray
     T* arr;
 public:
     DynamicArray(INTEGER cap = DEFAULT_CAPACITY): capacity(cap), len(0) {
-        if (cap <= 0) { throw std::exception("Illegal Capacity: " + std::to_string(cap));  }
+        if (cap <= 0) { throw exception("Illegal Capacity: " + std::to_string(cap));  }
         arr = new T[cap];
     }
     DynamicArray(const std::initializer_list<T> &list): capacity(DEFAULT_CAPACITY) {
@@ -51,17 +60,17 @@ public:
 
     T get(INTEGER index) {
         if (index < 0) { index += size(); }
-        if (index < 0 || index >= len) { throw std::exception("Illegal Index on length: " + std::to_string(len)); }
+        if (index < 0 || index >= len) { throw exception("Illegal Index on length: " + std::to_string(len)); }
         return arr[index];
     }
     T operator[](INTEGER index) { return get(index); }
     void set(T elem, INTEGER index) {
-        if (index < 0 || index >= len) { throw std::exception("Illegal Index on length: " + std::to_string(len)); }
+        if (index < 0 || index >= len) { throw exception("Illegal Index on length: " + std::to_string(len)); }
         arr[index] = elem;
     }
     void add(T elem, INTEGER index) {
         if (index == -1) { index = len; }
-        if (index < 0 || index > len) { throw std::exception("Illegal Index for insertion on length: " + std::to_string(len)); }
+        if (index < 0 || index > len) { throw exception("Illegal Index for insertion on length: " + std::to_string(len)); }
         if (len == capacity) { increaseCapacity(); }
         std::copy(arr + index, arr + len, arr + index + 1); // SHIFTING from arr[index, len) to arr[index + 1, len + 1)
         arr[index] = elem;
@@ -86,7 +95,7 @@ public:
         return true;
     }
     T removeAt(INTEGER index) {
-        if (index < 0 || index >= len) { throw std::exception("Illegal Index for deletion on length: " + std::to_string(len)); }
+        if (index < 0 || index >= len) { throw exception("Illegal Index for deletion on length: " + std::to_string(len)); }
         T elem = arr[index];
         std::copy(arr + index + 1, arr + len, arr + index);
         --len;

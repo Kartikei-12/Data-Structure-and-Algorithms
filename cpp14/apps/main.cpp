@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Dynamic Array/Dynamic Array.hpp"
+#include "DynamicArray/DynamicArray.hpp"
 using namespace std;
 
 int main(int argc, char const *argv[])

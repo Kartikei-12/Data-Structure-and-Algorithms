@@ -1,14 +1,23 @@
 cmake_minimum_required(VERSION 3.20)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14")
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
+set(CMAKE_CXX_CPPCHECK "cppcheck")
+if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
+    message("Setting build type to 'RelWithDebInfo' as none was specified.")
+    set(CMAKE_BUILD_TYPE RelWithDebInfo CACHE STRING "Choose the type of build." FORCE)
+    # Set the possible values of build type for cmake-gui
+    set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS "Debug" "Release"
+    "MinSizeRel" "RelWithDebInfo")
+endif()
 
 project(
     Cpp14_DSA VERSION 1.0
     DESCRIPTION "My Implementaion of data structures and algorithms in C++"
     LANGUAGES CXX
 )
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin)
 
-add_executable("${PROJECT_NAME}" main.cpp)
-
-add_subdirectory("Dynamic Array")
-target_link_libraries("${PROJECT_NAME}" DynamicArray)
-
+# add_subdirectory(apps)
+add_subdirectory(Dynamic_Array)
+add_subdirectory(tests)
+add_subdirectory(tests/googletest)
