@@ -9,7 +9,7 @@
 #include <string>
 #include "Utility_/Utility_.hpp"
 
-namespace
+namespace      
 {
 const self::INTEGER DEFAULT_CAPACITY = 8;
 }
@@ -116,3 +116,7 @@ public:
 
 }
 #endif
+
+
+
+

@@ -61,6 +61,7 @@ public:
 
 #define ENABLE_IF(condition) typename std::enable_if<condition>::type 
 #define IS_SAME(a, b) std::is_same<a, b>::value
+#define TestTypes ::testing::Types<INTEGER, char, UDTfT>
 
 }
 

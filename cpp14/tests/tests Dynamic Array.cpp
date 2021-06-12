@@ -153,11 +153,6 @@ REGISTER_TYPED_TEST_SUITE_P(
     removeTest,
     iteratorTest
 );
-
-using DynamicArrayTypes = ::testing::Types<INTEGER, char, UDTfT>;
-INSTANTIATE_TYPED_TEST_SUITE_P(DynamicArrayTestPrefix, DynamicArrayTest, DynamicArrayTypes);
-
-#undef ENABLE_IF 
-#undef IS_SAME
+INSTANTIATE_TYPED_TEST_SUITE_P(DynamicArrayTestPrefix, DynamicArrayTest, TestTypes);
 
 }
