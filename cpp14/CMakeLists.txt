@@ -18,10 +18,10 @@ project(
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin)
 
 add_subdirectory(Dynamic_Array)
+add_subdirectory(Utility)
 add_subdirectory(apps)
 
 include(CTest)
 if(BUILD_TESTING)
     add_subdirectory(tests)
 endif()
-

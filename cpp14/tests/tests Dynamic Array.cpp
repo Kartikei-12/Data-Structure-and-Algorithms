@@ -4,37 +4,34 @@
 
 #include <ostream>
 #include "gtest/gtest.h"
+#include "Utility_/Utility_.hpp"
 #include "DynamicArray/DynamicArray.hpp"
-
-namespace
-{
-using INTEGER = int64_t;
-}
+#include "utility test.hpp"
 
 namespace self
 {
-class UDTfT // User Defined Data Type for Testing
-{public:
-    int a; char b; double c;
-    UDTfT(int a_ = 0, char b_ = ' ', double c_ = 1.5) { set(a_, b_, c_); }
-    UDTfT(const UDTfT& other) { a = other.a; b = other.b; c = other.c; }
-    void set(int a_, char b_, double c_) { a = a_; b = b_; c = c_; }
-    bool operator==(const UDTfT& other) const {
-        return 
-            this -> a == other.a &&
-            this -> b == other.b &&
-            this -> c == other.c ;
-    }
-    bool operator!=(const UDTfT& other) const {
-        return
-            this -> a != other.a ||
-            this -> b != other.b ||
-            this -> c != other.c ;
-    }
-};
+// class UDTfT // User Defined Data Type for Testing
+// {public:
+//     int a; char b; double c;
+//     UDTfT(int a_ = 0, char b_ = ' ', double c_ = 1.5) { set(a_, b_, c_); }
+//     UDTfT(const UDTfT& other) { a = other.a; b = other.b; c = other.c; }
+//     void set(int a_, char b_, double c_) { a = a_; b = b_; c = c_; }
+//     bool operator==(const UDTfT& other) const {
+//         return 
+//             this -> a == other.a &&
+//             this -> b == other.b &&
+//             this -> c == other.c ;
+//     }
+//     bool operator!=(const UDTfT& other) const {
+//         return
+//             this -> a != other.a ||
+//             this -> b != other.b ||
+//             this -> c != other.c ;
+//     }
+// };
 
-#define ENABLE_IF(condition) typename std::enable_if<condition>::type 
-#define IS_SAME(a, b) std::is_same<a, b>::value
+// #define ENABLE_IF(condition) typename std::enable_if<condition>::type 
+// #define IS_SAME(a, b) std::is_same<a, b>::value
 
 template <typename T>
 class DynamicArrayTest : public ::testing::Test

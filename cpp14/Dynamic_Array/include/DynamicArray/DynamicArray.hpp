@@ -3,23 +3,15 @@
 // Dynamic Array
 
 #ifndef __self_DynamicArray
-#define __self_DynamicArray 1
+#define __self_DynamicArray
 #pragma once
 
 #include <string>
+#include "Utility_/Utility_.hpp"
+
 namespace
 {
-    using INTEGER = int64_t;
-    const INTEGER DEFAULT_CAPACITY = 8;
-    class exception: public std::exception
-    {
-        std::string message;
-    public:
-        exception(std::string msg = ""): message("Exception: " + msg) { ; }
-        virtual const char* what() const throw() {
-            return message.c_str();
-        }
-    };
+const self::INTEGER DEFAULT_CAPACITY = 8;
 }
 
 namespace self
