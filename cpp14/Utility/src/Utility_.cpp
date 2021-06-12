@@ -14,5 +14,4 @@ const char* exception::what() const throw() {
     return message.c_str();
 }
 
-} // namespace self
-
+}

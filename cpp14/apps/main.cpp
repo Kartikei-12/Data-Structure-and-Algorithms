@@ -1,3 +1,6 @@
+// @author: Kartikei Mittal
+// @email: kartikeimittal@gmail.com
+// Example Application
 #include <iostream>
 #include "DynamicArray/DynamicArray.hpp"
 using namespace std;
