@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 3.20)
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
-set(CMAKE_CXX_CPPCHECK "cppcheck")
+
 if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
-    message("Setting build type to 'RelWithDebInfo' as none was specified.")
+    message("-- Setting build type to 'RelWithDebInfo' as none was specified.")
     set(CMAKE_BUILD_TYPE RelWithDebInfo CACHE STRING "Choose the type of build." FORCE)
     # Set the possible values of build type for cmake-gui
     set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS "Debug" "Release"
@@ -17,7 +17,11 @@ project(
 )
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin)
 
-# add_subdirectory(apps)
 add_subdirectory(Dynamic_Array)
-add_subdirectory(tests)
-add_subdirectory(tests/googletest)
+add_subdirectory(apps)
+
+include(CTest)
+if(BUILD_TESTING)
+    add_subdirectory(tests)
+endif()
+

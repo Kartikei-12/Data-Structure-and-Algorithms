@@ -2,18 +2,36 @@
 // @email: kartikeimittal@gmail.com
 // Testing Dynamic Array
 
+#include <ostream>
 #include "gtest/gtest.h"
 #include "DynamicArray/DynamicArray.hpp"
 
 namespace
 {
 using INTEGER = int64_t;
-using DynamicArrayTypes = ::testing::Types<INTEGER, char>;
-// , UDTfT
 }
 
 namespace self
 {
+class UDTfT // User Defined Data Type for Testing
+{public:
+    int a; char b; double c;
+    UDTfT(int a_ = 0, char b_ = ' ', double c_ = 1.5) { set(a_, b_, c_); }
+    UDTfT(const UDTfT& other) { a = other.a; b = other.b; c = other.c; }
+    void set(int a_, char b_, double c_) { a = a_; b = b_; c = c_; }
+    bool operator==(const UDTfT& other) const {
+        return 
+            this -> a == other.a &&
+            this -> b == other.b &&
+            this -> c == other.c ;
+    }
+    bool operator!=(const UDTfT& other) const {
+        return
+            this -> a != other.a ||
+            this -> b != other.b ||
+            this -> c != other.c ;
+    }
+};
 
 #define ENABLE_IF(condition) typename std::enable_if<condition>::type 
 #define IS_SAME(a, b) std::is_same<a, b>::value
@@ -28,7 +46,7 @@ public:
     // All T object is independently defined because for same types T a, b placment,
     // may change meaning, for example pointer types
     INTEGER size, setIndex, largeIndex = 100, negativeIndex = -16;
-    DynamicArray<T> da;
+    self::DynamicArray<T> da;
 
     // char Case
     template<class Q = T>
@@ -57,27 +75,25 @@ public:
     }
 
     // UDTfT Case
-    // template<class Q = T>
-    // ENABLE_IF(IS_SAME(Q, UDTfT))
-    // initialize_dependent() {
-    //     obj0.set(1, 'a', 2.5); obj1.set(2, 'b', 5.0);
-    //     obj2.set(3, 'c', 7.5); obj3.set(4, 'd', 10.0);
-    //     obj_2.set(7, 'g', 17.5); obj_1.set(8, 'h', 20.0);
-    //     objA.set(51, 'z', 16.0);
-    //     size = 8; setIndex = 5;
-    //     arr = new T[size];
-    //     for (INTEGER i = 0; i < size; ++i) {
-    //         UDTfT obbj;
-    //         obbj.set(i + 1, 'a' + i, double(double(i + 1) * 2.5));
-    //         da.append(obbj);
-    //         arr[i] = obbj;
-    //     }
-    // }
+    template<class Q = T>
+    ENABLE_IF(IS_SAME(Q, UDTfT))
+    initialize_dependent() {
+        obj0.set(1, 'a', 2.5); obj1.set(2, 'b', 5.0);
+        obj2.set(3, 'c', 7.5); obj3.set(4, 'd', 10.0);
+        obj_2.set(7, 'g', 17.5); obj_1.set(8, 'h', 20.0);
+        objA.set(51, 'z', 16.0);
+        size = 8; setIndex = 5;
+        arr = new T[size];
+        for (INTEGER i = 0; i < size; ++i) {
+            UDTfT obbj(i + 1, 'a' + i, double(double(i + 1) * 2.5));
+            da.append(obbj);
+            arr[i] = obbj;
+        }
+    }
 
     // Other Case
     template<class Q = T>
-    ENABLE_IF(!IS_SAME(Q, char) && !IS_SAME(Q, INTEGER))
-    //  && !IS_SAME(Q, UDTfT)
+    ENABLE_IF(!IS_SAME(Q, char) && !IS_SAME(Q, INTEGER) && !IS_SAME(Q, UDTfT))
     initialize_dependent() {
         throw exception(
             "Unrecognized type for Dynamic Array Test:" + 
@@ -92,7 +108,7 @@ public:
 TYPED_TEST_SUITE_P(DynamicArrayTest);
 
 TYPED_TEST_P(DynamicArrayTest, constructorExceptionTest) {
-    EXPECT_THROW(DynamicArray<int>(-1), std::exception);
+    EXPECT_THROW(self::DynamicArray<int>(-1), exception);
 }
 TYPED_TEST_P(DynamicArrayTest, SizeTest) {
     EXPECT_EQ(this -> da.size(), this -> size);
@@ -163,6 +179,7 @@ REGISTER_TYPED_TEST_SUITE_P(
     iteratorTest
 );
 
+using DynamicArrayTypes = ::testing::Types<INTEGER, char, UDTfT>;
 INSTANTIATE_TYPED_TEST_SUITE_P(DynamicArrayTestPrefix, DynamicArrayTest, DynamicArrayTypes);
 
 #undef ENABLE_IF 
