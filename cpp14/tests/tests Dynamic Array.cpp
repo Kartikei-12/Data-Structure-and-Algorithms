@@ -6,7 +6,7 @@
 #include "gtest/gtest.h"
 #include "Utility_/Utility_.hpp"
 #include "DynamicArray/DynamicArray.hpp"
-#include "utility test.hpp"
+#include "HelpTest/HelpTest.hpp"
 
 namespace self
 {

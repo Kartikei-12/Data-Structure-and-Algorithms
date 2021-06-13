@@ -2,11 +2,10 @@
 // @email: kartikeimittal@gmail.com
 // Some Utility for testing purpose header
 
-#ifndef __self_UtilityForTest
-#define __self_UtilityForTest
+#ifndef __self_HelpTest
+#define __self_HelpTest
 #pragma once
 
-#include <iostream>
 #include "gtest/gtest.h"
 
 namespace self

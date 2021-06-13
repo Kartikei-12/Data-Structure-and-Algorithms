@@ -6,8 +6,9 @@ set(INSTALL_GTEST OFF CACHE BOOL "" FORCE)
 set(INSTALL_GMOCK OFF CACHE BOOL "" FORCE)
 
 add_subdirectory(googletest)
-file(GLOB_RECURSE TEST_SOURCES LIST_DIRECTORIES false "src/tests *.cpp")
-add_executable(${PROJECT_NAME} ${TEST_SOURCES} main.cpp "utility test.cpp")
+add_subdirectory(Help_Test)
+file(GLOB_RECURSE TEST_SOURCES LIST_DIRECTORIES false "tests *.cpp")
+add_executable(${PROJECT_NAME} ${TEST_SOURCES} main.cpp)
 
 add_test(NAME ${PROJECT_NAME}_DynamicArray0 COMMAND ${PROJECT_NAME} "--gtest_filter=*DynamicArrayTest/0*")
 add_test(NAME ${PROJECT_NAME}_DynamicArray1 COMMAND ${PROJECT_NAME} "--gtest_filter=*DynamicArrayTest/1*")
@@ -20,6 +21,7 @@ target_link_libraries(${PROJECT_NAME} PUBLIC
     self::DynamicArray
     self::SinglyLinkedList
     self::Utility
+    self::HelpTest
     gtest
 )
 
