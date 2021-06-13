@@ -1,6 +1,8 @@
 // @author: Kartikei Mittal
 // @email: kartikeimittal@gmail.com
+#include "HelpTest/HelpTest.hpp"
 #include "tests Dynamic Array.cpp"
+#include "tests Singly Linked List.cpp"
 
 int main(int argc, char **argv) {
     ::testing::InitGoogleTest(&argc, argv);
