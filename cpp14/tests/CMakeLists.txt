@@ -7,27 +7,34 @@ set(INSTALL_GMOCK OFF CACHE BOOL "" FORCE)
 
 add_subdirectory(googletest)
 add_subdirectory(Help_Test)
-file(GLOB_RECURSE TEST_SOURCES LIST_DIRECTORIES false "src/tests *.cpp")
-add_executable(${PROJECT_NAME} ${TEST_SOURCES} main.cpp)
 
-add_test(NAME ${PROJECT_NAME}_DynamicArray0 COMMAND ${PROJECT_NAME} "--gtest_filter=*DynamicArrayTest/0*")
-add_test(NAME ${PROJECT_NAME}_DynamicArray1 COMMAND ${PROJECT_NAME} "--gtest_filter=*DynamicArrayTest/1*")
-add_test(NAME ${PROJECT_NAME}_DynamicArray2 COMMAND ${PROJECT_NAME} "--gtest_filter=*DynamicArrayTest/2*")
-add_test(NAME ${PROJECT_NAME}_SinglyLinkedList0 COMMAND ${PROJECT_NAME} "--gtest_filter=*SinglyLinkedListTest/0*")
-add_test(NAME ${PROJECT_NAME}_SinglyLinkedList1 COMMAND ${PROJECT_NAME} "--gtest_filter=*SinglyLinkedListTest/1*")
-add_test(NAME ${PROJECT_NAME}_SinglyLinkedList2 COMMAND ${PROJECT_NAME} "--gtest_filter=*SinglyLinkedListTest/2*")
+# I decided to have seprate executable for
+# dufferent structure because for unknown reason
+# two my test suites were clashing and
+# causing each other to crash
+macro(Test_Macro DStructure File Dependencies Count)
+    add_executable(${PROJECT_NAME}_${DStructure} "src/${File}" main.cpp)
+    target_link_libraries(${PROJECT_NAME}_${DStructure} PUBLIC
+        ${Dependencies}
+        self::${DStructure}
+        self::Utility
+        self::HelpTest
+        gtest
+    )
+    foreach(i RANGE 0 ${Count})
+        add_test(
+            NAME ${PROJECT_NAME}_${DStructure}${i}
+            COMMAND ${PROJECT_NAME}_${DStructure} --gtest_filter=*${DStructure}Test/${i}*
+        )
+    endforeach(i)
+    add_custom_command(
+        TARGET ${PROJECT_NAME}_${DStructure}
+        COMMENT "Running tests"
+        POST_BUILD
+        COMMAND ${PROJECT_NAME}_${DStructure}
+    )
+endmacro(Test_Macro)
 
-target_link_libraries(${PROJECT_NAME} PUBLIC
-    self::DynamicArray
-    self::SinglyLinkedList
-    self::Utility
-    self::HelpTest
-    gtest
-)
-
-add_custom_command(
-    TARGET ${PROJECT_NAME}
-    COMMENT "Running tests"
-    POST_BUILD
-    COMMAND ${PROJECT_NAME}
-)
+Test_Macro(DynamicArray "tests Dynamic Array.cpp" "" 2)
+Test_Macro(SinglyLinkedList "tests Singly Linked List.cpp" "" 2)
+Test_Macro(Heap "tests Heap.cpp" "" 0)

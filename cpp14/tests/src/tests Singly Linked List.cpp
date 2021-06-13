@@ -1,10 +1,9 @@
 // @author: Kartikei Mittal
 // @email: kartikeimittal@gmail.com
-// Testing Dynamic Array
+// Testing Singly Linked List
 
-#include <ostream>
 #include "gtest/gtest.h"
-#include "Utility_/Utility_.hpp"
+#include "Utility/Utility.hpp"
 #include "SinglyLinkedList/SinglyLinkedList.hpp"
 #include "HelpTest/HelpTest.hpp"
 
@@ -149,8 +148,7 @@ TYPED_TEST_P (SinglyLinkedListTest, iteratorTest) {
     }
 }
 
-REGISTER_TYPED_TEST_SUITE_P(
-    SinglyLinkedListTest,
+REGISTER_TYPED_TEST_SUITE_P(SinglyLinkedListTest,
     SizeTest,
     // isEmptyTest,
     getTest,

@@ -7,12 +7,7 @@
 #pragma once
 
 #include <string>
-#include "Utility_/Utility_.hpp"
-
-namespace      
-{
-const self::INTEGER DEFAULT_CAPACITY = 8;
-}
+#include "Utility/Utility.hpp"
 
 namespace self
 {
@@ -20,6 +15,7 @@ namespace self
 template <typename T>
 class DynamicArray
 {
+    const static INTEGER DEFAULT_CAPACITY = 8;
     INTEGER len, capacity;
     T* arr;
 public:
@@ -116,7 +112,3 @@ public:
 
 }
 #endif
-
-
-
-

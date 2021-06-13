@@ -2,9 +2,8 @@
 // @email: kartikeimittal@gmail.com
 // Testing Dynamic Array
 
-#include <ostream>
 #include "gtest/gtest.h"
-#include "Utility_/Utility_.hpp"
+#include "Utility/Utility.hpp"
 #include "DynamicArray/DynamicArray.hpp"
 #include "HelpTest/HelpTest.hpp"
 

@@ -6,20 +6,20 @@
 #define __self_Utility 1
 #pragma once
 
-#include <string>
-#include <exception>
 #include <stdint.h>
+#include <exception>
 
 namespace self
 {
 
 typedef int64_t INTEGER;
-class exception: public std::exception
+class exception : public std::exception
 {
-    std::string message;
+   std::string s;
 public:
-    exception(std::string msg = "");
-    virtual const char* what() const throw();
+   exception(std::string ss): s(ss) {}
+   ~exception() throw () {}
+   const char* what() const throw() { return s.c_str(); }
 };
 
 }

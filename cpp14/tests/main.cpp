@@ -1,15 +1,9 @@
 // @author: Kartikei Mittal
 // @email: kartikeimittal@gmail.com
-#include "HelpTest/HelpTest.hpp"
-#include "tests Dynamic Array.cpp"
-#include "tests Singly Linked List.cpp"
+
+#include "gtest/gtest.h"
 
 int main(int argc, char **argv) {
     ::testing::InitGoogleTest(&argc, argv);
-    // remove the default listener
-    testing::TestEventListeners& listeners = testing::UnitTest::GetInstance()->listeners();
-    auto default_printer = listeners.Release(listeners.default_result_printer());
-    self::ConfigurableEventListener *listener = new self::ConfigurableEventListener(default_printer);
-    listeners.Append(listener);
     return RUN_ALL_TESTS();
 }
