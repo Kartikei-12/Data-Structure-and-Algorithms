@@ -6,7 +6,7 @@ set(INSTALL_GTEST OFF CACHE BOOL "" FORCE)
 set(INSTALL_GMOCK OFF CACHE BOOL "" FORCE)
 
 add_subdirectory(googletest)
-file(GLOB_RECURSE TEST_SOURCES LIST_DIRECTORIES false "tests *.cpp")
+file(GLOB_RECURSE TEST_SOURCES LIST_DIRECTORIES false "src/tests *.cpp")
 add_executable(${PROJECT_NAME} ${TEST_SOURCES} main.cpp "utility test.cpp")
 
 add_test(NAME ${PROJECT_NAME}_DynamicArray0 COMMAND ${PROJECT_NAME} "--gtest_filter=*DynamicArrayTest/0*")
