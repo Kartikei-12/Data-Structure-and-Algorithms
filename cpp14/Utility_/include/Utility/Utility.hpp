@@ -12,7 +12,7 @@
 namespace self
 {
 
-typedef int64_t INTEGER;
+using INTEGER = int64_t;
 class exception : public std::exception
 {
    std::string s;

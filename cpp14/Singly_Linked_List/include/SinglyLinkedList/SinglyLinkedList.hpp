@@ -6,7 +6,6 @@
 #define __self_SinglyLinkedList 1
 #pragma once
 
-// #include <string>
 #include "Utility/Utility.hpp"
 
 namespace self
@@ -169,7 +168,6 @@ public:
             if (!attempt) { throw exception("Linked List integrity on destruction failed"); }
         }
     }
-    void operator delete(void* this_) { SinglyLinkedList<T>(this_)._delete(); }
     // ========================================================== ITERATOR CLASS ======================================================
     class iterator
     {

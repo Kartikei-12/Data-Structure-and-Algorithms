@@ -9,10 +9,8 @@ add_library(${PROJECT_NAME} INTERFACE) # Initiating your library as header only(
 add_library(self::DynamicArray ALIAS ${PROJECT_NAME}) # Add alias, seprate actual and what others use 
 
 target_include_directories(${PROJECT_NAME} # Tell where to find actual code
-    INTERFACE
-        ${PROJECT_SOURCE_DIR}/include
+    INTERFACE ${PROJECT_SOURCE_DIR}/include
 )
 target_link_libraries(${PROJECT_NAME} # Dependencies
-    INTERFACE    
-        self::Utility
+    INTERFACE self::Utility
 )

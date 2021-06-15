@@ -77,7 +77,7 @@ public:
 
     void initialize_independent() { ; }
     void SetUp() override { initialize_dependent(); initialize_independent(); }
-    void TearDown() override { da._delete(); }
+    void TearDown() override { ; }
 };
 TYPED_TEST_SUITE_P(DynamicArrayTest);
 
@@ -111,6 +111,10 @@ TYPED_TEST_P (DynamicArrayTest, setTest) {
     EXPECT_EQ(this -> da.get(this -> setIndex), this -> objA);
     EXPECT_THROW(this -> da.set(this -> objA, this -> negativeIndex), exception);
     EXPECT_THROW(this -> da.set(this -> objA, this -> largeIndex), exception);
+}
+TYPED_TEST_P (DynamicArrayTest, setUsingGetTest) {
+    this -> da[this -> setIndex] = this -> objA;
+    EXPECT_EQ(this -> da.get(this -> setIndex), this -> objA);
 }
 TYPED_TEST_P (DynamicArrayTest, addTest) {
     this -> da.add(this -> objA, (this -> size) - 1);
@@ -147,6 +151,7 @@ REGISTER_TYPED_TEST_SUITE_P(
     getNegativeIndexTest,
     getInvalidIndexTest,
     setTest,
+    setUsingGetTest,
     addTest,
     findTest,
     removeTest,

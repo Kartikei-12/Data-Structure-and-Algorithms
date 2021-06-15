@@ -23,13 +23,18 @@ public:
         if (cap <= 0) { throw exception("Illegal Capacity: " + std::to_string(cap));  }
         arr = new T[cap];
     }
-    DynamicArray(const std::initializer_list<T> &list): capacity(DEFAULT_CAPACITY) {
+    void operator=(const std::initializer_list<T> &list) {
+        capacity = DEFAULT_CAPACITY;
         if (list.size() > capacity) {
             capacity = list.size() * 2;
         }
         arr = new T[capacity];
         len = list.size();
         std::copy(list.begin(), list.end(), arr);
+    }
+    ~DynamicArray() {
+        len = 0;
+        delete [] arr;
     }
 
     void increaseCapacity(INTEGER margin = -1) {
@@ -46,12 +51,12 @@ public:
     INTEGER size() { return len; }
     bool isEmpty() { return (len == 0); }
 
-    T get(INTEGER index) {
+    T& get(INTEGER index) {
         if (index < 0) { index += size(); }
         if (index < 0 || index >= len) { throw exception("Illegal Index on length: " + std::to_string(len)); }
         return arr[index];
     }
-    T operator[](INTEGER index) { return get(index); }
+    T& operator[](INTEGER index) { return get(index); }
     void set(T elem, INTEGER index) {
         if (index < 0 || index >= len) { throw exception("Illegal Index on length: " + std::to_string(len)); }
         arr[index] = elem;
@@ -89,12 +94,6 @@ public:
         --len;
         return elem;
     }
-    void _delete() {
-        len = 0;
-        delete[] arr;
-        arr = new T[DEFAULT_CAPACITY];
-    }
-    void operator delete(void* this_) { DynamicArray<T>(this_)._delete(); }
     // ========================================================== ITERATOR CLASS ======================================================
     class iterator
     {

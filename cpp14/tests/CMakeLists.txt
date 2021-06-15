@@ -4,14 +4,12 @@ set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 # Prevent installation of GTest with the project
 set(INSTALL_GTEST OFF CACHE BOOL "" FORCE)
 set(INSTALL_GMOCK OFF CACHE BOOL "" FORCE)
+set(gtest_disable_pthreads ON CACHE BOOL "" FORCE)
 
 add_subdirectory(googletest)
 add_subdirectory(Help_Test)
 
-# I decided to have seprate executable for
-# dufferent structure because for unknown reason
-# two my test suites were clashing and
-# causing each other to crash
+# Seprate executable for Different Structure
 macro(Test_Macro DStructure File Dependencies Count)
     add_executable(${PROJECT_NAME}_${DStructure} "src/${File}" main.cpp)
     target_link_libraries(${PROJECT_NAME}_${DStructure} PUBLIC
@@ -37,4 +35,4 @@ endmacro(Test_Macro)
 
 Test_Macro(DynamicArray "tests Dynamic Array.cpp" "" 2)
 Test_Macro(SinglyLinkedList "tests Singly Linked List.cpp" "" 2)
-Test_Macro(Heap "tests Heap.cpp" "" 0)
+Test_Macro(Heap "tests Heap.cpp" "" 5)

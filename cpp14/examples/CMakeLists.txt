@@ -1,7 +1,9 @@
 project(examples)
 
-add_executable(${PROJECT_NAME}_DynamicArray "Dynamic Array example.cpp")
-target_link_libraries(${PROJECT_NAME}_DynamicArray self::DynamicArray)
+macro(ADD_Example Class Name_)
+    add_executable(${PROJECT_NAME}_${Class} "${Name_} example.cpp")
+    target_link_libraries(${PROJECT_NAME}_${Class} self::${Class})
+endmacro(ADD_Example)
 
-add_executable(${PROJECT_NAME}_SinglyLinkedList "Singly Linked List example.cpp")
-target_link_libraries(${PROJECT_NAME}_SinglyLinkedList self::SinglyLinkedList)
+ADD_Example(DynamicArray "Dynamic Array")
+ADD_Example(SinglyLinkedList "Singly Linked List")

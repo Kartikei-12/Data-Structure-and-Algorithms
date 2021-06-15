@@ -22,5 +22,12 @@ bool operator!=(const UDTfT& first, const UDTfT& other) {
         first.b != other.b ||
         first.c != other.c ;
 }
+std::ostream& operator<<(std::ostream& os, const UDTfT& ob)
+{
+    os << "(" << ob.a << ", " << ob.b << ", " << ob.c << ")";
+    return os;
+}
 
+bool ComparatorClass::operator()(UDTfT A, UDTfT B) { return A.a < B.a; }
+bool InverseComparatorClass::operator()(UDTfT A, UDTfT B) { return A.a > B.a; }
 }

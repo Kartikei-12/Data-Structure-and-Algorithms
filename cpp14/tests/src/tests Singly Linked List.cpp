@@ -71,11 +71,10 @@ public:
     ENABLE_IF(!IS_SAME(Q, char) && !IS_SAME(Q, INTEGER) && !IS_SAME(Q, UDTfT))
     initialize_dependent() {
         throw exception(
-            std::string("Unrecognized type for Singly Linked List Test:") +
+            "Unrecognized type for Singly Linked List Test:" +
             std::string(typeid(Q()).name())
         );
     }
-
     void initialize_independent() { ; }
     void SetUp() override { initialize_dependent(); initialize_independent(); }
     void TearDown() override { sll._delete(); }

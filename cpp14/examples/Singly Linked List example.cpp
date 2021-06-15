@@ -3,7 +3,6 @@
 // SinglyLinkedList Example Application
 #include <iostream>
 #include "SinglyLinkedList/SinglyLinkedList.hpp"
-using namespace std;
 
 int main(int argc, char const *argv[])
 {
