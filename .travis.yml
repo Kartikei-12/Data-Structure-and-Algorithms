@@ -6,6 +6,8 @@ os:
 - windows
 script:
 - cd cpp14
+- pwd
 - mkdir build
+- pwd
 - cmake . -B build
 - cmake --build build
