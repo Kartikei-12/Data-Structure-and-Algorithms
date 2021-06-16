@@ -1,0 +1,11 @@
+language: cpp
+compiler:
+- gcc
+os:
+- linux
+- windows
+script:
+- cd cpp14
+- mkdir build
+- cmake . -B build - G "MinGW Makefiles"
+- cmake --build build
