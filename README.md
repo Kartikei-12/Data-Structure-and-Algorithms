@@ -5,7 +5,11 @@
 
 ## Description
 
-My Implementation of Data Structure and Algorithms
+My Implementation of Data Structure and Algorithms.
+
+## Running Project
+
+Please refer respective language folders for build instructions.
 
 ## Contributors
 
