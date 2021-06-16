@@ -1,7 +1,7 @@
 
 # Data Stuctures and Algorithms
 
-[License Badge](https://img.shields.io/badge/License-MIT-green)
+![License Badge](https://img.shields.io/badge/License-MIT-green)
 
 ## Description
 
