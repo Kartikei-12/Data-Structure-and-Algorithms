@@ -9,7 +9,6 @@ script:
 - pwd
 - mkdir build
 - pwd
-- cmake -S . -B build
-- cmake --build build
 - cd build
-- make test
+- cmake ..
+- cmake --build .
