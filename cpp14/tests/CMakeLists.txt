@@ -1,24 +1,29 @@
 project(tests)
-# ${CMAKE_PROJECT_NAME}_
+
+include(FetchContent)
+FetchContent_Declare(
+    googletest
+    URL https://github.com/google/googletest/archive/refs/tags/release-1.11.0.zip
+)
+
+# For Windows: Prevent overriding the parent project's compiler/linker settings
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+FetchContent_MakeAvailable(googletest)
 # Prevent installation of GTest with the project
 set(INSTALL_GTEST OFF CACHE BOOL "" FORCE)
 set(INSTALL_GMOCK OFF CACHE BOOL "" FORCE)
-set(gtest_disable_pthreads ON CACHE BOOL "" FORCE)
 
-add_subdirectory(googletest)
 add_subdirectory(Help_Test)
-
-# Seprate executable for Different Structure
 set(AllTestFiles "")
 set(AllLibraryFiles "")
+# Seprate executable for Different Structure
 macro(Test_Macro DStructure File Count)
     add_executable(${PROJECT_NAME}_${DStructure} "src/${File}" main.cpp)
     target_link_libraries(${PROJECT_NAME}_${DStructure} PUBLIC
         self::${DStructure}
         self::Utility
         self::HelpTest
-        gtest
+        gtest_main
     )
     list(APPEND AllTestFiles "src/${File}")
     list(APPEND AllLibraryFiles "self::${DStructure}")
@@ -47,7 +52,7 @@ target_link_libraries(${PROJECT_NAME}_ALL PUBLIC
     ${AllLibraryFiles}
     self::Utility
     self::HelpTest
-    gtest
+    gtest_main
 )
 add_custom_command(
     TARGET ${PROJECT_NAME}_ALL
