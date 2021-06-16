@@ -7,3 +7,5 @@ endmacro(ADD_Example)
 
 ADD_Example(DynamicArray "Dynamic Array")
 ADD_Example(SinglyLinkedList "Singly Linked List")
+ADD_Example(Heap "Heap")
+ADD_Example(Stack "Stack")

@@ -21,6 +21,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin)
 add_subdirectory(Dynamic_Array)
 add_subdirectory(Singly_Linked_List)
 add_subdirectory(Heap_)
+add_subdirectory(Stack_)
 add_subdirectory(Utility_)
 add_subdirectory(examples)
 
