@@ -28,18 +28,19 @@ macro(Test_Macro DStructure File Count)
             COMMAND ${PROJECT_NAME}_${DStructure} --gtest_filter=*${DStructure}Test/${i}*
         )
     endforeach(i)
-    add_custom_command(
-        TARGET ${PROJECT_NAME}_${DStructure}
-        COMMENT "Running ${DStructure} tests"
-        POST_BUILD
-        COMMAND ${PROJECT_NAME}_${DStructure}
-    )
+    # add_custom_command(
+    #     TARGET ${PROJECT_NAME}_${DStructure}
+    #     COMMENT "Running ${File} tests"
+    #     POST_BUILD
+    #     COMMAND ${PROJECT_NAME}_${DStructure}
+    # )
 endmacro(Test_Macro)
 
 Test_Macro(DynamicArray "tests Dynamic Array.cpp" 2)
 Test_Macro(SinglyLinkedList "tests Singly Linked List.cpp" 2)
 Test_Macro(Heap "tests Heap.cpp" 5)
 Test_Macro(Stack "tests Stack.cpp" 5)
+Test_Macro(Queue "tests Queue.cpp" 5)
 
 add_executable(${PROJECT_NAME}_ALL ${AllTestFiles} main.cpp)
 target_link_libraries(${PROJECT_NAME}_ALL PUBLIC
