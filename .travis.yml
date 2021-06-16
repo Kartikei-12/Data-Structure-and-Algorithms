@@ -17,5 +17,6 @@ os:
 script:
 - cd cpp14
 - mkdir build
-- cmake -S . -B build
-- cmake --build build
+- cd build
+- cmake ..
+- cmake --build .
