@@ -2,9 +2,9 @@
 // @email: kartikeimittal@gmail.com
 // Dynamic Array
 
+#pragma once
 #ifndef __self_DynamicArray
 #define __self_DynamicArray
-#pragma once
 
 #include <string>
 #include "Utility/Utility.hpp"
@@ -24,10 +24,8 @@ public:
         arr = new T[cap];
     }
     void operator=(const std::initializer_list<T> &list) {
-        capacity = DEFAULT_CAPACITY;
-        if (list.size() > capacity) {
-            capacity = list.size() * 2;
-        }
+        delete [] arr;
+        capacity = list.size() * 2;
         arr = new T[capacity];
         len = list.size();
         std::copy(list.begin(), list.end(), arr);
@@ -97,14 +95,17 @@ public:
     // ========================================================== ITERATOR CLASS ======================================================
     class iterator
     {
-        T *arr_;
+        T *arr_; T *end;
     public:
-        iterator(T* arr__): arr_(arr__) {}
+        iterator(T* arr__, T* end_ = nullptr): arr_(arr__), end(end_) { ; }
         iterator operator++() { ++arr_; return *this; }
-        bool operator!=(const iterator & other) const { return arr_ != other.arr_; }
-        const T operator*() const { return *arr_; }    
+        bool operator!=(const iterator & other) const {
+            if (end != other.arr_) { throw exception("Iterator Invalidation."); }
+            return arr_ != other.arr_; 
+        }
+        const T operator*() const { return *arr_; }
     };
-    iterator begin() { return iterator(arr); }
+    iterator begin() { return iterator(arr, arr + len); }
     iterator end() { return iterator(arr + len); }
     // ============================================================================================================================
 };

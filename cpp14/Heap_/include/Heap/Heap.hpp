@@ -2,9 +2,9 @@
 // @email: kartikeimittal@gmail.com
 // Heap
 
+#pragma once
 #ifndef __self_Heap
 #define __self_Heap 1
-#pragma once
 
 #include "Utility/Utility.hpp"
 
@@ -21,21 +21,19 @@ class Heap
     template <typename T_, bool inverse_, typename compare__>
     class CompareClass
     {public:
-        template<class Q = compare_>
+        template<class Q = compare__>
         typename std::enable_if<
-            std::is_same<Q, void>::value,
-            bool
+            IS_SAME(Q, void), bool
         >::type
         operator()(T_ a, T_ b) const {
             if (inverse_) {
-                return a > b;
-            } return a < b;
+                return a >= b;
+            } return a <= b;
         }
         // ---
-        template<class Q = compare_>
+        template<class Q = compare__>
         typename std::enable_if<
-            !std::is_same<Q, void>::value,
-            bool
+            !IS_SAME(Q, void), bool
         >::type
         operator()(T_ a, T_ b) const {
             compare__ cmp;
@@ -47,11 +45,7 @@ class Heap
     T* hp;
     CompareClass<T, inverse, compare_> campare;   
 public:
-    Heap() {
-        len = 0;
-        capacity = DEFAULT_CAPACITY;
-        hp = new T[capacity];
-    }
+    Heap(): len(0), capacity(DEFAULT_CAPACITY), hp(new T[capacity]) { ; }
     void operator=(std::initializer_list<T> list)
     {
         capacity = list.size() * 2;
@@ -64,10 +58,7 @@ public:
             heapify(i);
         }
     }
-    ~Heap() {
-        delete [] hp;
-        len = 0;
-    }
+    ~Heap() { delete [] hp; len = 0; }
 private:
     void swap_(INTEGER a, INTEGER b) {
         T temp = hp[a];
@@ -193,14 +184,17 @@ public:
     // ========================================================== ITERATOR CLASS ======================================================
     class iterator
     {
-        T *hp_;
+        T *hp_; T *end;
     public:
-        iterator(T* hp__): hp_(hp__) {}
+        iterator(T* hp__, T* end_ = nullptr): hp_(hp__), end(end_) {}
         iterator operator++() { ++hp_; return *this; }
-        bool operator!=(const iterator & other) const { return hp_ != other.hp_; }
+        bool operator!=(const iterator & other) const {
+            if (end != other.hp_) { throw exception("Iterator Invalidation."); }
+            return hp_ != other.hp_;
+        }
         const T operator*() const { return *hp_; }    
     };
-    iterator begin() { return iterator(hp); }
+    iterator begin() { return iterator(hp, hp + size()); }
     iterator end() { return iterator(hp + size()); }
     // ============================================================================================================================
 };

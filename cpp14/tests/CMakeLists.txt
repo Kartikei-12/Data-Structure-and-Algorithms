@@ -5,7 +5,6 @@ FetchContent_Declare(
     googletest
     URL https://github.com/google/googletest/archive/refs/tags/release-1.11.0.zip
 )
-
 # For Windows: Prevent overriding the parent project's compiler/linker settings
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
@@ -13,6 +12,7 @@ FetchContent_MakeAvailable(googletest)
 set(INSTALL_GTEST OFF CACHE BOOL "" FORCE)
 set(INSTALL_GMOCK OFF CACHE BOOL "" FORCE)
 
+# ------------------------------------------------------------------------------------------------------------------------------
 add_subdirectory(Help_Test)
 set(AllTestFiles "")
 set(AllLibraryFiles "")
@@ -46,6 +46,7 @@ Test_Macro(SinglyLinkedList "tests Singly Linked List.cpp" 2)
 Test_Macro(Heap "tests Heap.cpp" 5)
 Test_Macro(Stack "tests Stack.cpp" 5)
 Test_Macro(Queue "tests Queue.cpp" 5)
+Test_Macro(BinarySearchTree "tests Binary Search Tree.cpp" 2)
 
 add_executable(${PROJECT_NAME}_ALL ${AllTestFiles} main.cpp)
 target_link_libraries(${PROJECT_NAME}_ALL PUBLIC

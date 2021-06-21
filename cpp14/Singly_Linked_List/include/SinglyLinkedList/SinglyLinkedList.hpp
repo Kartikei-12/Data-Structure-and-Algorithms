@@ -2,11 +2,12 @@
 // @email: kartikeimittal@gmail.com
 // Singly Linked List
 
+#pragma once
 #ifndef __self_SinglyLinkedList
 #define __self_SinglyLinkedList 1
-#pragma once
 
 #include "Utility/Utility.hpp"
+#include "NodeOneChild/NodeOneChild.hpp"
 
 namespace self
 {
@@ -14,38 +15,32 @@ namespace self
 template <typename T>
 class SinglyLinkedList
 {
-    // ========================================================== NODE CLASS ======================================================
-    class Node
-    {
-        T data;
-        Node* next;
-    public:
-        Node(T elem): data(elem), next(NULL) { ; }
-        T getData() { return data; }
-        void setData(T elem) { data = elem; }
-        friend SinglyLinkedList<T>;
-    };
-    typedef Node* SLL_Node_ptr;
-    // ============================================================================================================================
+    typedef NodeOneChild<T>* SLL_Node_ptr;
     INTEGER len;
     SLL_Node_ptr head; SLL_Node_ptr tail;
 public:
-    SinglyLinkedList(): len(0), head(NULL), tail(NULL) { ; }
+    SinglyLinkedList(): len(0), head(nullptr), tail(nullptr) { ; }
     void operator=(std::initializer_list<T> list_) {
-        _delete();
+        _clear();
         len = 0;
-        head = tail = NULL;
         if (list_.size() == 0) { return ; }
         ++len;
-        head = tail = new Node(*list_.begin());
+        head = tail = new NodeOneChild<T>(*list_.begin());
         for (typename std::initializer_list<T>::iterator i = list_.begin() + 1; i != list_.end(); ++i, ++len) {
-            tail -> next = new Node(*i);
-            tail = tail -> next;
+            tail -> setNext(new NodeOneChild<T>(*i));
+            tail = tail -> getNext();
         }
     }
     SinglyLinkedList(const SinglyLinkedList&) = delete; // no copy operations
     SinglyLinkedList& operator=(const SinglyLinkedList&) = delete;
-    ~SinglyLinkedList() { _delete(); }
+    ~SinglyLinkedList() { _clear(); }
+    void _clear() {
+        bool attempt = false;
+        while(len > 0) {
+            attempt = removeLast();
+            if (!attempt) { throw exception("Linked List integrity on destruction failed"); }
+        }
+    }
 
     INTEGER size() { return len; }
     bool isEmpty() { return (len == 0); }
@@ -55,16 +50,16 @@ public:
         if (index < 0 || index >= len) { throw exception("Illegal Index on length: " + std::to_string(len)); }
         SLL_Node_ptr curr = head;
         while (index--) {
-            curr = curr -> next;
-        } return curr -> getData();
+            curr = curr -> getNext();
+        }
+        return curr -> getData();
     }
-    T at(INTEGER index) { return get(index); }
     T operator[](INTEGER index) { return get(index); }
     void set(T elem, INTEGER index) {
         if (index < 0 || index >= len) { throw exception("Illegal Index on length: " + std::to_string(len)); }
         SLL_Node_ptr curr = head;
         while (index--) {
-            curr = curr -> next;
+            curr = curr -> getNext();
         }
         curr -> setData(elem);
     }
@@ -76,33 +71,33 @@ public:
         }
         --index;
         SLL_Node_ptr inFrontOf = head;
-        SLL_Node_ptr new_node = new Node(elem);
+        SLL_Node_ptr new_node = new NodeOneChild<T>(elem);
         while(index--) {
-            inFrontOf = inFrontOf -> next;
+            inFrontOf = inFrontOf -> getNext();
         }
-        new_node -> next = inFrontOf -> next;
-        inFrontOf -> next = new_node;
+        new_node -> setNext(inFrontOf -> getNext());
+        inFrontOf -> setNext(new_node);
         ++len;
     }
     void add_first(T elem) {
-        SLL_Node_ptr new_head = new Node(elem);
-        new_head -> next = head;
+        SLL_Node_ptr new_head = new NodeOneChild<T>(elem);
+        new_head -> setNext(head);
         head = new_head;
-        if (tail == NULL) { tail = head; }
+        if (tail == nullptr) { tail = head; }
         ++len;
     }
     void append(T elem) {
         ++len;
-        if (tail == NULL) {
-            head = tail = new Node(elem);
+        if (tail == nullptr) {
+            head = tail = new NodeOneChild<T>(elem);
         } else {
-            tail -> next = new Node(elem);
-            tail = tail -> next;
+            tail -> setNext(new NodeOneChild<T>(elem));
+            tail = tail -> getNext();
         }
     }
     INTEGER find(T elem) {
         SLL_Node_ptr curr = head;
-        for (INTEGER index = 0; index < len && curr != NULL; ++index, curr = curr -> next) {
+        for (INTEGER index = 0; index < len && curr != nullptr; ++index, curr = curr -> getNext()) {
             if (curr -> getData() == elem) {
                 return index;
             }
@@ -110,75 +105,71 @@ public:
     }
     bool contains(T elem) { return (find(elem) != -1); }
     bool remove(T elem) {
-        if (head -> getData() == elem) { return removeFirst(); }// Found at Start
-        if (tail -> getData() == elem) { return removeLast(); }// Found at End
+        if (head -> getData() == elem) { return removeFirst(); } // Found at Start
+        if (tail -> getData() == elem) { return removeLast(); } // Found at End
         SLL_Node_ptr curr = head;
-        SLL_Node_ptr curr_next = NULL;
-        while (curr -> getData() != elem && curr != NULL) {
-            curr = curr -> next;
+        SLL_Node_ptr curr_next = nullptr;
+        while (curr -> getData() != elem && curr != nullptr) {
+            curr = curr -> getNext();
         }
-        if (curr == NULL) { return false; } // Not Found
-        curr_next = curr -> next;
+        if (curr == nullptr) { return false; } // Not Found
+        curr_next = curr -> getNext();
         curr -> setData(curr_next -> getData());
-        curr -> next = curr_next -> next;
-        curr_next -> next = NULL;
+        curr -> setNext(curr_next -> getNext());
+        curr_next -> setNext(nullptr);
         if (curr_next == tail) { tail = curr; }
         delete curr_next;
         --len;
         return true;
     }
     bool removeLast() {
-        if (tail == NULL) { return false; }
+        if (tail == nullptr) { return false; }
         if (head == tail) {
             SLL_Node_ptr curr = head;
-            head = tail = NULL;
+            head = tail = nullptr;
             len = 0;
             delete curr;
             return true;
         }
         SLL_Node_ptr curr = head;
-        while (curr -> next != tail) {
-            curr = curr -> next;
+        while (curr -> getNext() != tail) {
+            curr = curr -> getNext();
         }
         tail = curr;
-        tail -> next = NULL;
-        delete curr -> next;
+        tail -> setNext(nullptr);
+        delete curr -> getNext();
         --len;
         return true;
     }
     bool removeFirst() {
-        if (head == NULL) { return false; }
+        if (head == nullptr) { return false; }
         if (head == tail) {
             SLL_Node_ptr curr = head;
-            head = tail = NULL;
+            head = tail = nullptr;
             len = 0;
             delete curr;
             return true;
         }
         SLL_Node_ptr curr = head;
-        head = head -> next;
+        head = head -> getNext();
         delete curr;
         --len;
         return true;
     }
-    void _delete() {
-        bool attempt = false;
-        while(len > 0) {
-            attempt = removeLast();
-            if (!attempt) { throw exception("Linked List integrity on destruction failed"); }
-        }
-    }
     // ========================================================== ITERATOR CLASS ======================================================
     class iterator
     {
-        SLL_Node_ptr ptr_;
+        SLL_Node_ptr ptr_; SLL_Node_ptr end;
     public:
-        iterator(SLL_Node_ptr ptr): ptr_(ptr) {}
-        iterator operator++() { ptr_ = ptr_ -> next; return *this; }
-        bool operator!=(const iterator & other) const { return ptr_ != other.ptr_; }
+        iterator(SLL_Node_ptr ptr, SLL_Node_ptr end_ = NULL): ptr_(ptr), end(end_) { ; }
+        iterator operator++() { ptr_ = ptr_ -> getNext(); return *this; }
+        bool operator!=(const iterator & other) const {
+            if (end != other.ptr_) { throw exception("Iterator Invalidation."); }
+            return ptr_ != other.ptr_;
+        }
         const T operator*() const { return ptr_ -> getData(); }    
         };
-        iterator begin() { return iterator(head); }
+        iterator begin() { return iterator(head, tail); }
         iterator end() { return iterator(tail); }
     // ============================================================================================================================
 };

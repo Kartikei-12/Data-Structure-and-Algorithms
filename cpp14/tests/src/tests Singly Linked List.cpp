@@ -24,7 +24,7 @@ public:
 
     // INTEGER Case
     template<class Q = T>
-    ENABLE_IF(IS_SAME(Q, INTEGER))
+    ENABLE_IF(IS_SAME(Q, INTEGER), void)
     initialize_dependent() {
         obj0 = 1; obj1 = 2; obj2 = 3; obj3 = 4;
         obj_2 = 9; obj_1 = 10; objA = 12; objB = 16;
@@ -37,7 +37,7 @@ public:
 
     // char Case
     template<class Q = T>
-    ENABLE_IF(IS_SAME(Q, char))
+    ENABLE_IF(IS_SAME(Q, char), void)
     initialize_dependent() {
         obj0 = 'a'; obj1 = 'b'; obj2 = 'c'; obj3 = 'd';
         obj_2 = 'k'; obj_1 = 'l';  objA = 'n'; objB = 'p';
@@ -50,7 +50,7 @@ public:
 
     // UDTfT Case
     template<class Q = T>
-    ENABLE_IF(IS_SAME(Q, UDTfT))
+    ENABLE_IF(IS_SAME(Q, UDTfT), void)
     initialize_dependent() {
         obj0.set(1, 'a', 2.5); obj1.set(2, 'b', 5.0);
         obj2.set(3, 'c', 7.5); obj3.set(4, 'd', 10.0);
@@ -68,7 +68,7 @@ public:
     
     // Other Case
     template<class Q = T>
-    ENABLE_IF(!IS_SAME(Q, char) && !IS_SAME(Q, INTEGER) && !IS_SAME(Q, UDTfT))
+    ENABLE_IF(!IS_SAME(Q, char) && !IS_SAME(Q, INTEGER) && !IS_SAME(Q, UDTfT), void)
     initialize_dependent() {
         throw exception(
             "Unrecognized type for Singly Linked List Test:" +
@@ -77,7 +77,7 @@ public:
     }
     void initialize_independent() { ; }
     void SetUp() override { initialize_dependent(); initialize_independent(); }
-    void TearDown() override { sll._delete(); }
+    void TearDown() override { ; }
 };
 TYPED_TEST_SUITE_P(SinglyLinkedListTest);
 
@@ -86,11 +86,6 @@ TYPED_TEST_P(SinglyLinkedListTest, SizeTest) {
     this -> sll.append(this -> objA);
     EXPECT_EQ(this -> sll.size(), this -> size + 1);
 }
-// TYPED_TEST_P(SinglyLinkedListTest, isEmptyTest) {
-//     EXPECT_EQ(this -> sll.isEmpty(), this -> isEmpty);
-//     this -> sll.append(this -> objB);
-//     EXPECT_FALSE(this -> sll.isEmpty());
-// }
 TYPED_TEST_P (SinglyLinkedListTest, getTest) {
     EXPECT_EQ(this -> sll.get(0), this -> obj0);
     EXPECT_EQ(this -> sll.get(2), this -> obj2);
@@ -146,10 +141,14 @@ TYPED_TEST_P (SinglyLinkedListTest, iteratorTest) {
         ASSERT_EQ(ele, this -> arr[ii++]);
     }
 }
+TYPED_TEST_P (SinglyLinkedListTest, iteratorInvalidationTest) {
+    typename self::SinglyLinkedList<TypeParam>::iterator ii = this -> sll.begin();
+    this -> sll.append(this -> obj0);
+    EXPECT_THROW(ii != this -> sll.end(), self::exception);
+}
 
 REGISTER_TYPED_TEST_SUITE_P(SinglyLinkedListTest,
     SizeTest,
-    // isEmptyTest,
     getTest,
     getSquareBracketTest,
     getNegativeIndexTest,
@@ -161,7 +160,8 @@ REGISTER_TYPED_TEST_SUITE_P(SinglyLinkedListTest,
     addFirstTest,
     findTest,
     removeTest,
-    iteratorTest
+    iteratorTest,
+    iteratorInvalidationTest
 );
 INSTANTIATE_TYPED_TEST_SUITE_P(SinglyLinkedListTestPrefix, SinglyLinkedListTest, TestTypes);
 

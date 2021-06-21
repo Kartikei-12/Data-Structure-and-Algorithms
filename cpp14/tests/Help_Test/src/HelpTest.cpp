@@ -28,6 +28,6 @@ std::ostream& operator<<(std::ostream& os, const UDTfT& ob)
     return os;
 }
 
-bool ComparatorClass::operator()(UDTfT A, UDTfT B) { return A.a < B.a; }
-bool InverseComparatorClass::operator()(UDTfT A, UDTfT B) { return A.a > B.a; }
+bool ComparatorClass::operator()(UDTfT A, UDTfT B) { return A.a <= B.a; }
+bool InverseComparatorClass::operator()(UDTfT A, UDTfT B) { return A.a >= B.a; }
 }

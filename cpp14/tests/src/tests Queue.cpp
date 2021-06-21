@@ -23,7 +23,7 @@ public:
 
     // char Case
     template<class Q = T_main>
-    ENABLE_IF(IS_SAME(Q, QueueArray<char>) || IS_SAME(Q, QueueLinkedList<char>))
+    ENABLE_IF(IS_SAME(Q, QueueArray<char>) || IS_SAME(Q, QueueLinkedList<char>), void)
     initialize_dependent() {
         objA = 'n'; objB = 'p';
         T_base _arr[] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l'};
@@ -34,7 +34,7 @@ public:
 
     // INTEGER Case
     template<class Q = T_main>
-    ENABLE_IF(IS_SAME(Q, QueueArray<INTEGER>) || IS_SAME(Q, QueueLinkedList<INTEGER>))
+    ENABLE_IF(IS_SAME(Q, QueueArray<INTEGER>) || IS_SAME(Q, QueueLinkedList<INTEGER>), void)
     initialize_dependent() {
         objA = 12; objB = 16;
         T_base _arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
@@ -45,7 +45,7 @@ public:
 
     // UDTfT Case
     template<class Q = T_main>
-    ENABLE_IF(IS_SAME(Q, QueueArray<UDTfT>) || IS_SAME(Q, QueueLinkedList<UDTfT>))
+    ENABLE_IF(IS_SAME(Q, QueueArray<UDTfT>) || IS_SAME(Q, QueueLinkedList<UDTfT>), void)
     initialize_dependent() {
         objA.set(51, 'z', 16.0); objB.set(25, 'y', 14.0);
         size = 8;
@@ -63,7 +63,7 @@ public:
         !IS_SAME(Q, QueueArray<   char>) && !IS_SAME(Q, QueueLinkedList<   char>) &&
         !IS_SAME(Q, QueueArray<  UDTfT>) && !IS_SAME(Q, QueueLinkedList<  UDTfT>) &&
         !IS_SAME(Q, QueueArray<INTEGER>) && !IS_SAME(Q, QueueLinkedList<INTEGER>)
-    )
+    , void)
     initialize_dependent() {
         throw exception(
             "Unrecognized type for Queue Test:" +

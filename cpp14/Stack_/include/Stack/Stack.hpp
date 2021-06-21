@@ -2,9 +2,9 @@
 // @email: kartikeimittal@gmail.com
 // Stack
 
+#pragma once
 #ifndef __self_Stack
 #define __self_Stack 1
-#pragma once
 
 #include "DynamicArray/DynamicArray.hpp"
 #include "SinglyLinkedList/SinglyLinkedList.hpp"
@@ -18,8 +18,6 @@ class Stack
 {
 public:
     Stack() {;}
-    Stack(const Stack&) = delete;
-    Stack& operator=(const Stack&) = delete;
 
     virtual INTEGER size() = 0;
     virtual bool isEmpty() = 0;

@@ -43,8 +43,6 @@ struct Encapsulation {
 };
 
 #define TestTypes ::testing::Types<INTEGER, char, UDTfT>
-#define ENABLE_IF(condition) typename std::enable_if<condition>::type 
-#define IS_SAME(a, b) std::is_same<a, b>::value
 #define T_main typename T::main_
 #define T_base typename T::base_
 

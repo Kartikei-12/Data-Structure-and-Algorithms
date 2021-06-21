@@ -84,9 +84,10 @@ public:
     }
     virtual void OnTestSuiteStart(const TestSuite& test_suite) {
         std::cout << "[----------] "
-                  << test_suite.name() << " "
-                  << test_suite.type_param() << " "
-                  << std::endl;
+                  << test_suite.name() << std::endl;
+        std::cout << "             "
+                  << test_suite.total_test_count() << " tests, "
+                  << test_suite.type_param() << std::endl;
     }
 };
 

@@ -2,9 +2,9 @@
 // @email: kartikeimittal@gmail.com
 // Implementation of Queue
 
+#pragma once
 #ifndef __self_Queue
 #define __self_Queue 1
-#pragma once
 
 #include "DynamicArray/DynamicArray.hpp"
 #include "SinglyLinkedList/SinglyLinkedList.hpp"
@@ -16,8 +16,6 @@ namespace self
 template <typename T> class Queue
 {public:
     Queue() {;}
-    Queue(const Queue&) = delete;
-    Queue& operator=(const Queue&) = delete;
     virtual INTEGER size() = 0;
     virtual bool isEmpty() = 0;
     virtual void push(T data) = 0;
@@ -58,12 +56,6 @@ public:
             }
             delete [] st;
             st = new T[capacity * 2];
-            // if (index != len) {
-            //     std::cerr << "index: " << index << " len: " << len
-            //                 << " front: " << front << " back: " << back
-            //                 << " capacity: " << capacity << std::endl;
-            //     throw exception("QueueArray integrity broken.");
-            // }
             std::copy(new_arr, new_arr + len, st);
             capacity *= 2;
             front = 0;

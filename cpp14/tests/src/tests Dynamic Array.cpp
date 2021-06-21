@@ -21,10 +21,11 @@ public:
     // may change meaning, for example pointer types
     INTEGER size, setIndex, largeIndex = 100, negativeIndex = -16;
     self::DynamicArray<T> da;
+    self::DynamicArray<T> da0;
 
     // char Case
     template<class Q = T>
-    ENABLE_IF(IS_SAME(Q, char))
+    ENABLE_IF(IS_SAME(Q, char), void)
     initialize_dependent() {
         obj0 = 'a'; obj1 = 'b'; obj2 = 'c'; obj3 = 'd';
         obj_2 = 'k'; obj_1 = 'l';  objA = 'n';
@@ -37,7 +38,7 @@ public:
 
     // INTEGER Case
     template<class Q = T>
-    ENABLE_IF(IS_SAME(Q, INTEGER))
+    ENABLE_IF(IS_SAME(Q, INTEGER), void)
     initialize_dependent() {
         obj0 = 1; obj1 = 2; obj2 = 3; obj3 = 4;
         obj_2 = 9; obj_1 = 10; objA = 12;
@@ -50,7 +51,7 @@ public:
 
     // UDTfT Case
     template<class Q = T>
-    ENABLE_IF(IS_SAME(Q, UDTfT))
+    ENABLE_IF(IS_SAME(Q, UDTfT), void)
     initialize_dependent() {
         obj0.set(1, 'a', 2.5); obj1.set(2, 'b', 5.0);
         obj2.set(3, 'c', 7.5); obj3.set(4, 'd', 10.0);
@@ -67,7 +68,7 @@ public:
 
     // Other Case
     template<class Q = T>
-    ENABLE_IF(!IS_SAME(Q, char) && !IS_SAME(Q, INTEGER) && !IS_SAME(Q, UDTfT))
+    ENABLE_IF(!IS_SAME(Q, char) && !IS_SAME(Q, INTEGER) && !IS_SAME(Q, UDTfT), void)
     initialize_dependent() {
         throw exception(
             "Unrecognized type for Dynamic Array Test:" + 
@@ -85,16 +86,12 @@ TYPED_TEST_P(DynamicArrayTest, constructorExceptionTest) {
     EXPECT_THROW(self::DynamicArray<int>(-1), exception);
 }
 TYPED_TEST_P(DynamicArrayTest, SizeTest) {
-    EXPECT_EQ(this -> da.size(), this -> size);
+    EXPECT_EQ(this ->  da.size(), this -> size);
+    EXPECT_EQ(this -> da0.size(), 0);
 }
-// TYPED_TEST_P(DynamicArrayTest, isEmptyTest) {
-//     EXPECT_EQ(this -> da.isEmpty(), this -> isEmpty);
-// }
 TYPED_TEST_P (DynamicArrayTest, getTest) {
     EXPECT_EQ(this -> da.get(0), this -> obj0);
     EXPECT_EQ(this -> da.get(2), this -> obj2);
-}
-TYPED_TEST_P (DynamicArrayTest, getSquareBracketTest) {
     EXPECT_EQ(this -> da[0], this -> obj0);
     EXPECT_EQ(this -> da[2], this -> obj2);
 }
@@ -117,6 +114,8 @@ TYPED_TEST_P (DynamicArrayTest, setUsingGetTest) {
     EXPECT_EQ(this -> da.get(this -> setIndex), this -> objA);
 }
 TYPED_TEST_P (DynamicArrayTest, addTest) {
+    this -> da0.append(this -> objA);
+    EXPECT_EQ(this -> da0.get(0), this -> objA);
     this -> da.add(this -> objA, (this -> size) - 1);
     EXPECT_EQ(this -> da.get((this -> size) - 1), this -> objA);
     EXPECT_EQ(this -> da.get(this -> size), this -> obj_1);
@@ -140,14 +139,16 @@ TYPED_TEST_P (DynamicArrayTest, iteratorTest) {
         ASSERT_EQ(ele, this -> arr[ii++]);
     }
 }
+TYPED_TEST_P (DynamicArrayTest, iteratorInvalidationTest) {
+    typename self::DynamicArray<TypeParam>::iterator ii = this -> da.begin();
+    this -> da.increaseCapacity();
+    EXPECT_THROW(ii != this -> da.end(), self::exception);
+}
 
-REGISTER_TYPED_TEST_SUITE_P(
-    DynamicArrayTest,
+REGISTER_TYPED_TEST_SUITE_P( DynamicArrayTest,
     constructorExceptionTest,
     SizeTest,
-    // isEmptyTest,
     getTest,
-    getSquareBracketTest,
     getNegativeIndexTest,
     getInvalidIndexTest,
     setTest,
@@ -155,7 +156,8 @@ REGISTER_TYPED_TEST_SUITE_P(
     addTest,
     findTest,
     removeTest,
-    iteratorTest
+    iteratorTest,
+    iteratorInvalidationTest
 );
 INSTANTIATE_TYPED_TEST_SUITE_P(DynamicArrayTestPrefix, DynamicArrayTest, TestTypes);
 
