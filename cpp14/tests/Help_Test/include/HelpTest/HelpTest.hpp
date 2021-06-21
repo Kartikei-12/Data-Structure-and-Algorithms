@@ -18,6 +18,7 @@ public:
     UDTfT(int a_ = 0, char b_ = ' ', double c_ = 1.5);
     UDTfT(const UDTfT& other);
     void set(int a_, char b_, double c_);
+    friend UDTfT operator+(const UDTfT& first, const UDTfT& other);
     friend bool operator==(const UDTfT& first, const UDTfT& other);
     friend bool operator!=(const UDTfT& first, const UDTfT& other);
     friend struct ComparatorClass;

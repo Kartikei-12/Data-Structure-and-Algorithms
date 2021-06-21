@@ -14,15 +14,18 @@ template <typename T>
 class BinarySearchTreeTest : public ::testing::Test
 {
 public:
-    INTEGER size;
+    INTEGER size, height;
     T_main bst;
-    T_base root; T_base objA;
+    T_base root; T_base obj_1;
+    T_base objA; T_base base;
     
     // INTEGER Case
     template<class Q = T_main>
     ENABLE_IF(IS_SAME(Q, BinarySearchTree<INTEGER>), void)
     initialize_dependent() {
-        size = 15; root = 8; objA = 16;
+        size = 15; height = 4;
+        root = 8; base = 1;
+        objA = 16; obj_1 = 15;
         bst = {8, 4, 12, 2, 6, 10, 14, 1, 3, 5, 7, 9, 11, 13, 15};
     }
 
@@ -30,7 +33,9 @@ public:
     template<class Q = T_main>
     ENABLE_IF(IS_SAME(Q, BinarySearchTree<char>), void)
     initialize_dependent() {
-        size = 7; root = 'd'; objA = 'h';
+        size = 7; height = 3;
+        root = 'd'; base = 'a';
+        objA = 'h'; obj_1 = 'g';
         bst = {'d', 'b', 'f', 'a', 'c', 'e', 'g'};
     }
 
@@ -40,15 +45,17 @@ public:
         (std::is_same<Q, BinarySearchTree<UDTfT, ComparatorClass>>::value)
     , void)
     initialize_dependent() {
-        size = 21; root.set(15 + 1, 'a', 2.0); objA.set(40, ' ', 5.0);
+        size = 21; height = 5;
+        root.set(15 + 1, 'a', 2.0); base.set(1, 'a', 2.0);
+        objA.set(40, ' ', 5.0); obj_1.set(15, 'a', 2.0);
 
-        bst.add(UDTfT(15 + 1, 'a', 2.0)); bst.add(UDTfT( 7 + 1, 'a', 2.0)); bst.add(UDTfT(23 + 1, 'a', 2.0));
-        bst.add(UDTfT( 4 + 1, 'a', 2.0)); bst.add(UDTfT(12 + 1, 'a', 2.0)); bst.add(UDTfT(20 + 1, 'a', 2.0));
-        bst.add(UDTfT(28 + 1, 'a', 2.0)); bst.add(UDTfT( 2 + 1, 'a', 2.0)); bst.add(UDTfT( 6 + 1, 'a', 2.0));
-        bst.add(UDTfT(10 + 1, 'a', 2.0)); bst.add(UDTfT(14 + 1, 'a', 2.0)); bst.add(UDTfT(18 + 1, 'a', 2.0));
-        bst.add(UDTfT(22 + 1, 'a', 2.0)); bst.add(UDTfT( 1 + 1, 'a', 2.0)); bst.add(UDTfT( 3 + 1, 'a', 2.0));
-        bst.add(UDTfT( 5 + 1, 'a', 2.0)); bst.add(UDTfT( 7 + 1, 'a', 2.0)); bst.add(UDTfT( 9 + 1, 'a', 2.0));
-        bst.add(UDTfT(11 + 1, 'a', 2.0)); bst.add(UDTfT(13 + 1, 'a', 2.0)); bst.add(UDTfT(15 + 1, 'a', 2.0));        
+        bst.add(UDTfT(16, 'a', 2.0)); bst.add(UDTfT( 8, 'a', 2.0)); bst.add(UDTfT(20, 'a', 2.0));
+        bst.add(UDTfT( 4, 'a', 2.0)); bst.add(UDTfT(12, 'a', 2.0)); bst.add(UDTfT(18, 'a', 2.0));
+        bst.add(UDTfT(21, 'a', 2.0)); bst.add(UDTfT( 2, 'a', 2.0)); bst.add(UDTfT( 6, 'a', 2.0));
+        bst.add(UDTfT(10, 'a', 2.0)); bst.add(UDTfT(14, 'a', 2.0)); bst.add(UDTfT(17, 'a', 2.0));
+        bst.add(UDTfT(19, 'a', 2.0)); bst.add(UDTfT( 1, 'a', 2.0)); bst.add(UDTfT( 3, 'a', 2.0));
+        bst.add(UDTfT( 5, 'a', 2.0)); bst.add(UDTfT( 7, 'a', 2.0)); bst.add(UDTfT( 9, 'a', 2.0));
+        bst.add(UDTfT(11, 'a', 2.0)); bst.add(UDTfT(13, 'a', 2.0)); bst.add(UDTfT(15, 'a', 2.0));        
     }
 
     // Other Case
@@ -79,12 +86,42 @@ TYPED_TEST_P(BinarySearchTreeTest, sizeTest) {
 }
 TYPED_TEST_P(BinarySearchTreeTest, containsTest) {
     EXPECT_TRUE(this -> bst.contains(this -> root));
+    EXPECT_TRUE(this -> bst.contains(this -> obj_1));
     EXPECT_FALSE(this -> bst.contains(this -> objA));
+}
+TYPED_TEST_P(BinarySearchTreeTest, heightTest) {
+    EXPECT_EQ(this -> bst.height(), this -> height);
+}
+TYPED_TEST_P(BinarySearchTreeTest, addTest) {
+    EXPECT_FALSE(this -> bst.contains(this -> objA));
+    this -> bst.add(this -> objA);
+    EXPECT_TRUE(this -> bst.contains(this -> objA));
+}
+TYPED_TEST_P(BinarySearchTreeTest, removeTest) {
+    EXPECT_TRUE(this -> bst.contains(this -> obj_1));
+    this -> bst.remove(this -> obj_1);
+    EXPECT_FALSE(this -> bst.contains(this -> obj_1));
+}
+TYPED_TEST_P(BinarySearchTreeTest, inOrderIteratorTest) {
+    INTEGER ii = 0;
+    for (typename TypeParam::main_::iterator i = this -> bst.begin("IN ORDER"); i != this -> bst.end(); ++i, ++ii) {
+        EXPECT_EQ(*i, this -> base + ii);
+    }
+}
+TYPED_TEST_P (BinarySearchTreeTest, iteratorInvalidationTest) {
+    typename TypeParam::main_::iterator ii = this -> bst.begin("IN ORDER");
+    this -> bst.add(this -> obj_1);
+    EXPECT_THROW(ii != this -> bst.end(), self::exception);
 }
 
 REGISTER_TYPED_TEST_SUITE_P(BinarySearchTreeTest,
     sizeTest,
-    containsTest
+    containsTest,
+    heightTest,
+    addTest,
+    removeTest,
+    inOrderIteratorTest,
+    iteratorInvalidationTest
 );
 
 using BinarySearchTreeTestTypes = ::testing::Types<

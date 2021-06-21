@@ -10,6 +10,9 @@ namespace self
 UDTfT::UDTfT(int a_/* = 0*/, char b_/* = ' '*/, double c_/* = 1.5*/) { set(a_, b_, c_); }
 UDTfT::UDTfT(const UDTfT& other) { a = other.a; b = other.b; c = other.c; }
 void UDTfT::set(int a_, char b_, double c_) { a = a_; b = b_; c = c_; }
+UDTfT operator+(const UDTfT& first, const UDTfT& other) {
+    return UDTfT(first.a + other.a, first.b, first.c);
+}
 bool operator==(const UDTfT& first, const UDTfT& other) {
     return 
         first.a == other.a &&

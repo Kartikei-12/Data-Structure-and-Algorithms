@@ -75,11 +75,17 @@ public:
     // ================================================= LEVEL ORDER ITERATOR =================================================
     class iterator
     {
+        INTEGER nodeCount;
         std::string itype;
         StackArray<TreeNodePtr> stack;
         QueueArray<TreeNodePtr> que;
     public:
-        iterator(TreeNodePtr curr, std::string itype_): itype(itype_) {
+        iterator(
+            INTEGER nodeCount_,
+            TreeNodePtr curr = nullptr,
+            std::string itype_ = "END"
+        ):
+            itype(itype_), nodeCount(nodeCount_) {
             if (itype == "IN ORDER") {
                 while (curr != nullptr) {
                     stack.push(curr); curr = curr -> getLeft();
@@ -92,7 +98,7 @@ public:
                 }
             } else if (itype == "LEVEL ORDER") {
                 que.push(curr);
-            } else {
+            } else if (itype == "END") { ; } else {
                 throw exception("Unknown iterator type: " + itype);
             }
         }
@@ -109,8 +115,7 @@ public:
                 if (curr -> getRight() != nullptr) { stack.push(curr -> getRight()); }
             } else if (itype == "POST ORDER") {
                 curr = stack.pop();
-                if (stack.size() != 0 && curr != stack.top() -> getRight())
-                {
+                if (stack.size() != 0 && curr != stack.top() -> getRight()) {
                     curr = stack.top() -> getRight();
                     while (curr != nullptr) {
                         stack.push(curr);
@@ -125,15 +130,22 @@ public:
             return *this;
         }
         bool isEnd() {
+            if (itype == "END") { return true; }
             if (itype == "LEVEL ORDER") { return que.isEmpty(); }
             return stack.isEmpty();
+        }
+        bool operator!=(const iterator & other) {
+            if (nodeCount != other.nodeCount) {
+                throw exception("Binary Search Tree Iterator Invalidation.");
+            } return isEnd();
         }
         const T operator*() {
             if (itype == "LEVEL ORDER") { return que.top() -> getData(); }
             return stack.top() -> getData();
         }    
     };
-    iterator begin(std::string itype) { return iterator(root, itype); }
+    iterator begin(std::string itype) { return iterator(count, root, itype); }
+    iterator end() { return iterator(count); }
     // ======================================================================================================================
 };
 
