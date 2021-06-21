@@ -14,9 +14,8 @@ template <typename T>
 class StackTest : public ::testing::Test
 {
 public:
-    T_base objA; T_base objB; T_base* arr;
-    // All T object is independently defined because for same types T a, b placment,
-    // may change meaning, for example pointer types
+    T_base objA; T_base objB;
+    T_base* arr; T_base top1;
     T_main st;
     INTEGER size;
 
@@ -24,7 +23,7 @@ public:
     template<class Q = T_main>
     ENABLE_IF(IS_SAME(Q, StackArray<INTEGER>) || IS_SAME(Q, StackLinkedList<INTEGER>), void)
     initialize_dependent() {
-        objA = 12; objB = 16;
+        objA = 12; objB = 16; top1 = 1;
         T_base _arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
         size = sizeof(_arr) / sizeof(_arr[0]);
         arr = new T_base[size];
@@ -82,12 +81,18 @@ TYPED_TEST_P(StackTest, sizeTest) {
     this -> st.push(this -> objB);
     EXPECT_EQ(this -> st.size(), 2);
 }
-TYPED_TEST_P (StackTest, push_popTest) {
+TYPED_TEST_P (StackTest, pushTest) {
+    this -> st.push(this -> objA);
+    EXPECT_EQ(this -> st.top(), this -> objA);
+    this -> st.push(this -> objB);
+    EXPECT_EQ(this -> st.top(), this -> objB);
+}
+TYPED_TEST_P (StackTest, popTest) {
     this -> st.push(this -> objA);
     this -> st.push(this -> objB);
     EXPECT_EQ(this -> st.top(), this -> objB);
     EXPECT_EQ(this -> st.pop(), this -> objB);
-    EXPECT_EQ(this -> st.top(), this -> objA);
+    EXPECT_EQ(this -> st.pop(), this -> objA);
 }
 TYPED_TEST_P (StackTest, iteratorTest) {
     INTEGER index = 0;
@@ -102,7 +107,8 @@ TYPED_TEST_P (StackTest, iteratorTest) {
 REGISTER_TYPED_TEST_SUITE_P(
     StackTest,
     sizeTest,
-    push_popTest,
+    pushTest,
+    popTest,
     iteratorTest
 );
 
