@@ -6,7 +6,6 @@
 #ifndef __self_BinarySearchTree
 #define __self_BinarySearchTree 1
 
-#include "Utility/Utility.hpp"
 #include "NodeTwoChild/NodeTwoChild.hpp"
 #include "BinaryTree/BinaryTree.hpp"
 

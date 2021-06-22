@@ -4,6 +4,7 @@ compiler:
 - clang
 os:
 - windows
+- osx
 script:
 - cd cpp14
 - mkdir build

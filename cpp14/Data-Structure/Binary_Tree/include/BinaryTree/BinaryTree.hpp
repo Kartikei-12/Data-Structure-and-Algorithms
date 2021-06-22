@@ -131,13 +131,11 @@ public:
         }
         bool isEnd() {
             if (itype == "END") { return true; }
-            if (itype == "LEVEL ORDER") { return que.isEmpty(); }
-            return stack.isEmpty();
+            return (itype == "LEVEL ORDER")? que.isEmpty():stack.isEmpty();
         }
         bool operator!=(const iterator & other) {
-            if (nodeCount != other.nodeCount) {
-                throw exception("Binary Search Tree Iterator Invalidation.");
-            } return isEnd();
+            if (nodeCount != other.nodeCount) { throw exception("BST Iterator Invalidation."); }
+            return isEnd();
         }
         const T operator*() {
             if (itype == "LEVEL ORDER") { return que.top() -> getData(); }
