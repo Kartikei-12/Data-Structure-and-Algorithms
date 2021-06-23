@@ -6,7 +6,6 @@ jobs:
       language: shell
       before_install:
         - choco install python --version 3.9.5
-        - python -m pip3 install --upgrade pip3
       script:
         - cd python3.9
         - pip3 install --upgrade --no-cache -r requirements.txt
