@@ -87,15 +87,19 @@ public:
     // ========================================================== ITERATOR CLASS ======================================================
     class iterator
     {
+        INTEGER len_;
         typename SinglyLinkedList<T>::iterator ptr_;
     public:
-        iterator(typename SinglyLinkedList<T>::iterator ptr): ptr_(ptr) {}
+        iterator(typename SinglyLinkedList<T>::iterator ptr, INTEGER size_): ptr_(ptr), len_(size_) {}
         iterator operator++() { ++ptr_; return *this; }
-        bool operator!=(const iterator & other) const { return ptr_ != other.ptr_; }
+        bool operator!=(const iterator & other) const {
+            if (len_ != other.len_) { throw exception("Stack Iterator Invalidation"); };
+            return ptr_ != other.ptr_;
+        }
         const T operator*() const { return *ptr_; }    
         };
-    iterator begin() { return iterator(st.begin()); }
-    iterator end() { return iterator(st.end()); }
+    iterator begin() { return iterator(st.begin(), size()); }
+    iterator end() { return iterator(st.end(), size()); }
     // ============================================================================================================================
 };
 
