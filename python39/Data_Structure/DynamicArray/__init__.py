@@ -61,21 +61,21 @@ class DynamicArray:
         if element not in self.arr: return False
         self.arr.remove(element)
         self.len -= 1
+        return True
     def removeAt(self, index):
         """"""
         if index < 0 or index >= self.len: raise ValueError("Invalid Remove Ats index")
         del self.arr[index]
         self.len -= 1
     def __iter__(self):
-        """"""
+        """Iterable Method"""
+        self.expectedCount = self.len
         return self
     def __next__(self):
-        """"""
+        """Next method for Iterator"""
+        if self.expectedCount != self.len: raise ValueError("Dynamic Array Iterator Invalidation")
         self._index += 1
         if self._index >= self.len:
             self._index = -1
             raise StopIteration()
         else: return self.arr[self._index]
-    def __reversed__(self):
-        """"""
-        return self.arr[::-1]

@@ -67,15 +67,39 @@ class DynamicArrayTest(unittest.TestCase):
         """Testing setter method"""
         self.arr_.setValue(self.set_index, self.objA)
         self.assertEqual(self.arr_[self.set_index], self.objA)
-        with self.assertRaises(ValueError) as _: self.arr_.setValue( self.neg_index, self.objA)
-        with self.assertRaises(ValueError) as _: self.arr_.setValue( self.large_index, self.objA)  
+        with self.assertRaises(ValueError) as _: self.arr_.setValue(self.neg_index, self.objA)
+        with self.assertRaises(ValueError) as _: self.arr_.setValue(self.large_index, self.objA)
+    def test_add(self):
+        """Testing add method"""
+        self.arr_.add(self.size_ - 1, self.objA)
+        self.assertEqual(self.arr_[self.size_ - 1], self.objA)
+        self.assertEqual(self.arr_[self.size_], self.obj_1)
+        with self.assertRaises(ValueError) as _: self.arr_.add(self.neg_index, self.objA)
+        with self.assertRaises(ValueError) as _: self.arr_.add(self.large_index, self.objA)
+    def test_find(self):
+        """Testing Find"""
+        self.assertEqual(self.arr_.find(self.obj2),  2)
+        self.assertEqual(self.arr_.find(self.objA),  -1)
+        self.assertTrue(self.arr_.contains(self.obj2))
+        self.assertFalse(self.arr_.contains(self.objA))
+    def test_remove(self):
+        """Testing Remove"""
+        self.assertTrue(self.arr_.contains(self.obj2))
+        self.assertTrue(self.arr_.remove(self.obj2))
+        self.assertFalse(self.arr_.contains(self.obj2))
+        self.assertFalse(self.arr_.remove(self.objA))
     def test_iterator(self):
         """Iterator Test"""
         ii = 0
         for obj in self.arr_:
             self.assertEqual(obj, self.arr[ii])
             ii += 1
-
+    def test_iteratorInvalidation(self):
+        """Testing for Iterator Invalidation"""
+        obj = iter(self.arr_)
+        self.arr_.append(self.objA)
+        with self.assertRaises(ValueError) as _: _ = next(obj)
+    
     def tearDown(self):
         """Dynamic Array Test Tear Down"""
         del self.arr_

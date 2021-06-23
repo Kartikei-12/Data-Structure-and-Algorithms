@@ -119,8 +119,8 @@ TYPED_TEST_P (DynamicArrayTest, addTest) {
     this -> da.add(this -> objA, (this -> size) - 1);
     EXPECT_EQ(this -> da.get((this -> size) - 1), this -> objA);
     EXPECT_EQ(this -> da.get(this -> size), this -> obj_1);
-    EXPECT_THROW(this -> da.set(this -> objA, this -> negativeIndex), exception);
-    EXPECT_THROW(this -> da.set(this -> objA, this -> largeIndex), exception);
+    EXPECT_THROW(this -> da.add(this -> objA, this -> negativeIndex), exception);
+    EXPECT_THROW(this -> da.add(this -> objA, this -> largeIndex), exception);
 }
 TYPED_TEST_P (DynamicArrayTest, findTest) {
     EXPECT_EQ(this -> da.find(this -> obj1), 01);
