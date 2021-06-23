@@ -1,60 +1,38 @@
-# language:
-# - cpp
-# - python3
-# compiler:
-# - gcc
-# - clang
-# os:
-# - windows
-# - osx
-# script:
-# - cd cpp14
-# - mkdir build
-# - cd build
-# - cmake ..
-# - cmake --build .
-# - cd ../../python3.9
-# - python3 -m venv venv
-# - pip install --upgrade --user --no-cache -r requirements.txt
-# - venv/Scripts/activate
-# - python -m unittest discover --start-directory tests --verbose
-# - deactivate
 
 jobs:
   include:
     - name: "Python on Windows"
       os: windows
-      language: python
+      language: shell
       before_install:
         - choco install python --version 3.9.5
         - python -m pip install --upgrade pip
       script:
         - cd python3.9
-        - pip install --upgrade --user --no-cache -r requirements.txt
+        - pip install --upgrade --no-cache -r requirements.txt
         - python -m unittest discover --start-directory tests --verbose
-      env:
-        - ISOLATED=true
-        - PATH=/c/Python38:/c/Python38/Scripts:$PATH
+      env: PATH=/c/Python38:/c/Python38/Scripts:$PATH
     - name: "Python on MacOS"
       os: osx
       osx_image: xcode11.2  # Python 3.7.4 running on macOS 10.14.4
       language: shell
       script:
         - cd python3.9
-        - pip3 install --upgrade --user --no-cache -r requirements.txt
+        - pip3 install --upgrade --no-cache -r requirements.txt
         - python3 -m unittest discover --start-directory tests --verbose
     - name: "Python on Xenial Linux"
+      language: python
       python: 3.9.5
       script:
         - cd python3.9
-        - pip3 install --upgrade --user --no-cache -r requirements.txt
+        - pip3 install --upgrade --no-cache -r requirements.txt
         - python3 -m unittest discover --start-directory tests --verbose
     - name: "Python on FreeBSD"
       os: freebsd
       language: python
       script:
         - cd python3.9
-        - pip3 install --upgrade --user --no-cache -r requirements.txt
+        - pip3 install --upgrade --no-cache -r requirements.txt
         - python3 -m unittest discover --start-directory tests --verbose
     - name: "CXX on Windows"
       os: windows
