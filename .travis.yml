@@ -7,7 +7,7 @@ jobs:
       before_install:
         - choco install python --version 3.9.0
       script:
-        - cd python3.9
+        - cd python39
         - pip3 install --upgrade --no-cache -r requirements.txt
         - python -m unittest discover --start-directory tests --verbose
       env: PATH=/c/Python39:/c/Python39/Scripts:$PATH
@@ -16,21 +16,21 @@ jobs:
       osx_image: xcode11.2  # Python 3.7.4 running on macOS 10.14.4
       language: shell
       script:
-        - cd python3.9
+        - cd python39
         - pip3 install --upgrade --no-cache -r requirements.txt
         - python3 -m unittest discover --start-directory tests --verbose
     - name: "Python on Xenial Linux"
       language: python
       python: 3.8
       script:
-        - cd python3.9
+        - cd python39
         - pip3 install --upgrade --no-cache -r requirements.txt
         - python3 -m unittest discover --start-directory tests --verbose
     - name: "Python on FreeBSD"
       os: freebsd
       language: python
       script:
-        - cd python3.9
+        - cd python39
         - pip3 install --upgrade --no-cache -r requirements.txt
         - python3 -m unittest discover --start-directory tests --verbose
     - name: "CXX on Windows"

@@ -18,6 +18,6 @@ class UDTfT:
     def __ne__(self, other):
         """Overload != Operator"""
         return self.a != other.a or self.b != other.b or self.c != other.c
-    def __str__(self):
+    def __repr__(self):
         """Support print"""
-        return "({}, {}, {})".format(self.a, self.b, self.c)
+        return "UDTfT({}, {}, {})".format(self.a, self.b, self.c)
