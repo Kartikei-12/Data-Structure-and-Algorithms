@@ -6,10 +6,10 @@ jobs:
       language: shell
       before_install:
         - choco install python --version 3.9.5
-        - python -m pip install --upgrade pip
+        - python -m pip3 install --upgrade pip3
       script:
         - cd python3.9
-        - pip install --upgrade --no-cache -r requirements.txt
+        - pip3 install --upgrade --no-cache -r requirements.txt
         - python -m unittest discover --start-directory tests --verbose
       env: PATH=/c/Python38:/c/Python38/Scripts:$PATH
     - name: "Python on MacOS"
@@ -22,7 +22,7 @@ jobs:
         - python3 -m unittest discover --start-directory tests --verbose
     - name: "Python on Xenial Linux"
       language: python
-      python: 3.9.5
+      python: 3.8
       script:
         - cd python3.9
         - pip3 install --upgrade --no-cache -r requirements.txt
