@@ -20,22 +20,57 @@
 # - python -m unittest discover --start-directory tests --verbose
 # - deactivate
 
-os:
-  - windows
-  - osx
-
 jobs:
   include:
-    - language: python
-      python: 3.9
+    - name: "Python on Windows"
+      os: windows
+      language: python
+      before_install:
+        - choco install python --version 3.9.5
+        - python -m pip install --upgrade pip
       script:
         - cd python3.9
-        - python3 -m venv venv
         - pip install --upgrade --user --no-cache -r requirements.txt
-        - venv/Scripts/activate
         - python -m unittest discover --start-directory tests --verbose
-        - deactivate
-    - language: cpp
+      env:
+        - ISOLATED=true
+        - PATH=/c/Python38:/c/Python38/Scripts:$PATH
+    - name: "Python on MacOS"
+      os: osx
+      osx_image: xcode11.2  # Python 3.7.4 running on macOS 10.14.4
+      language: shell
+      script:
+        - cd python3.9
+        - pip3 install --upgrade --user --no-cache -r requirements.txt
+        - python3 -m unittest discover --start-directory tests --verbose
+    - name: "Python on Xenial Linux"
+      python: 3.9.5
+      script:
+        - cd python3.9
+        - pip3 install --upgrade --user --no-cache -r requirements.txt
+        - python3 -m unittest discover --start-directory tests --verbose
+    - name: "Python on FreeBSD"
+      os: freebsd
+      language: python
+      script:
+        - cd python3.9
+        - pip3 install --upgrade --user --no-cache -r requirements.txt
+        - python3 -m unittest discover --start-directory tests --verbose
+    - name: "CXX on Windows"
+      os: windows
+      language: cpp
+      compiler:
+        - gcc
+        - clang
+      script:
+        - cd cpp14
+        - mkdir build
+        - cd build
+        - cmake ..
+        - cmake --build .
+    - name: "CXX on MacOS"
+      os: osx
+      language: cpp
       compiler:
         - gcc
         - clang
