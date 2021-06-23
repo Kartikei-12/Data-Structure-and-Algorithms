@@ -1,13 +1,47 @@
-language: cpp
-compiler:
-- gcc
-- clang
+# language:
+# - cpp
+# - python3
+# compiler:
+# - gcc
+# - clang
+# os:
+# - windows
+# - osx
+# script:
+# - cd cpp14
+# - mkdir build
+# - cd build
+# - cmake ..
+# - cmake --build .
+# - cd ../../python3.9
+# - python3 -m venv venv
+# - pip install --upgrade --user --no-cache -r requirements.txt
+# - venv/Scripts/activate
+# - python -m unittest discover --start-directory tests --verbose
+# - deactivate
+
 os:
-- windows
-- osx
-script:
-- cd cpp14
-- mkdir build
-- cd build
-- cmake ..
-- cmake --build .
+  - windows
+  - osx
+
+jobs:
+  include:
+    - language: python
+      python: 3.9
+      script:
+        - cd python3.9
+        - python3 -m venv venv
+        - pip install --upgrade --user --no-cache -r requirements.txt
+        - venv/Scripts/activate
+        - python -m unittest discover --start-directory tests --verbose
+        - deactivate
+    - language: cpp
+      compiler:
+        - gcc
+        - clang
+      script:
+        - cd cpp14
+        - mkdir build
+        - cd build
+        - cmake ..
+        - cmake --build .
