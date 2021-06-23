@@ -18,14 +18,14 @@ set(AllTestFiles "")
 set(AllLibraryFiles "")
 # Seprate executable for Different Structure
 macro(Test_Macro DStructure File Count)
-    add_executable(${PROJECT_NAME}_${DStructure} "src/${File}" main.cpp)
+    add_executable(${PROJECT_NAME}_${DStructure} "src/tests Data Structure/${File}" main.cpp)
     target_link_libraries(${PROJECT_NAME}_${DStructure} PUBLIC
         self::${DStructure}
         self::Utility
         self::HelpTest
         gtest_main
     )
-    list(APPEND AllTestFiles "src/${File}")
+    list(APPEND AllTestFiles "src/tests Data Structure/${File}")
     list(APPEND AllLibraryFiles "self::${DStructure}")
     foreach(i RANGE 0 ${Count})
         add_test(

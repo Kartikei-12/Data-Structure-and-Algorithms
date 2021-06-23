@@ -6,7 +6,7 @@ __author__ = "Kartikei Mittal"
 
 import unittest
 from parameterized import parameterized_class, parameterized
-from utility import UDTfT 
+from utility import UDTfT
 from Data_Structure import DynamicArray
 
 @parameterized_class([{
