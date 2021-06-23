@@ -48,9 +48,6 @@ jobs:
     - name: "CXX on MacOS"
       os: osx
       language: cpp
-      compiler:
-        - gcc
-        - clang
       script:
         - cd cpp14
         - mkdir build
