@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classself_1_1_queue" xml:lang="en-US">
+<title>self::Queue&lt; T &gt; Class Template Reference</title>
+<indexterm><primary>self::Queue&lt; T &gt;</primary></indexterm>
+<para>Inheritance diagram for self::Queue&lt; T &gt;:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="classself_1_1_queue.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_classself_1_1_queue_1a9e13c5f2f8d502d307acde4b3018cb2a"/>virtual INTEGER <emphasis role="strong">size</emphasis> ()=0</para>
+</listitem>
+            <listitem><para><anchor xml:id="_classself_1_1_queue_1a48ce1edcbda9a96fc87b57c810e12c00"/>virtual bool <emphasis role="strong">isEmpty</emphasis> ()=0</para>
+</listitem>
+            <listitem><para><anchor xml:id="_classself_1_1_queue_1ab3ac7e18ea1d3b3f7015f786bc25113a"/>virtual void <emphasis role="strong">push</emphasis> (T data)=0</para>
+</listitem>
+            <listitem><para><anchor xml:id="_classself_1_1_queue_1ae46d6a3bafee9b527464be63136c6de2"/>virtual T <emphasis role="strong">pop</emphasis> ()=0</para>
+</listitem>
+            <listitem><para><anchor xml:id="_classself_1_1_queue_1ad9df8dce5d54599b77da702b6a6775cf"/>virtual T <emphasis role="strong">top</emphasis> ()=0</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<para>
+The documentation for this class was generated from the following file:</para>
+D:/My Hosted Projects/Data Structure and Algorithms/cpp14/Data-Structure/Queue_/include/Queue/Queue.hpp</section>

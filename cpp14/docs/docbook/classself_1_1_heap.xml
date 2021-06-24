@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classself_1_1_heap" xml:lang="en-US">
+<title>self::Heap&lt; T, inverse, compare_ &gt; Class Template Reference</title>
+<indexterm><primary>self::Heap&lt; T, inverse, compare_ &gt;</primary></indexterm>
+<simplesect>
+    <title>Classes    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_classself_1_1_heap_1_1iterator">iterator</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_classself_1_1_heap_1a34cc8c7d17922a36ccd6d8667e42f6e7"/>void <emphasis role="strong">operator=</emphasis> (std::initializer_list&lt; T &gt; list)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_classself_1_1_heap_1a8933961097e644793504d466b22d86cc"/>bool <emphasis role="strong">isEmpty</emphasis> ()</para>
+</listitem>
+            <listitem><para><anchor xml:id="_classself_1_1_heap_1a109b61b13e44a614a20642108afaa287"/>INTEGER <emphasis role="strong">size</emphasis> ()</para>
+</listitem>
+            <listitem><para><anchor xml:id="_classself_1_1_heap_1a629165ae190724c9a1fc1df546554396"/>T <emphasis role="strong">top</emphasis> ()</para>
+</listitem>
+            <listitem><para><anchor xml:id="_classself_1_1_heap_1a72599659df2d65ee7cb48c2f1b696c7d"/>INTEGER <emphasis role="strong">find</emphasis> (T ele)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_classself_1_1_heap_1a0c8b7e94666e88f416fe3e014519bbab"/>T <emphasis role="strong">removeAt</emphasis> (INTEGER index)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_classself_1_1_heap_1a497d31512891656838c5eb40924169fb"/>bool <emphasis role="strong">remove</emphasis> (T ele)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_classself_1_1_heap_1a2308bc6c3577b866282168e3d97f1767"/>T <emphasis role="strong">pop</emphasis> ()</para>
+</listitem>
+            <listitem><para><anchor xml:id="_classself_1_1_heap_1aa8f2600f0c24350b4ecae6553c962f1c"/>void <emphasis role="strong">add</emphasis> (T ele)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_classself_1_1_heap_1a64f688f262aaba159da8c2e004eb0f0b"/>bool <emphasis role="strong">isHeap</emphasis> (INTEGER index=0)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_classself_1_1_heap_1a925b62d37abed4312531daf7450f2144"/><link linkend="_classself_1_1_heap_1_1iterator">iterator</link> <emphasis role="strong">begin</emphasis> ()</para>
+</listitem>
+            <listitem><para><anchor xml:id="_classself_1_1_heap_1ad8e2b17934c2cfa1bc5c796d1494b528"/><link linkend="_classself_1_1_heap_1_1iterator">iterator</link> <emphasis role="strong">end</emphasis> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<para>
+The documentation for this class was generated from the following file:</para>
+D:/My Hosted Projects/Data Structure and Algorithms/cpp14/Data-Structure/Heap_/include/Heap/Heap.hpp</section>

@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classself_1_1_u_d_tf_t" xml:lang="en-US">
+<title>self::UDTfT Class Reference</title>
+<indexterm><primary>self::UDTfT</primary></indexterm>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_classself_1_1_u_d_tf_t_1a988d3efe39196e74bceeb0ede8259e79"/><emphasis role="strong">UDTfT</emphasis> (int a_=0, char b_=&apos; &apos;, double c_=1.5)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_classself_1_1_u_d_tf_t_1a0aa5387b0cc4698564deab2ad16c5ae2"/><emphasis role="strong">UDTfT</emphasis> (const <link linkend="_classself_1_1_u_d_tf_t">UDTfT</link> &amp;other)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_classself_1_1_u_d_tf_t_1a0188e841f800ebb76028a8acee03221d"/>void <emphasis role="strong">set</emphasis> (int a_, char b_, double c_)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Friends    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_classself_1_1_u_d_tf_t_1a15598e62f4b4f5a9988d9018f1cc8c96"/>struct <emphasis role="strong">ComparatorClass</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_classself_1_1_u_d_tf_t_1a710695b6478ad44691fa4be70b0875f5"/>struct <emphasis role="strong">InverseComparatorClass</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_classself_1_1_u_d_tf_t_1afb4ec3607839849eff76d670f2f6722d"/><link linkend="_classself_1_1_u_d_tf_t">UDTfT</link> <emphasis role="strong">operator+</emphasis> (const <link linkend="_classself_1_1_u_d_tf_t">UDTfT</link> &amp;first, const <link linkend="_classself_1_1_u_d_tf_t">UDTfT</link> &amp;other)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_classself_1_1_u_d_tf_t_1ad8f15965479f95d5a0c30bd69b05a7b8"/>bool <emphasis role="strong">operator==</emphasis> (const <link linkend="_classself_1_1_u_d_tf_t">UDTfT</link> &amp;first, const <link linkend="_classself_1_1_u_d_tf_t">UDTfT</link> &amp;other)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_classself_1_1_u_d_tf_t_1ad976c3e8206466b5fd99a02208226d02"/>bool <emphasis role="strong">operator!=</emphasis> (const <link linkend="_classself_1_1_u_d_tf_t">UDTfT</link> &amp;first, const <link linkend="_classself_1_1_u_d_tf_t">UDTfT</link> &amp;other)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_classself_1_1_u_d_tf_t_1a7ceacd0f5009af3bd2fd1c6e1ae4f749"/>std::ostream &amp; <emphasis role="strong">operator&lt;&lt;</emphasis> (std::ostream &amp;os, const <link linkend="_classself_1_1_u_d_tf_t">UDTfT</link> &amp;dt)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<para>
+The documentation for this class was generated from the following files:</para>
+D:/My Hosted Projects/Data Structure and Algorithms/cpp14/tests/Help_Test/include/HelpTest/HelpTest.hppD:/My Hosted Projects/Data Structure and Algorithms/cpp14/tests/Help_Test/src/HelpTest.cpp</section>

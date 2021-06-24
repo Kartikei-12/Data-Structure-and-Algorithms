@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classself_1_1_singly_linked_list_test" xml:lang="en-US">
+<title>self::SinglyLinkedListTest&lt; T &gt; Class Template Reference</title>
+<indexterm><primary>self::SinglyLinkedListTest&lt; T &gt;</primary></indexterm>
+<para>Inheritance diagram for self::SinglyLinkedListTest&lt; T &gt;:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="classself_1_1_singly_linked_list_test.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_classself_1_1_singly_linked_list_test_1a9eef162c3c03bee7f7366e6f039f5778"/>template&lt;class Q  = T&gt; </para><para><emphasis role="strong">initialize_dependent</emphasis> ()</para>
+</listitem>
+            <listitem><para><anchor xml:id="_classself_1_1_singly_linked_list_test_1a9eef162c3c03bee7f7366e6f039f5778"/>template&lt;class Q  = T&gt; </para><para><emphasis role="strong">initialize_dependent</emphasis> ()</para>
+</listitem>
+            <listitem><para><anchor xml:id="_classself_1_1_singly_linked_list_test_1a9eef162c3c03bee7f7366e6f039f5778"/>template&lt;class Q  = T&gt; </para><para><emphasis role="strong">initialize_dependent</emphasis> ()</para>
+</listitem>
+            <listitem><para><anchor xml:id="_classself_1_1_singly_linked_list_test_1a43ba7705c3fe070a2d9a86c2e7d8d46a"/>template&lt;class Q  = T&gt; </para><para><emphasis role="strong">ENABLE_IF</emphasis> (!IS_SAME(Q, char) &amp;&amp;!IS_SAME(Q, INTEGER) &amp;&amp;!IS_SAME(Q, <link linkend="_classself_1_1_u_d_tf_t">UDTfT</link>), void) initialize_dependent()</para>
+</listitem>
+            <listitem><para><anchor xml:id="_classself_1_1_singly_linked_list_test_1a488d653f66dbedafb075c33c3da4f971"/>void <emphasis role="strong">initialize_independent</emphasis> ()</para>
+</listitem>
+            <listitem><para><anchor xml:id="_classself_1_1_singly_linked_list_test_1a1ae10a514ac72ad7a1375d5e3c2c25ab"/>void <emphasis role="strong">SetUp</emphasis> () override</para>
+</listitem>
+            <listitem><para><anchor xml:id="_classself_1_1_singly_linked_list_test_1ad18b85c31dfac096975666097fe6942b"/>void <emphasis role="strong">TearDown</emphasis> () override</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_classself_1_1_singly_linked_list_test_1ad3163e877c26fa88f6a0110d57268a4f"/>T <emphasis role="strong">obj0</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_classself_1_1_singly_linked_list_test_1a79294c80ba237e6e7ba34f691fe410e0"/>T <emphasis role="strong">obj1</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_classself_1_1_singly_linked_list_test_1a1fb5ea7d54c396b0dcb652295e05b912"/>T <emphasis role="strong">obj2</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_classself_1_1_singly_linked_list_test_1a3b8c77c179a8cc49a14398b3ff974d13"/>T <emphasis role="strong">obj3</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_classself_1_1_singly_linked_list_test_1ace0d610d4d6465cfe7e38dca64ab18f6"/>T <emphasis role="strong">obj_1</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_classself_1_1_singly_linked_list_test_1a5b0426c0ef78cbae21bdb1acfbe2661e"/>T <emphasis role="strong">obj_2</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_classself_1_1_singly_linked_list_test_1a2183db9aa8eb763e73805b36ecd57f4a"/>T <emphasis role="strong">objA</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_classself_1_1_singly_linked_list_test_1a004384ab051bf996e7f0d14b96d759db"/>T <emphasis role="strong">objB</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_classself_1_1_singly_linked_list_test_1a69fc85c995bbaf37ae4601c2cc86d486"/>T * <emphasis role="strong">arr</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_classself_1_1_singly_linked_list_test_1a1a8aa68040b33991e33de04460e8c300"/>INTEGER <emphasis role="strong">size</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_classself_1_1_singly_linked_list_test_1a7ec44926bd461f6d5cc6c3949df380ac"/>INTEGER <emphasis role="strong">setIndex</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_classself_1_1_singly_linked_list_test_1a848b9a0240dcecf1e246f48d8876cbac"/>INTEGER <emphasis role="strong">largeIndex</emphasis> = 100</para>
+</listitem>
+            <listitem><para><anchor xml:id="_classself_1_1_singly_linked_list_test_1a1bfc4e4bd65e280e0be13b85c29c0f28"/>INTEGER <emphasis role="strong">negativeIndex</emphasis> = -16</para>
+</listitem>
+            <listitem><para><anchor xml:id="_classself_1_1_singly_linked_list_test_1ae223e0bb5bf5e2b79bc939f443348fca"/><link linkend="_classself_1_1_singly_linked_list">self::SinglyLinkedList</link>&lt; T &gt; <emphasis role="strong">sll</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<para>
+The documentation for this class was generated from the following file:</para>
+D:/My Hosted Projects/Data Structure and Algorithms/cpp14/tests/src/tests Data Structure/tests Singly Linked List.cpp</section>

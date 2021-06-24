@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classself_1_1_queue_linked_list_1_1iterator" xml:lang="en-US">
+<title>self::QueueLinkedList&lt; T &gt;::iterator Class Reference</title>
+<indexterm><primary>self::QueueLinkedList&lt; T &gt;::iterator</primary></indexterm>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_classself_1_1_queue_linked_list_1_1iterator_1a93542540049a8d3654a2678ec5ff8e28"/><emphasis role="strong">iterator</emphasis> (typename <link linkend="_classself_1_1_singly_linked_list">SinglyLinkedList</link>&lt; T &gt;::<link linkend="_classself_1_1_queue_linked_list_1_1iterator">iterator</link> ptr)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_classself_1_1_queue_linked_list_1_1iterator_1ac352c515e349676e8d9559c6bbaa82db"/><link linkend="_classself_1_1_queue_linked_list_1_1iterator">iterator</link> <emphasis role="strong">operator++</emphasis> ()</para>
+</listitem>
+            <listitem><para><anchor xml:id="_classself_1_1_queue_linked_list_1_1iterator_1a740dda2932bd9c11ece33522b9d07782"/>bool <emphasis role="strong">operator!=</emphasis> (const <link linkend="_classself_1_1_queue_linked_list_1_1iterator">iterator</link> &amp;other) const</para>
+</listitem>
+            <listitem><para><anchor xml:id="_classself_1_1_queue_linked_list_1_1iterator_1a083ff94f2a4b0074267a287ecba893c6"/>const T <emphasis role="strong">operator*</emphasis> () const</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<para>
+The documentation for this class was generated from the following file:</para>
+D:/My Hosted Projects/Data Structure and Algorithms/cpp14/Data-Structure/Queue_/include/Queue/Queue.hpp</section>

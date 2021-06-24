@@ -1,0 +1,704 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classself_1_1_dynamic_array" xml:lang="en-US">
+<title>self::DynamicArray&lt; T &gt; Class Template Reference</title>
+<indexterm><primary>self::DynamicArray&lt; T &gt;</primary></indexterm>
+<para>
+
+<para>Dynamic Array Template Class. </para>
+ 
+</para>
+<para>
+<computeroutput>#include &lt;DynamicArray.hpp&gt;</computeroutput>
+</para>
+<simplesect>
+    <title>Classes    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_classself_1_1_dynamic_array_1_1iterator">iterator</link></para>
+
+<para>Dynamic Array iterator class. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_classself_1_1_dynamic_array_1a3becf57d7233184e2db4f70b599f1827">DynamicArray</link> (INTEGER cap=DEFAULT_CAPACITY)</para>
+
+<para>Dynamic Array. </para>
+</listitem>
+            <listitem><para>void <link linkend="_classself_1_1_dynamic_array_1a2778b8e37fb4ff10010257a01ed1ab95">operator=</link> (const std::initializer_list&lt; T &gt; &amp;list)</para>
+
+<para>Overload assignment operator. </para>
+</listitem>
+            <listitem><para><link linkend="_classself_1_1_dynamic_array_1a333614aa86a116641c031fbaaf92b593">~DynamicArray</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_classself_1_1_dynamic_array_1ae2d7ebb9936a43627948cf6a55489335">increaseCapacity</link> (INTEGER margin=-1)</para>
+
+<para>Method to increase capacity of the array. </para>
+</listitem>
+            <listitem><para>INTEGER <link linkend="_classself_1_1_dynamic_array_1a0698e29f4489bcd1ec85805b5f6137e6">size</link> ()</para>
+
+<para>Expose size of array. </para>
+</listitem>
+            <listitem><para>bool <link linkend="_classself_1_1_dynamic_array_1a421117e9a2f417a16b8c8abc6decb0f6">isEmpty</link> ()</para>
+
+<para>Checks for emptiness of array. </para>
+</listitem>
+            <listitem><para>T &amp; <link linkend="_classself_1_1_dynamic_array_1a650191c7dc47b29b5ec119958638e5d2">get</link> (INTEGER index)</para>
+
+<para>Getter Method for array. </para>
+</listitem>
+            <listitem><para>T &amp; <link linkend="_classself_1_1_dynamic_array_1a9cfdbf61ffef3f764daa9769a7f505d9">operator[]</link> (INTEGER index)</para>
+
+<para>Route Getter Method for [] opewrator overload. </para>
+</listitem>
+            <listitem><para>void <link linkend="_classself_1_1_dynamic_array_1a6d70b6cc1c7a3681243963b0d3ee8d36">set</link> (T elem, INTEGER index)</para>
+
+<para>Setter Method. </para>
+</listitem>
+            <listitem><para>void <link linkend="_classself_1_1_dynamic_array_1ad77c840b16b615a4d9205d832eca4f29">add</link> (T elem, INTEGER index)</para>
+
+<para>Add method for Dynamic Array. </para>
+</listitem>
+            <listitem><para>void <link linkend="_classself_1_1_dynamic_array_1a1e17f279e58f504e18babed5f33883ae">append</link> (T elem)</para>
+
+<para>Apend method for Dynamic Array. </para>
+</listitem>
+            <listitem><para>INTEGER <link linkend="_classself_1_1_dynamic_array_1a865b84679d7c8603d4bea4362f3ee3f2">find</link> (T elem)</para>
+
+<para>Find function for Dynamic Array. </para>
+</listitem>
+            <listitem><para>bool <link linkend="_classself_1_1_dynamic_array_1aeda17820d65248aec6ea4727819f9dff">contains</link> (T elem)</para>
+
+<para>Check for presence of given element. </para>
+</listitem>
+            <listitem><para>bool <link linkend="_classself_1_1_dynamic_array_1af1f11f14aa1e98acc3fffcbebf6fee21">remove</link> (T elem)</para>
+
+<para>Element removal function. </para>
+</listitem>
+            <listitem><para>T <link linkend="_classself_1_1_dynamic_array_1a5aebd7e0ebb00c9aa2e228bf0d9e0ec9">removeAt</link> (INTEGER index)</para>
+
+<para>Remove element at given index. </para>
+</listitem>
+            <listitem><para><anchor xml:id="_classself_1_1_dynamic_array_1a0f25535e95b27d1eadcbdb3c168831e7"/><link linkend="_classself_1_1_dynamic_array_1_1iterator">iterator</link> <emphasis role="strong">begin</emphasis> ()</para>
+</listitem>
+            <listitem><para><anchor xml:id="_classself_1_1_dynamic_array_1a8f792db66fbbf3c325761917222b5310"/><link linkend="_classself_1_1_dynamic_array_1_1iterator">iterator</link> <link linkend="_classself_1_1_dynamic_array_1a8f792db66fbbf3c325761917222b5310">end</link> ()</para>
+
+<para>Begin Iterator. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+<simplesect><title>template&lt;typename T&gt;
+class self::DynamicArray&lt; T &gt;</title></simplesect>
+
+
+<para>Dynamic Array Template Class. </para>
+
+
+
+<para>
+                <formalpara>
+                    <title>
+Template Parameters                    </title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>T</entry>
+                                <entry>
+<para>Type used for Dynamic Array </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_classself_1_1_dynamic_array_1a3becf57d7233184e2db4f70b599f1827"/>    <section>
+    <title>DynamicArray()</title>
+<indexterm><primary>DynamicArray</primary><secondary>self::DynamicArray&lt; T &gt;</secondary></indexterm>
+<indexterm><primary>self::DynamicArray&lt; T &gt;</primary><secondary>DynamicArray</secondary></indexterm>
+<computeroutput>template&lt;typename T &gt; </computeroutput><para><computeroutput><link linkend="_classself_1_1_dynamic_array">self::DynamicArray</link>&lt; T &gt;::<link linkend="_classself_1_1_dynamic_array">DynamicArray</link> (INTEGER cap = <computeroutput>DEFAULT_CAPACITY</computeroutput>
+)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>Dynamic Array. </para>
+</para>
+
+<para>Dynamic Array Default Counstructor 
+                <formalpara>
+                    <title>
+Parameters                    </title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>cap</entry>
+                                <entry>
+<para>Capacity of array </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                
+                <formalpara>
+                    <title>
+Exceptions                    </title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>exception</entry>
+                                <entry>
+<para>If 0 or negative capacity is supplied </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+    </section><anchor xml:id="_classself_1_1_dynamic_array_1a333614aa86a116641c031fbaaf92b593"/>    <section>
+    <title>~DynamicArray()</title>
+<indexterm><primary>~DynamicArray</primary><secondary>self::DynamicArray&lt; T &gt;</secondary></indexterm>
+<indexterm><primary>self::DynamicArray&lt; T &gt;</primary><secondary>~DynamicArray</secondary></indexterm>
+<computeroutput>template&lt;typename T &gt; </computeroutput><para><computeroutput><link linkend="_classself_1_1_dynamic_array">self::DynamicArray</link>&lt; T &gt;::~<link linkend="_classself_1_1_dynamic_array">DynamicArray</link> ( )<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Destructor</para>
+</section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_classself_1_1_dynamic_array_1ad77c840b16b615a4d9205d832eca4f29"/>    <section>
+    <title>add()</title>
+<indexterm><primary>add</primary><secondary>self::DynamicArray&lt; T &gt;</secondary></indexterm>
+<indexterm><primary>self::DynamicArray&lt; T &gt;</primary><secondary>add</secondary></indexterm>
+<computeroutput>template&lt;typename T &gt; </computeroutput><para><computeroutput>void <link linkend="_classself_1_1_dynamic_array">self::DynamicArray</link>&lt; T &gt;::add (T elem, INTEGER index)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>Add method for Dynamic Array. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters                    </title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>elem</entry>
+                                <entry>
+<para>Element to add </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>index</entry>
+                                <entry>
+<para>Place to add new element </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                
+                <formalpara>
+                    <title>
+Exceptions                    </title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>exception</entry>
+                                <entry>
+<para>If an invalid index is recieved </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+    </section><anchor xml:id="_classself_1_1_dynamic_array_1a1e17f279e58f504e18babed5f33883ae"/>    <section>
+    <title>append()</title>
+<indexterm><primary>append</primary><secondary>self::DynamicArray&lt; T &gt;</secondary></indexterm>
+<indexterm><primary>self::DynamicArray&lt; T &gt;</primary><secondary>append</secondary></indexterm>
+<computeroutput>template&lt;typename T &gt; </computeroutput><para><computeroutput>void <link linkend="_classself_1_1_dynamic_array">self::DynamicArray</link>&lt; T &gt;::append (T elem)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>Apend method for Dynamic Array. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters                    </title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>elem</entry>
+                                <entry>
+<para>Element to add </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+    </section><anchor xml:id="_classself_1_1_dynamic_array_1aeda17820d65248aec6ea4727819f9dff"/>    <section>
+    <title>contains()</title>
+<indexterm><primary>contains</primary><secondary>self::DynamicArray&lt; T &gt;</secondary></indexterm>
+<indexterm><primary>self::DynamicArray&lt; T &gt;</primary><secondary>contains</secondary></indexterm>
+<computeroutput>template&lt;typename T &gt; </computeroutput><para><computeroutput>bool <link linkend="_classself_1_1_dynamic_array">self::DynamicArray</link>&lt; T &gt;::contains (T elem)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>Check for presence of given element. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters                    </title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>elem</entry>
+                                <entry>
+<para>Element to look for </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>bool True if element present </para>
+</formalpara>
+</para>
+    </section><anchor xml:id="_classself_1_1_dynamic_array_1a865b84679d7c8603d4bea4362f3ee3f2"/>    <section>
+    <title>find()</title>
+<indexterm><primary>find</primary><secondary>self::DynamicArray&lt; T &gt;</secondary></indexterm>
+<indexterm><primary>self::DynamicArray&lt; T &gt;</primary><secondary>find</secondary></indexterm>
+<computeroutput>template&lt;typename T &gt; </computeroutput><para><computeroutput>INTEGER <link linkend="_classself_1_1_dynamic_array">self::DynamicArray</link>&lt; T &gt;::find (T elem)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>Find function for Dynamic Array. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters                    </title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>elem</entry>
+                                <entry>
+<para>Element to search for </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>int Element index if found, -1 otherwise </para>
+</formalpara>
+</para>
+    </section><anchor xml:id="_classself_1_1_dynamic_array_1a650191c7dc47b29b5ec119958638e5d2"/>    <section>
+    <title>get()</title>
+<indexterm><primary>get</primary><secondary>self::DynamicArray&lt; T &gt;</secondary></indexterm>
+<indexterm><primary>self::DynamicArray&lt; T &gt;</primary><secondary>get</secondary></indexterm>
+<computeroutput>template&lt;typename T &gt; </computeroutput><para><computeroutput>T&amp; <link linkend="_classself_1_1_dynamic_array">self::DynamicArray</link>&lt; T &gt;::get (INTEGER index)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>Getter Method for array. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters                    </title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>index</entry>
+                                <entry>
+<para>Index of Element to access </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>T Element at given index </para>
+</formalpara>
+
+                <formalpara>
+                    <title>
+Exceptions                    </title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>exception</entry>
+                                <entry>
+<para>If an invalid exception is recieved </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+    </section><anchor xml:id="_classself_1_1_dynamic_array_1ae2d7ebb9936a43627948cf6a55489335"/>    <section>
+    <title>increaseCapacity()</title>
+<indexterm><primary>increaseCapacity</primary><secondary>self::DynamicArray&lt; T &gt;</secondary></indexterm>
+<indexterm><primary>self::DynamicArray&lt; T &gt;</primary><secondary>increaseCapacity</secondary></indexterm>
+<computeroutput>template&lt;typename T &gt; </computeroutput><para><computeroutput>void <link linkend="_classself_1_1_dynamic_array">self::DynamicArray</link>&lt; T &gt;::increaseCapacity (INTEGER margin = <computeroutput>-1</computeroutput>
+)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>Method to increase capacity of the array. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters                    </title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>margin</entry>
+                                <entry>
+<para>Margin to increase capacity by </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+    </section><anchor xml:id="_classself_1_1_dynamic_array_1a421117e9a2f417a16b8c8abc6decb0f6"/>    <section>
+    <title>isEmpty()</title>
+<indexterm><primary>isEmpty</primary><secondary>self::DynamicArray&lt; T &gt;</secondary></indexterm>
+<indexterm><primary>self::DynamicArray&lt; T &gt;</primary><secondary>isEmpty</secondary></indexterm>
+<computeroutput>template&lt;typename T &gt; </computeroutput><para><computeroutput>bool <link linkend="_classself_1_1_dynamic_array">self::DynamicArray</link>&lt; T &gt;::isEmpty ( )<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>Checks for emptiness of array. </para>
+</para>
+
+<para><formalpara><title>Returns</title>
+
+<para>bool True if array empty, fals otherwise </para>
+</formalpara>
+</para>
+    </section><anchor xml:id="_classself_1_1_dynamic_array_1a2778b8e37fb4ff10010257a01ed1ab95"/>    <section>
+    <title>operator=()</title>
+<indexterm><primary>operator=</primary><secondary>self::DynamicArray&lt; T &gt;</secondary></indexterm>
+<indexterm><primary>self::DynamicArray&lt; T &gt;</primary><secondary>operator=</secondary></indexterm>
+<computeroutput>template&lt;typename T &gt; </computeroutput><para><computeroutput>void <link linkend="_classself_1_1_dynamic_array">self::DynamicArray</link>&lt; T &gt;::operator= (const std::initializer_list&lt; T &gt; &amp; list)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>Overload assignment operator. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters                    </title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>list</entry>
+                                <entry>
+<para>Brace enclosed list </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+    </section><anchor xml:id="_classself_1_1_dynamic_array_1a9cfdbf61ffef3f764daa9769a7f505d9"/>    <section>
+    <title>operator[]()</title>
+<indexterm><primary>operator[]</primary><secondary>self::DynamicArray&lt; T &gt;</secondary></indexterm>
+<indexterm><primary>self::DynamicArray&lt; T &gt;</primary><secondary>operator[]</secondary></indexterm>
+<computeroutput>template&lt;typename T &gt; </computeroutput><para><computeroutput>T&amp; <link linkend="_classself_1_1_dynamic_array">self::DynamicArray</link>&lt; T &gt;::operator[] (INTEGER index)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>Route Getter Method for [] opewrator overload. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters                    </title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>index</entry>
+                                <entry>
+<para>Index of Element to access </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>T Element at given index </para>
+</formalpara>
+
+                <formalpara>
+                    <title>
+Exceptions                    </title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>exception</entry>
+                                <entry>
+<para>If an invalid index is recieved </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+    </section><anchor xml:id="_classself_1_1_dynamic_array_1af1f11f14aa1e98acc3fffcbebf6fee21"/>    <section>
+    <title>remove()</title>
+<indexterm><primary>remove</primary><secondary>self::DynamicArray&lt; T &gt;</secondary></indexterm>
+<indexterm><primary>self::DynamicArray&lt; T &gt;</primary><secondary>remove</secondary></indexterm>
+<computeroutput>template&lt;typename T &gt; </computeroutput><para><computeroutput>bool <link linkend="_classself_1_1_dynamic_array">self::DynamicArray</link>&lt; T &gt;::remove (T elem)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>Element removal function. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters                    </title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>elem</entry>
+                                <entry>
+<para>Element to remove </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>bool If successfull removal </para>
+</formalpara>
+</para>
+    </section><anchor xml:id="_classself_1_1_dynamic_array_1a5aebd7e0ebb00c9aa2e228bf0d9e0ec9"/>    <section>
+    <title>removeAt()</title>
+<indexterm><primary>removeAt</primary><secondary>self::DynamicArray&lt; T &gt;</secondary></indexterm>
+<indexterm><primary>self::DynamicArray&lt; T &gt;</primary><secondary>removeAt</secondary></indexterm>
+<computeroutput>template&lt;typename T &gt; </computeroutput><para><computeroutput>T <link linkend="_classself_1_1_dynamic_array">self::DynamicArray</link>&lt; T &gt;::removeAt (INTEGER index)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>Remove element at given index. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters                    </title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>index</entry>
+                                <entry>
+<para>Index to remove element from </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>T Removed element </para>
+</formalpara>
+
+                <formalpara>
+                    <title>
+Exceptions                    </title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>exception</entry>
+                                <entry>
+<para>If an invalid index is recieved </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+    </section><anchor xml:id="_classself_1_1_dynamic_array_1a6d70b6cc1c7a3681243963b0d3ee8d36"/>    <section>
+    <title>set()</title>
+<indexterm><primary>set</primary><secondary>self::DynamicArray&lt; T &gt;</secondary></indexterm>
+<indexterm><primary>self::DynamicArray&lt; T &gt;</primary><secondary>set</secondary></indexterm>
+<computeroutput>template&lt;typename T &gt; </computeroutput><para><computeroutput>void <link linkend="_classself_1_1_dynamic_array">self::DynamicArray</link>&lt; T &gt;::set (T elem, INTEGER index)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>Setter Method. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters                    </title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>elem</entry>
+                                <entry>
+<para>New element </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>index</entry>
+                                <entry>
+<para>Index of Element to set </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                
+                <formalpara>
+                    <title>
+Exceptions                    </title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>exception</entry>
+                                <entry>
+<para>If an invalid index is recieved </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+    </section><anchor xml:id="_classself_1_1_dynamic_array_1a0698e29f4489bcd1ec85805b5f6137e6"/>    <section>
+    <title>size()</title>
+<indexterm><primary>size</primary><secondary>self::DynamicArray&lt; T &gt;</secondary></indexterm>
+<indexterm><primary>self::DynamicArray&lt; T &gt;</primary><secondary>size</secondary></indexterm>
+<computeroutput>template&lt;typename T &gt; </computeroutput><para><computeroutput>INTEGER <link linkend="_classself_1_1_dynamic_array">self::DynamicArray</link>&lt; T &gt;::size ( )<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>Expose size of array. </para>
+</para>
+
+<para><formalpara><title>Returns</title>
+
+<para>int Number of elements in array </para>
+</formalpara>
+</para>
+</section>
+<para>
+The documentation for this class was generated from the following file:</para>
+D:/My Hosted Projects/Data Structure and Algorithms/cpp14/Data-Structure/Dynamic_Array/include/DynamicArray/DynamicArray.hpp</section>
+</section>

@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classself_1_1_queue_linked_list" xml:lang="en-US">
+<title>self::QueueLinkedList&lt; T &gt; Class Template Reference</title>
+<indexterm><primary>self::QueueLinkedList&lt; T &gt;</primary></indexterm>
+<para>Inheritance diagram for self::QueueLinkedList&lt; T &gt;:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="classself_1_1_queue_linked_list.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Classes    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_classself_1_1_queue_linked_list_1_1iterator">iterator</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_classself_1_1_queue_linked_list_1a9328df132dc10fd27e722c7be9765f24"/>INTEGER <emphasis role="strong">size</emphasis> ()</para>
+</listitem>
+            <listitem><para><anchor xml:id="_classself_1_1_queue_linked_list_1a642de904bde1b4c5da32f88763e0a32d"/>bool <emphasis role="strong">isEmpty</emphasis> ()</para>
+</listitem>
+            <listitem><para><anchor xml:id="_classself_1_1_queue_linked_list_1a4a6c2c4a6106fbde5d4d4011f3fc3560"/>void <emphasis role="strong">push</emphasis> (T data)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_classself_1_1_queue_linked_list_1aa9203131f6d99fd6bbeb01ac7c870dc1"/>T <emphasis role="strong">pop</emphasis> ()</para>
+</listitem>
+            <listitem><para><anchor xml:id="_classself_1_1_queue_linked_list_1a8611a2b51c15cdf02a00c0587ce1d1c5"/>T <emphasis role="strong">top</emphasis> ()</para>
+</listitem>
+            <listitem><para><anchor xml:id="_classself_1_1_queue_linked_list_1a8e7b23fb915461a174e07ad9a2c11b39"/><link linkend="_classself_1_1_queue_linked_list_1_1iterator">iterator</link> <emphasis role="strong">begin</emphasis> ()</para>
+</listitem>
+            <listitem><para><anchor xml:id="_classself_1_1_queue_linked_list_1a883bc676b5d156b81ae38e5ac2cb76ec"/><link linkend="_classself_1_1_queue_linked_list_1_1iterator">iterator</link> <emphasis role="strong">end</emphasis> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<para>
+The documentation for this class was generated from the following file:</para>
+D:/My Hosted Projects/Data Structure and Algorithms/cpp14/Data-Structure/Queue_/include/Queue/Queue.hpp</section>

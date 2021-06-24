@@ -1,0 +1,242 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_namespaceself" xml:lang="en-US">
+<title>self Namespace Reference</title>
+<indexterm><primary>self</primary></indexterm>
+<para>
+
+<para>Project Namespace. </para>
+ 
+</para>
+<simplesect>
+    <title>Classes    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_classself_1_1_binary_search_tree">BinarySearchTree</link></para>
+
+<para>Template Class Which defines Binary Search Tree. </para>
+</listitem>
+            <listitem><para>class <link linkend="_classself_1_1_binary_tree">BinaryTree</link></para>
+
+<para>Binary Tree Template Class. </para>
+</listitem>
+            <listitem><para>class <link linkend="_classself_1_1_dynamic_array">DynamicArray</link></para>
+
+<para>Dynamic Array Template Class. </para>
+</listitem>
+            <listitem><para>class <link linkend="_classself_1_1_heap">Heap</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classself_1_1_queue">Queue</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classself_1_1_queue_array">QueueArray</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classself_1_1_queue_linked_list">QueueLinkedList</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classself_1_1_singly_linked_list">SinglyLinkedList</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classself_1_1_stack">Stack</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classself_1_1_stack_array">StackArray</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classself_1_1_stack_linked_list">StackLinkedList</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classself_1_1_node_one_child">NodeOneChild</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classself_1_1_node_two_child">NodeTwoChild</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classself_1_1_u_d_tf_t">UDTfT</link></para>
+</listitem>
+            <listitem><para>struct <link linkend="_structself_1_1_comparator_class">ComparatorClass</link></para>
+</listitem>
+            <listitem><para>struct <link linkend="_structself_1_1_inverse_comparator_class">InverseComparatorClass</link></para>
+</listitem>
+            <listitem><para>struct <link linkend="_structself_1_1_encapsulation">Encapsulation</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classself_1_1_binary_search_tree_test">BinarySearchTreeTest</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classself_1_1_dynamic_array_test">DynamicArrayTest</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classself_1_1_heap_test">HeapTest</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classself_1_1_queue_test">QueueTest</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classself_1_1_singly_linked_list_test">SinglyLinkedListTest</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classself_1_1_stack_test">StackTest</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_classself_1_1exception">exception</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Typedefs    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_namespaceself_1ad3b0eb8d341e04a3c781d70b4697c29c"/>using <emphasis role="strong">BinarySearchTreeTestTypes</emphasis> = ::testing::Types&lt; <link linkend="_structself_1_1_encapsulation">Encapsulation</link>&lt; <link linkend="_classself_1_1_binary_search_tree">BinarySearchTree</link>&lt; INTEGER, void &gt;, INTEGER &gt;, <link linkend="_structself_1_1_encapsulation">Encapsulation</link>&lt; <link linkend="_classself_1_1_binary_search_tree">BinarySearchTree</link>&lt; char, void &gt;, char &gt;, <link linkend="_structself_1_1_encapsulation">Encapsulation</link>&lt; <link linkend="_classself_1_1_binary_search_tree">BinarySearchTree</link>&lt; <link linkend="_classself_1_1_u_d_tf_t">UDTfT</link>, <link linkend="_structself_1_1_comparator_class">ComparatorClass</link> &gt;, <link linkend="_classself_1_1_u_d_tf_t">UDTfT</link> &gt; &gt;</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1a42cfb962018cb2c8c20a02ea4189af9c"/>using <emphasis role="strong">HeapTestTypes</emphasis> = ::testing::Types&lt; <link linkend="_structself_1_1_encapsulation">Encapsulation</link>&lt; <link linkend="_classself_1_1_heap">Heap</link>&lt; INTEGER, false &gt;, INTEGER, false &gt;, <link linkend="_structself_1_1_encapsulation">Encapsulation</link>&lt; <link linkend="_classself_1_1_heap">Heap</link>&lt; INTEGER, true &gt;, INTEGER, true &gt;, <link linkend="_structself_1_1_encapsulation">Encapsulation</link>&lt; <link linkend="_classself_1_1_heap">Heap</link>&lt; char, false &gt;, char, false &gt;, <link linkend="_structself_1_1_encapsulation">Encapsulation</link>&lt; <link linkend="_classself_1_1_heap">Heap</link>&lt; char, true &gt;, char, true &gt;, <link linkend="_structself_1_1_encapsulation">Encapsulation</link>&lt; <link linkend="_classself_1_1_heap">Heap</link>&lt; <link linkend="_classself_1_1_u_d_tf_t">UDTfT</link>, false, <link linkend="_structself_1_1_comparator_class">ComparatorClass</link> &gt;, <link linkend="_classself_1_1_u_d_tf_t">UDTfT</link>, false, <link linkend="_structself_1_1_comparator_class">ComparatorClass</link> &gt;, <link linkend="_structself_1_1_encapsulation">Encapsulation</link>&lt; <link linkend="_classself_1_1_heap">Heap</link>&lt; <link linkend="_classself_1_1_u_d_tf_t">UDTfT</link>, true, <link linkend="_structself_1_1_inverse_comparator_class">InverseComparatorClass</link> &gt;, <link linkend="_classself_1_1_u_d_tf_t">UDTfT</link>, true, <link linkend="_structself_1_1_inverse_comparator_class">InverseComparatorClass</link> &gt; &gt;</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1a80f00d5b3e918aadc9b1408cdcb45f90"/>using <emphasis role="strong">QueueTestTypes</emphasis> = ::testing::Types&lt; <link linkend="_structself_1_1_encapsulation">Encapsulation</link>&lt; <link linkend="_classself_1_1_queue_array">QueueArray</link>&lt; INTEGER &gt;, INTEGER &gt;, <link linkend="_structself_1_1_encapsulation">Encapsulation</link>&lt; <link linkend="_classself_1_1_queue_linked_list">QueueLinkedList</link>&lt; INTEGER &gt;, INTEGER &gt;, <link linkend="_structself_1_1_encapsulation">Encapsulation</link>&lt; <link linkend="_classself_1_1_queue_array">QueueArray</link>&lt; char &gt;, char &gt;, <link linkend="_structself_1_1_encapsulation">Encapsulation</link>&lt; <link linkend="_classself_1_1_queue_linked_list">QueueLinkedList</link>&lt; char &gt;, char &gt;, <link linkend="_structself_1_1_encapsulation">Encapsulation</link>&lt; <link linkend="_classself_1_1_queue_array">QueueArray</link>&lt; <link linkend="_classself_1_1_u_d_tf_t">UDTfT</link> &gt;, <link linkend="_classself_1_1_u_d_tf_t">UDTfT</link> &gt;, <link linkend="_structself_1_1_encapsulation">Encapsulation</link>&lt; <link linkend="_classself_1_1_queue_linked_list">QueueLinkedList</link>&lt; <link linkend="_classself_1_1_u_d_tf_t">UDTfT</link> &gt;, <link linkend="_classself_1_1_u_d_tf_t">UDTfT</link> &gt; &gt;</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1a4611f8141dac8495c80b3a303a4bd970"/>using <emphasis role="strong">StackTestTypes</emphasis> = ::testing::Types&lt; <link linkend="_structself_1_1_encapsulation">Encapsulation</link>&lt; <link linkend="_classself_1_1_stack_array">StackArray</link>&lt; INTEGER &gt;, INTEGER &gt;, <link linkend="_structself_1_1_encapsulation">Encapsulation</link>&lt; <link linkend="_classself_1_1_stack_linked_list">StackLinkedList</link>&lt; INTEGER &gt;, INTEGER &gt;, <link linkend="_structself_1_1_encapsulation">Encapsulation</link>&lt; <link linkend="_classself_1_1_stack_array">StackArray</link>&lt; char &gt;, char &gt;, <link linkend="_structself_1_1_encapsulation">Encapsulation</link>&lt; <link linkend="_classself_1_1_stack_linked_list">StackLinkedList</link>&lt; char &gt;, char &gt;, <link linkend="_structself_1_1_encapsulation">Encapsulation</link>&lt; <link linkend="_classself_1_1_stack_array">StackArray</link>&lt; <link linkend="_classself_1_1_u_d_tf_t">UDTfT</link> &gt;, <link linkend="_classself_1_1_u_d_tf_t">UDTfT</link> &gt;, <link linkend="_structself_1_1_encapsulation">Encapsulation</link>&lt; <link linkend="_classself_1_1_stack_linked_list">StackLinkedList</link>&lt; <link linkend="_classself_1_1_u_d_tf_t">UDTfT</link> &gt;, <link linkend="_classself_1_1_u_d_tf_t">UDTfT</link> &gt; &gt;</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1af25332a58f0ffcc25a8d5df805944198"/>using <emphasis role="strong">INTEGER</emphasis> = int64_t</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_namespaceself_1ad3a03c092acf51d43491ddb7b039f454"/><link linkend="_classself_1_1_u_d_tf_t">UDTfT</link> <emphasis role="strong">operator+</emphasis> (const <link linkend="_classself_1_1_u_d_tf_t">UDTfT</link> &amp;first, const <link linkend="_classself_1_1_u_d_tf_t">UDTfT</link> &amp;other)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1ab8e1dc24e8fc6f096a65db3a061fd33f"/>bool <emphasis role="strong">operator==</emphasis> (const <link linkend="_classself_1_1_u_d_tf_t">UDTfT</link> &amp;first, const <link linkend="_classself_1_1_u_d_tf_t">UDTfT</link> &amp;other)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1a743cc20c0f610cac17ad27239456d772"/>bool <emphasis role="strong">operator!=</emphasis> (const <link linkend="_classself_1_1_u_d_tf_t">UDTfT</link> &amp;first, const <link linkend="_classself_1_1_u_d_tf_t">UDTfT</link> &amp;other)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1a6306bdcf9225d6e70430082d0263724c"/>std::ostream &amp; <emphasis role="strong">operator&lt;&lt;</emphasis> (std::ostream &amp;os, const <link linkend="_classself_1_1_u_d_tf_t">UDTfT</link> &amp;ob)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1a1c24f312482b74c464a1958d3a1f7059"/><emphasis role="strong">TYPED_TEST_SUITE_P</emphasis> (<link linkend="_classself_1_1_binary_search_tree_test">BinarySearchTreeTest</link>)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1a57f8bdf9e19541ac13f44849a7774a83"/><emphasis role="strong">TYPED_TEST_P</emphasis> (<link linkend="_classself_1_1_binary_search_tree_test">BinarySearchTreeTest</link>, sizeTest)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1af7b3dcb5e2d0c6f176834b7d2bcb0c9d"/><emphasis role="strong">TYPED_TEST_P</emphasis> (<link linkend="_classself_1_1_binary_search_tree_test">BinarySearchTreeTest</link>, containsTest)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1ac0442dae12b3f5828090ee9a7314faef"/><emphasis role="strong">TYPED_TEST_P</emphasis> (<link linkend="_classself_1_1_binary_search_tree_test">BinarySearchTreeTest</link>, heightTest)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1a4c96add3a21c41bec756e1ff34eda642"/><emphasis role="strong">TYPED_TEST_P</emphasis> (<link linkend="_classself_1_1_binary_search_tree_test">BinarySearchTreeTest</link>, addTest)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1aefc148a7081173bf57bc0ac18a505714"/><emphasis role="strong">TYPED_TEST_P</emphasis> (<link linkend="_classself_1_1_binary_search_tree_test">BinarySearchTreeTest</link>, removeTest)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1ac1d10ddb6d197f9347432ffccbb57346"/><emphasis role="strong">TYPED_TEST_P</emphasis> (<link linkend="_classself_1_1_binary_search_tree_test">BinarySearchTreeTest</link>, inOrderIteratorTest)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1af7b3e17ec9391a3c980bef941919db89"/><emphasis role="strong">TYPED_TEST_P</emphasis> (<link linkend="_classself_1_1_binary_search_tree_test">BinarySearchTreeTest</link>, preOrderIteratorTest)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1a6c719ae515de8f5a2c90f47ec6aac5d2"/><emphasis role="strong">TYPED_TEST_P</emphasis> (<link linkend="_classself_1_1_binary_search_tree_test">BinarySearchTreeTest</link>, postOrderIteratorTest)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1aa98e10416e9e220f071693b50d95afc1"/><emphasis role="strong">TYPED_TEST_P</emphasis> (<link linkend="_classself_1_1_binary_search_tree_test">BinarySearchTreeTest</link>, levelOrderIteratorTest)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1a9b2e4326028dc4ab7f66a1db2881cb9c"/><emphasis role="strong">TYPED_TEST_P</emphasis> (<link linkend="_classself_1_1_binary_search_tree_test">BinarySearchTreeTest</link>, iteratorInvalidationTest)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1ad5f0b65cf4ebaafc2c472c41e3fa651c"/><emphasis role="strong">REGISTER_TYPED_TEST_SUITE_P</emphasis> (<link linkend="_classself_1_1_binary_search_tree_test">BinarySearchTreeTest</link>, sizeTest, containsTest, heightTest, addTest, removeTest, inOrderIteratorTest, preOrderIteratorTest, postOrderIteratorTest, levelOrderIteratorTest, iteratorInvalidationTest)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1a0e95d93953418711155225bb03d9c0d8"/><emphasis role="strong">INSTANTIATE_TYPED_TEST_SUITE_P</emphasis> (BinarySearchTreeTestPrefix, <link linkend="_classself_1_1_binary_search_tree_test">BinarySearchTreeTest</link>, BinarySearchTreeTestTypes)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1ad7f4119e7ab0ce973f514b4cccf29065"/><emphasis role="strong">TYPED_TEST_SUITE_P</emphasis> (<link linkend="_classself_1_1_dynamic_array_test">DynamicArrayTest</link>)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1a92ddd0ee4eee7ceca51019ae285e8345"/><emphasis role="strong">TYPED_TEST_P</emphasis> (<link linkend="_classself_1_1_dynamic_array_test">DynamicArrayTest</link>, constructorExceptionTest)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1a7eb543759d74c079ec1f07f10cf9deda"/><emphasis role="strong">TYPED_TEST_P</emphasis> (<link linkend="_classself_1_1_dynamic_array_test">DynamicArrayTest</link>, SizeTest)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1aae92338c180884be7681e3d275defda9"/><emphasis role="strong">TYPED_TEST_P</emphasis> (<link linkend="_classself_1_1_dynamic_array_test">DynamicArrayTest</link>, getTest)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1aeeac6ec01cfdbfdcecfb6d92bc24adff"/><emphasis role="strong">TYPED_TEST_P</emphasis> (<link linkend="_classself_1_1_dynamic_array_test">DynamicArrayTest</link>, getNegativeIndexTest)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1aac3319c967e9f44d0ca813fd686e5abb"/><emphasis role="strong">TYPED_TEST_P</emphasis> (<link linkend="_classself_1_1_dynamic_array_test">DynamicArrayTest</link>, getInvalidIndexTest)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1a18094c3314643d395677104c9c7bc44a"/><emphasis role="strong">TYPED_TEST_P</emphasis> (<link linkend="_classself_1_1_dynamic_array_test">DynamicArrayTest</link>, setTest)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1a08c35fec4b8344e03056c619bffe6586"/><emphasis role="strong">TYPED_TEST_P</emphasis> (<link linkend="_classself_1_1_dynamic_array_test">DynamicArrayTest</link>, setUsingGetTest)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1a798b75b71d8f5595744dccb0f3523823"/><emphasis role="strong">TYPED_TEST_P</emphasis> (<link linkend="_classself_1_1_dynamic_array_test">DynamicArrayTest</link>, addTest)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1a510201f08e24477487cd7ddacfb21a0c"/><emphasis role="strong">TYPED_TEST_P</emphasis> (<link linkend="_classself_1_1_dynamic_array_test">DynamicArrayTest</link>, findTest)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1ade5ea5567adbafece4b5004c3be06044"/><emphasis role="strong">TYPED_TEST_P</emphasis> (<link linkend="_classself_1_1_dynamic_array_test">DynamicArrayTest</link>, removeTest)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1ab49cc2d0e70f44fa4345184c8917bb20"/><emphasis role="strong">TYPED_TEST_P</emphasis> (<link linkend="_classself_1_1_dynamic_array_test">DynamicArrayTest</link>, iteratorTest)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1ac037bfdcd3fe2d06ac0ea0c155fec6e1"/><emphasis role="strong">TYPED_TEST_P</emphasis> (<link linkend="_classself_1_1_dynamic_array_test">DynamicArrayTest</link>, iteratorInvalidationTest)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1a9cab648b7e9e08b9d6f71f92799592c4"/><emphasis role="strong">REGISTER_TYPED_TEST_SUITE_P</emphasis> (<link linkend="_classself_1_1_dynamic_array_test">DynamicArrayTest</link>, constructorExceptionTest, SizeTest, getTest, getNegativeIndexTest, getInvalidIndexTest, setTest, setUsingGetTest, addTest, findTest, removeTest, iteratorTest, iteratorInvalidationTest)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1ab0e258762f2cf5967534c2d22528dddc"/><emphasis role="strong">INSTANTIATE_TYPED_TEST_SUITE_P</emphasis> (DynamicArrayTestPrefix, <link linkend="_classself_1_1_dynamic_array_test">DynamicArrayTest</link>, TestTypes)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1a399542b6daa88bb7369d257f2b662f3c"/><emphasis role="strong">TYPED_TEST_SUITE_P</emphasis> (<link linkend="_classself_1_1_heap_test">HeapTest</link>)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1ac4970491e9ecf9012e1233e62f7c1491"/><emphasis role="strong">TYPED_TEST_P</emphasis> (<link linkend="_classself_1_1_heap_test">HeapTest</link>, isHeapTest)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1a978edc8610efc039284b0302e8ed972c"/><emphasis role="strong">TYPED_TEST_P</emphasis> (<link linkend="_classself_1_1_heap_test">HeapTest</link>, sizeTest)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1aef430ff038fe75bdc729633b64d3b75d"/><emphasis role="strong">TYPED_TEST_P</emphasis> (<link linkend="_classself_1_1_heap_test">HeapTest</link>, topTest)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1ad99054e7fde59c180e722ee1deffe1f9"/><emphasis role="strong">TYPED_TEST_P</emphasis> (<link linkend="_classself_1_1_heap_test">HeapTest</link>, addTest)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1a858769c7d209734be9578f147672ada6"/><emphasis role="strong">TYPED_TEST_P</emphasis> (<link linkend="_classself_1_1_heap_test">HeapTest</link>, popTest)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1aa3d188057f1a7e0179d8f589368eb981"/><emphasis role="strong">TYPED_TEST_P</emphasis> (<link linkend="_classself_1_1_heap_test">HeapTest</link>, removeTest)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1a8e798cc87ba6e16b0ebbeca822319159"/><emphasis role="strong">TYPED_TEST_P</emphasis> (<link linkend="_classself_1_1_heap_test">HeapTest</link>, iteratorTest)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1a4792c9d97f3482671e605d3ee6921cf0"/><emphasis role="strong">TYPED_TEST_P</emphasis> (<link linkend="_classself_1_1_heap_test">HeapTest</link>, iteratorInvalidationTest)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1a79bddb5c98558424be1ab59714058b1d"/><emphasis role="strong">REGISTER_TYPED_TEST_SUITE_P</emphasis> (<link linkend="_classself_1_1_heap_test">HeapTest</link>, isHeapTest, sizeTest, topTest, addTest, popTest, removeTest, iteratorTest, iteratorInvalidationTest)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1a9f01b0f90e6550b6420f06ae7b95aa33"/><emphasis role="strong">INSTANTIATE_TYPED_TEST_SUITE_P</emphasis> (HeapTestPrefix, <link linkend="_classself_1_1_heap_test">HeapTest</link>, HeapTestTypes)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1a3c18bd818dc796befa805ecf61a9829c"/><emphasis role="strong">TYPED_TEST_SUITE_P</emphasis> (<link linkend="_classself_1_1_queue_test">QueueTest</link>)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1afdf355510339608549bfa4d70c386210"/><emphasis role="strong">TYPED_TEST_P</emphasis> (<link linkend="_classself_1_1_queue_test">QueueTest</link>, sizeTest)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1a6f06b528987be58c75fb82c37617d11d"/><emphasis role="strong">TYPED_TEST_P</emphasis> (<link linkend="_classself_1_1_queue_test">QueueTest</link>, push_popTest)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1a3dbe43352d23af9cffd626ad40e636f3"/><emphasis role="strong">TYPED_TEST_P</emphasis> (<link linkend="_classself_1_1_queue_test">QueueTest</link>, rotationTest)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1a50c926139372449c375d3ec77e589a10"/><emphasis role="strong">TYPED_TEST_P</emphasis> (<link linkend="_classself_1_1_queue_test">QueueTest</link>, iteratorTest)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1a5b4de42863b774c4dc4b144b1a95a640"/><emphasis role="strong">REGISTER_TYPED_TEST_SUITE_P</emphasis> (<link linkend="_classself_1_1_queue_test">QueueTest</link>, sizeTest, push_popTest, rotationTest, iteratorTest)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1aa420e498f9e6a681134aede8b6c2ca51"/><emphasis role="strong">INSTANTIATE_TYPED_TEST_SUITE_P</emphasis> (QueueTestPrefix, <link linkend="_classself_1_1_queue_test">QueueTest</link>, QueueTestTypes)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1ad3e6fe14de628b69093ddf38dcfd939d"/><emphasis role="strong">TYPED_TEST_SUITE_P</emphasis> (<link linkend="_classself_1_1_singly_linked_list_test">SinglyLinkedListTest</link>)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1ab41393c1aa2763e54af11c028e47f5f0"/><emphasis role="strong">TYPED_TEST_P</emphasis> (<link linkend="_classself_1_1_singly_linked_list_test">SinglyLinkedListTest</link>, SizeTest)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1a990b844c94bd5e58561bea865aeccef5"/><emphasis role="strong">TYPED_TEST_P</emphasis> (<link linkend="_classself_1_1_singly_linked_list_test">SinglyLinkedListTest</link>, getTest)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1abb39a641e13fb78226db80eafb4c498c"/><emphasis role="strong">TYPED_TEST_P</emphasis> (<link linkend="_classself_1_1_singly_linked_list_test">SinglyLinkedListTest</link>, getSquareBracketTest)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1a221ec1d4763b15310078e7aad9fa4675"/><emphasis role="strong">TYPED_TEST_P</emphasis> (<link linkend="_classself_1_1_singly_linked_list_test">SinglyLinkedListTest</link>, getNegativeIndexTest)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1a00e9580add45c505f6f0d90c25d6b2e9"/><emphasis role="strong">TYPED_TEST_P</emphasis> (<link linkend="_classself_1_1_singly_linked_list_test">SinglyLinkedListTest</link>, getInvalidIndexTest)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1adec7db47a1883f274520a4938a3e5daa"/><emphasis role="strong">TYPED_TEST_P</emphasis> (<link linkend="_classself_1_1_singly_linked_list_test">SinglyLinkedListTest</link>, setTest)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1a3380bbc718c418307b914344a89cb720"/><emphasis role="strong">TYPED_TEST_P</emphasis> (<link linkend="_classself_1_1_singly_linked_list_test">SinglyLinkedListTest</link>, addInvalidIndexTest)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1aa7102f3d44a449fce5cf3a5ef3be0500"/><emphasis role="strong">TYPED_TEST_P</emphasis> (<link linkend="_classself_1_1_singly_linked_list_test">SinglyLinkedListTest</link>, addTest)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1af2a360128bdd2350449cd1332eb9e420"/><emphasis role="strong">TYPED_TEST_P</emphasis> (<link linkend="_classself_1_1_singly_linked_list_test">SinglyLinkedListTest</link>, appendTest)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1a8998cc3d4337f0343884bbff50b15ad6"/><emphasis role="strong">TYPED_TEST_P</emphasis> (<link linkend="_classself_1_1_singly_linked_list_test">SinglyLinkedListTest</link>, addFirstTest)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1a9ec30fef37461d2fdd89dd93820356d3"/><emphasis role="strong">TYPED_TEST_P</emphasis> (<link linkend="_classself_1_1_singly_linked_list_test">SinglyLinkedListTest</link>, findTest)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1a8c11c161f3c9e367f0e442ded81751c5"/><emphasis role="strong">TYPED_TEST_P</emphasis> (<link linkend="_classself_1_1_singly_linked_list_test">SinglyLinkedListTest</link>, removeTest)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1a6f050b954a3629df4a78de32cdd6bfe9"/><emphasis role="strong">TYPED_TEST_P</emphasis> (<link linkend="_classself_1_1_singly_linked_list_test">SinglyLinkedListTest</link>, iteratorTest)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1a4a10d9eb81ed98309dfb83d6cc5d058c"/><emphasis role="strong">TYPED_TEST_P</emphasis> (<link linkend="_classself_1_1_singly_linked_list_test">SinglyLinkedListTest</link>, iteratorInvalidationTest)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1a2b9fdf34a690368cb1a9c4dbb1c98379"/><emphasis role="strong">REGISTER_TYPED_TEST_SUITE_P</emphasis> (<link linkend="_classself_1_1_singly_linked_list_test">SinglyLinkedListTest</link>, SizeTest, getTest, getSquareBracketTest, getNegativeIndexTest, getInvalidIndexTest, setTest, addInvalidIndexTest, addTest, appendTest, addFirstTest, findTest, removeTest, iteratorTest, iteratorInvalidationTest)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1a5a3315cb697c708b58af785577bc4b2a"/><emphasis role="strong">INSTANTIATE_TYPED_TEST_SUITE_P</emphasis> (SinglyLinkedListTestPrefix, <link linkend="_classself_1_1_singly_linked_list_test">SinglyLinkedListTest</link>, TestTypes)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1a8826fad437d06f5ea30022160846b8a0"/><emphasis role="strong">TYPED_TEST_SUITE_P</emphasis> (<link linkend="_classself_1_1_stack_test">StackTest</link>)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1a33eceb261ecf3875d02e9492ed34a11e"/><emphasis role="strong">TYPED_TEST_P</emphasis> (<link linkend="_classself_1_1_stack_test">StackTest</link>, sizeTest)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1af4b0fdc9f204ff7bb99fff66d73a60a9"/><emphasis role="strong">TYPED_TEST_P</emphasis> (<link linkend="_classself_1_1_stack_test">StackTest</link>, pushTest)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1a366b628218e55f4ad5b9b2649b61ff7c"/><emphasis role="strong">TYPED_TEST_P</emphasis> (<link linkend="_classself_1_1_stack_test">StackTest</link>, popTest)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1a88d0d7d868d8517327b5e694a53190b8"/><emphasis role="strong">TYPED_TEST_P</emphasis> (<link linkend="_classself_1_1_stack_test">StackTest</link>, iteratorTest)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1ab47e0062b30363da5d5a4f37426d4202"/><emphasis role="strong">REGISTER_TYPED_TEST_SUITE_P</emphasis> (<link linkend="_classself_1_1_stack_test">StackTest</link>, sizeTest, pushTest, popTest, iteratorTest)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespaceself_1a3e20947d4af33464e74e0cf0243a4afc"/><emphasis role="strong">INSTANTIATE_TYPED_TEST_SUITE_P</emphasis> (StackTestPrefix, <link linkend="_classself_1_1_stack_test">StackTest</link>, StackTestTypes)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>Project Namespace. </para>
+</section>
+</section>

@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classself_1_1_heap_1_1iterator" xml:lang="en-US">
+<title>self::Heap&lt; T, inverse, compare_ &gt;::iterator Class Reference</title>
+<indexterm><primary>self::Heap&lt; T, inverse, compare_ &gt;::iterator</primary></indexterm>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_classself_1_1_heap_1_1iterator_1a76e0c4a414252e5cf8dc04c907ee6963"/><emphasis role="strong">iterator</emphasis> (T *hp__, T *end_=nullptr)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_classself_1_1_heap_1_1iterator_1a0dba55e9b4964728488d82018d1159ec"/><link linkend="_classself_1_1_heap_1_1iterator">iterator</link> <emphasis role="strong">operator++</emphasis> ()</para>
+</listitem>
+            <listitem><para><anchor xml:id="_classself_1_1_heap_1_1iterator_1a2eb82bdf446eb0a75e1ba77a63fab369"/>bool <emphasis role="strong">operator!=</emphasis> (const <link linkend="_classself_1_1_heap_1_1iterator">iterator</link> &amp;other) const</para>
+</listitem>
+            <listitem><para><anchor xml:id="_classself_1_1_heap_1_1iterator_1a1e9bc7997a202347025dec26d65eae7a"/>const T <emphasis role="strong">operator*</emphasis> () const</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<para>
+The documentation for this class was generated from the following file:</para>
+D:/My Hosted Projects/Data Structure and Algorithms/cpp14/Data-Structure/Heap_/include/Heap/Heap.hpp</section>
