@@ -26,6 +26,7 @@ namespace self
 template <typename T, typename comprator_ = void>
 class BinarySearchTree: public BinaryTree<T> {
     typedef NodeTwoChild<T>* TreeNodePtr; /// @typedef TreeNodePtr
+    
     /**
      * @brief Comparator class enabled if comparator class supplied.
      * @tparam Q Used to route comprator_.
@@ -39,7 +40,6 @@ class BinarySearchTree: public BinaryTree<T> {
         comprator_ comp;
         return comp(a, b);
     }
-
     /**
      * @brief Comparator class enabled if comparator class NOT supplied.
      * @tparam Q Used to route comprator_.

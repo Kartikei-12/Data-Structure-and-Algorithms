@@ -214,8 +214,10 @@ public:
             return stack.top() -> getData();
         }    
     };
-    iterator begin(std::string itype) { return iterator(count, root, itype); } /// Begin Iterator
-    iterator end() { return iterator(count); } /// End Iterator
+    /// Begin Iterator
+    iterator begin(std::string itype) { return iterator(count, root, itype); }
+    /// End Iterator
+    iterator end() { return iterator(count); }
     // ======================================================================================================================
 };
 

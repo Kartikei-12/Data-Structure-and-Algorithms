@@ -31,7 +31,7 @@ class DynamicArray
     T* arr; /// Dynamic Array
 public:
     /**
-     * @brief Dynamic Array Default Counstructor
+     * @brief Dynamic Array Default Counstructor.
      * @param cap Capacity of array
      * @throw exception If 0 or negative capacity is supplied
     */
@@ -50,7 +50,8 @@ public:
         len = list.size();
         std::copy(list.begin(), list.end(), arr);
     }
-    ~DynamicArray() { /// Destructor
+    /// Destructor
+    ~DynamicArray() { 
         len = 0;
         delete [] arr;
     }
@@ -208,8 +209,10 @@ public:
         */
         const T operator*() const { return *arr_; }
     };
-    iterator begin() { return iterator(arr, arr + len); } /// Begin Iterator
-    iterator end() { return iterator(arr + len); } /// End Iterator
+    /// Begin Iterator
+    iterator begin() { return iterator(arr, arr + len); }
+    /// End Iterator
+    iterator end() { return iterator(arr + len); }
     // ============================================================================================================================
 };
 

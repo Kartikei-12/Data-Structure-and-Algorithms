@@ -1,6 +1,8 @@
-// @author: Kartikei Mittal
-// @email: kartikeimittal@gmail.com
-// Heap
+/**
+ * @headerfile Heap.hpp
+ * @brief Heap.
+ * @author Kartikei Mittal
+*/
 
 #pragma once
 #ifndef __self_Heap
@@ -8,44 +10,68 @@
 
 #include "Utility/Utility.hpp"
 
+/**
+ * @namespace self
+ * @brief Project Namespace.
+*/
 namespace self
 {
 
-// T must be a copiable type(should support '=' operation)
-// T must be a camparable type(should support '<' operation) or,
-// please supply comparator class as TEMPLATE ARGUMENT compare_, which does the same.
+/**
+ * @class DynamicArray
+ * @brief Dynamic Array Template Class.
+ * @note
+ * T must be a copiable type(should support '=' operation)
+ * T must be a camparable type(should support '<' operation) or,
+ * Supply comparator class as TEMPLATE ARGUMENT compare_, which does the same.
+ * @tparam T Type used for Heap
+ * @tparam inverse True for MaxHeap, false for MinHeap
+ * @tparam compare_ Compare class to be used instead of defallt less than operator
+*/
 template <typename T, bool inverse = false, typename compare_ = void>
 class Heap
 {
-    const static INTEGER DEFAULT_CAPACITY = 16;
-    template <typename T_, bool inverse_, typename compare__>
-    class CompareClass
-    {public:
-        template<class Q = compare__>
-        typename std::enable_if<
-            IS_SAME(Q, void), bool
-        >::type
-        operator()(T_ a, T_ b) const {
-            if (inverse_) {
-                return a >= b;
-            } return a <= b;
-        }
-        // ---
-        template<class Q = compare__>
-        typename std::enable_if<
-            !IS_SAME(Q, void), bool
-        >::type
-        operator()(T_ a, T_ b) const {
-            compare__ cmp;
-            return cmp(a, b);
-        }
-    };
+    const static INTEGER DEFAULT_CAPACITY = 16; /// Default capacity of the Heap
+    
+    /**
+     * @brief Comparator class enabled if comparator class NOT supplied.
+     * @tparam Q Used to route Compare Class.
+     * @param a First Element
+     * @param b Second Element
+     * @return bool True if a is less than b False otherwise
+    */
+    template<class Q = compare_>
+    ENABLE_IF(IS_SAME(Q, void), bool)
+    campare(T a, T b) const {
+        if (inverse) {
+            return a >= b;
+        } return a <= b;
+    }
+    /**
+     * @brief Comparator class enabled if comparator class supplied.
+     * @tparam Q Used to route comprator_.
+     * @param a First Element
+     * @param b Second Element
+     * @return bool a and b Comparison
+    */
+    template<class Q = compare_>
+    ENABLE_IF(!IS_SAME(Q, void), bool)
+    campare(T a, T b) const {
+        compare_ cmp;
+        return cmp(a, b);
+    }
 
-    INTEGER len, capacity;
-    T* hp;
-    CompareClass<T, inverse, compare_> campare;   
+    INTEGER len, capacity; /// Length and Capacity of the Dynamic Array
+    T* hp; /// Heap
 public:
+    /**
+     * @brief Heap Default Counstructor.
+    */
     Heap(): len(0), capacity(DEFAULT_CAPACITY), hp(new T[capacity]) { ; }
+    /**
+     * @brief Overload assignment operator.
+     * @param list Brace enclosed list
+    */
     void operator=(std::initializer_list<T> list)
     {
         capacity = list.size() * 2;
@@ -58,21 +84,66 @@ public:
             heapify(i);
         }
     }
+    /// Destructor
     ~Heap() { delete [] hp; len = 0; }
 private:
+    /**
+     * @brief Element Swap method.
+     * @param a Index of first element
+     * @param b Index of the second element
+    */
     void swap_(INTEGER a, INTEGER b) {
         T temp = hp[a];
         hp[a] = hp[b];
         hp[b] = temp;
     }
+    /**
+     * @brief Static Method to get paraent index.
+     * @param curr Index of member
+     * @return int Returns paraent index
+     * @retval -1 If no paraent
+     * @retval (curr-1)/2 If paraent 
+    */
     static INTEGER getParentIndex(INTEGER curr) { return (curr != 0)? ((curr - 1) / 2) : -1; }
+    /**
+     * @brief Static Method to get Left Child index.
+     * @param curr Index of member
+     * @return int Returns Left Child Index
+     * @retval (2*curr)+1 Left Child Index 
+    */
     static INTEGER getLeftIn(INTEGER curr) { return (2 * curr) + 1; }
+    /**
+     * @brief Static Method to get Right Child index.
+     * @param curr Index of member
+     * @return int Returns Right Child Index
+     * @retval (2*curr)+2 Right Child Index 
+    */
     static INTEGER getRightIn(INTEGER curr) { return (2 * curr) + 2; }
 
+    /**
+     * @brief Method to get Paraent.
+     * @param curr Index of member
+     * @return T Returns Paraent 
+    */
     T getParent(INTEGER curr) { return hp[getParentIndex(curr)]; }
+    /**
+     * @brief Method to get Left Child.
+     * @param curr Index of member
+     * @return T Returns Left Child
+    */
     T getLeft(INTEGER curr) { return hp[getLeftIn(curr)]; }
+    /**
+     * @brief Method to get Right Child.
+     * @param curr Index of member
+     * @return T Returns Right Child
+    */
     T getRight(INTEGER curr) { return hp[getRightIn(curr)]; }
 
+    /**
+     * @brief Check Heap Invariant for the supplied index.
+     * @param int Index to check invariant
+     * @return bool True if Heap Invariant is satisfied
+    */
     bool isHeapInvariant(INTEGER index) {
         return (
             (getParentIndex(index) >= 0)? campare(
