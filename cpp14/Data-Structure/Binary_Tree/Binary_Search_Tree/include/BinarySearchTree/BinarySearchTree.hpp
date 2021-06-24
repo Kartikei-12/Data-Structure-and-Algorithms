@@ -32,24 +32,27 @@ class BinarySearchTree: public BinaryTree<T> {
      * @tparam Q Used to route comprator_.
      * @param a First Element
      * @param b Second Element
-     * @return bool True if a is less than b False otherwise
+     * @return int Comparasion value
+     * @retval 0 If a is equal to b
+     * @retval 1 If a is less than b
+     * @retval -1 If a is greater than b
     */
     template <typename Q = comprator_>
-    ENABLE_IF(!IS_SAME(Q, void), bool)
-    comprator(T a, T b) {
-        comprator_ comp;
-        return comp(a, b);
-    }
+    ENABLE_IF(!IS_SAME(Q, void), INTEGER)
+    compare(T a, T b) { comprator_ comp; return comp(a, b); }
     /**
      * @brief Comparator class enabled if comparator class NOT supplied.
      * @tparam Q Used to route comprator_.
      * @param a First Element
      * @param b Second Element
-     * @return bool True if a is less than b False otherwise
+     * @return int Comparasion value
+     * @retval 0 If a is equal to b
+     * @retval 1 If a is less than b
+     * @retval -1 If a is greater than b
     */
     template <typename Q = comprator_>
-    ENABLE_IF(IS_SAME(Q, void), bool)
-    comprator(T a, T b) { return a < b; }
+    ENABLE_IF(IS_SAME(Q, void), INTEGER)
+    compare(T a, T b) { if (a == b) { return 0; } return (a < b)? 1 : -1; }
 
     /**
      * @brief Find function for Binary Search Tree.
@@ -63,7 +66,7 @@ class BinarySearchTree: public BinaryTree<T> {
             if (element == curr -> getData()) {
                 return curr;
             } // Wally FOUND
-            if (comprator(element, curr -> getData())) {
+            if (compare(element, curr -> getData()) > 0) {
                 curr = curr -> getLeft();
             } // Move Left
             else {
@@ -116,7 +119,7 @@ class BinarySearchTree: public BinaryTree<T> {
                 curr -> setData(temp -> getData());
                 curr -> setLeft(remove(curr -> getLeft(), curr -> getData()));
             }
-        } else if (comprator(element, curr -> getData())) {
+        } else if (compare(element, curr -> getData()) > 0) {
             curr -> setLeft(remove(curr -> getLeft(), element));
         } else {
             curr -> setRight(remove(curr -> getRight(), element));
@@ -145,7 +148,7 @@ public:
         }
         TreeNodePtr curr = BinaryTree<T>::root;
         while (true) {
-            if (comprator(element, curr -> getData())) {
+            if (compare(element, curr -> getData()) > 0) {
                 if (curr -> getLeft() == nullptr) {
                     curr -> setLeft(new NodeTwoChild<T>(element));
                     break;

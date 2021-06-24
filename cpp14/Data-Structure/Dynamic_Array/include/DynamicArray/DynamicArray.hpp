@@ -175,7 +175,7 @@ public:
     }
     // ========================================================== ITERATOR CLASS ======================================================
     /**
-     * @class iterator
+     * @class DynamicArray::iterator
      * @brief Dynamic Array iterator class.
     */
     class iterator
@@ -205,7 +205,7 @@ public:
         }
         /**
          * @brief Element access overload method.
-         * @return T Data at top of stack or queue
+         * @return T Data at current pointer
         */
         const T operator*() const { return *arr_; }
     };

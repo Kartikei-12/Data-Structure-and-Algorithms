@@ -6,6 +6,7 @@
 #ifndef __self_Utility
 #define __self_Utility 1
 
+#include <string>
 #include <stdint.h>
 #include <exception>
 

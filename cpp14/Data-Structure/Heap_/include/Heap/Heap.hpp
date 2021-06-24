@@ -38,24 +38,32 @@ class Heap
      * @tparam Q Used to route Compare Class.
      * @param a First Element
      * @param b Second Element
-     * @return bool True if a is less than b False otherwise
+     * @return int Comparasion value
+     * @retval 0 If a is equal to b
+     * @retval 1 If a is less than b
+     * @retval -1 If a is greater than b
     */
-    template<class Q = compare_>
-    ENABLE_IF(IS_SAME(Q, void), bool)
+    template<typename Q = compare_>
+    ENABLE_IF(IS_SAME(Q, void), INTEGER)
     campare(T a, T b) const {
+        if (a == b) { return 0; }
         if (inverse) {
-            return a >= b;
-        } return a <= b;
+            return (a < b)? -1 : 1;
+        }
+        return (a < b)? 1 : -1;
     }
     /**
      * @brief Comparator class enabled if comparator class supplied.
      * @tparam Q Used to route comprator_.
      * @param a First Element
      * @param b Second Element
-     * @return bool a and b Comparison
+     * @return int Comparasion value
+     * @retval 0 If a is equal to b
+     * @retval 1 If a is less than b
+     * @retval -1 If a is greater than b
     */
-    template<class Q = compare_>
-    ENABLE_IF(!IS_SAME(Q, void), bool)
+    template<typename Q = compare_>
+    ENABLE_IF(!IS_SAME(Q, void), INTEGER)
     campare(T a, T b) const {
         compare_ cmp;
         return cmp(a, b);
@@ -145,31 +153,22 @@ private:
      * @return bool True if Heap Invariant is satisfied
     */
     bool isHeapInvariant(INTEGER index) {
-        return (
-            (getParentIndex(index) >= 0)? campare(
-                getParent(index),
-                hp[index]
-            ): true
-        ) && (
-            (getLeftIn(index) < len)? campare(
-                hp[index],
-                getLeft(index)
-            ): true
-        ) && (
-            (getRightIn(index) < len)? campare(
-                hp[index],
-                getRight(index)
-            ): true
-        );
+        bool   par = (getParentIndex(index) >= 0  )? (campare(getParent(index), hp[index]      ) >= 0): true;
+        bool  left = (     getLeftIn(index) <  len)? (campare(hp[index]       , getLeft(index) ) >= 0): true;
+        bool right = (    getRightIn(index) <  len)? (campare(hp[index]       , getRight(index)) >= 0): true;
+        return par && left && right;
     }
-
+    /**
+     * @brief Heapify supplied index.
+     * @param index Index to heapify
+    */
     void heapify(INTEGER index) {
         INTEGER largest = index;
         INTEGER l = getLeftIn(index), r = getRightIn(index);
-        if (l < len && campare(getLeft(index), hp[largest])) {
+        if (l < len && campare(getLeft(index), hp[largest]) >= 0) {
             largest = l;
         }
-        if (r < len && campare(getRight(index), hp[largest])) {
+        if (r < len && campare(getRight(index), hp[largest]) >= 0) {
             largest = r;
         }
         if (largest != index) {
@@ -177,23 +176,37 @@ private:
             heapify(largest);
         }
     }
+    /**
+     * @brief Method to raise current element to paraent.
+     * @param index Index to raise
+     * @return int New Index of element
+    */
     INTEGER bubbleUp(INTEGER index) {
         swap_(index, getParentIndex(index));
         return getParentIndex(index);
     }
+    /**
+     * @brief Method to swap current element with it's child.
+     * @param index Index to swap
+     * @return int New Index of element
+    */
     INTEGER settleDown(INTEGER index) {
         INTEGER child;
         if (getRightIn(index) < len) {
-            child = campare(getRight(index), getLeft(index))? getRightIn(index) : getLeftIn(index);
+            child = (campare(getRight(index), getLeft(index))>= 0)? getRightIn(index) : getLeftIn(index);
         } else {
             child = getLeftIn(index);
         }
         swap_(index, child);
         return child;
     }
+    /**
+     * @brief Method to relocate element to proper place in the heap
+     * @param index Index of element to balance
+    */
     void balance(INTEGER index) {
         while (!isHeapInvariant(index)) {
-            if (getParentIndex(index) >= 0 && campare(hp[index], getParent(index))) {
+            if (getParentIndex(index) >= 0 && campare(hp[index], getParent(index)) >= 0) {
                 index = bubbleUp(index);
             } else {
                 index = settleDown(index);
@@ -201,14 +214,29 @@ private:
         }
     }
 public:
+    /**
+     * @brief Checks for emptiness of Heap.
+     * @return bool True if array empty, fals otherwise 
+    */
     bool isEmpty() { return len == 0; }
+    /**
+     * @brief Expose size of heap.
+     * @return int Number of elements in heap
+    */
     INTEGER size() { return len; }
+    /**
+     * @brief Expose element at top of heap.
+     * @return T Element at top of the heap
+    */
     T top() {
-        if (len == 0) {
-            throw exception("Heap EMPTY");
-        }
+        if (len == 0) { throw exception("Heap EMPTY"); }
         return hp[0];
     }
+    /**
+     * @brief Find function for heap.
+     * @param ele Element to search for
+     * @return int Element index if found, -1 otherwise
+    */
     INTEGER find(T ele) {
         INTEGER ans = -1;
         for (INTEGER i = 0; i < len; ++i) {
@@ -218,6 +246,12 @@ public:
             }
         } return ans;
     }
+    /**
+     * @brief Remove element at given index.
+     * @param index Index to remove element from
+     * @return T Removed element
+     * @throw exception If an invalid index is recieved
+    */
     T removeAt(INTEGER index) {
         if (index >= len) {
             throw exception("Invalid Index for removeAt()");
@@ -227,13 +261,26 @@ public:
         balance(index);
         return ele;
     }
+    /**
+     * @brief Element removal function.
+     * @param ele Element to remove
+     * @return bool If successfull removal 
+    */
     bool remove(T ele) {
         INTEGER index = find(ele);
         if (index == -1) {
             throw exception("self::Heap::remove element not found.");
         } return removeAt(index) == ele;
     }
+    /**
+     * @brief Expose element at top of heap and remove it.
+     * @return T Element at top of the heap
+    */
     T pop() { return removeAt(0); }
+    /**
+     * @brief Add method for Heap.
+     * @param ele Element to add
+    */
     void add(T ele) {
         if (len == capacity) {
             capacity *= 2;
@@ -247,25 +294,54 @@ public:
         hp[len] = ele;
         balance(len++);
     }
+    /**
+     * @brief Method to check wheather heap(this) satisfy Heap Invariant
+     * @return bool True Heap Invariant satisfied
+    */
     bool isHeap(INTEGER index = 0) {
         bool l = (getLeftIn(index) >= 0 && getLeftIn(index) < len)? isHeap(getLeftIn(index)):true;
         bool r = (getRightIn(index) >= 0 && getRightIn(index) < len)? isHeap(getRightIn(index)):true;
         return l && r;
     }
     // ========================================================== ITERATOR CLASS ======================================================
+    /**
+     * @class Heap::iterator
+     * @brief Heap iterator class.
+    */
     class iterator
     {
-        T *hp_; T *end;
+        T *hp_; T *end; /// Current and End Pointer
     public:
+        /**
+         * @brief Iterator Counstructor
+         * @param hp__ Heap Pointer
+         * @param end_ Iterator to end
+        */
         iterator(T* hp__, T* end_ = nullptr): hp_(hp__), end(end_) {}
+        /**
+         * @brief Iterator increment overload defination.
+         * @return iterator Incremented iterator
+        */
         iterator operator++() { ++hp_; return *this; }
+        /**
+         * @brief Inequality != method overload.
+         * @param other Other iterator to check inequality against
+         * @return bool True if end of iteration is reached
+         * @throw exception Iterator Invalidation exception
+        */
         bool operator!=(const iterator & other) const {
             if (end != other.hp_) { throw exception("Iterator Invalidation."); }
             return hp_ != other.hp_;
         }
+        /**
+         * @brief Element access overload method.
+         * @return T Data at current pointer
+        */
         const T operator*() const { return *hp_; }    
     };
+    /// Begin Iterator
     iterator begin() { return iterator(hp, hp + size()); }
+    /// End Iterator
     iterator end() { return iterator(hp + size()); }
     // ============================================================================================================================
 };

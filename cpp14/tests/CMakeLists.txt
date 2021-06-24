@@ -33,6 +33,7 @@ macro(Test_Macro DStructure File Count)
             COMMAND ${PROJECT_NAME}_${DStructure} --gtest_filter=*${DStructure}Test/${i}*
         )
     endforeach(i)
+    # Uncomment following to generate seprate executable for each test suite
     # add_custom_command(
     #     TARGET ${PROJECT_NAME}_${DStructure}
     #     COMMENT "Running ${File} tests"

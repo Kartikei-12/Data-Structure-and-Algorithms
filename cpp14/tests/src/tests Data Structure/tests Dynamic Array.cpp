@@ -141,7 +141,7 @@ TYPED_TEST_P (DynamicArrayTest, iteratorTest) {
 }
 TYPED_TEST_P (DynamicArrayTest, iteratorInvalidationTest) {
     typename self::DynamicArray<TypeParam>::iterator ii = this -> da.begin();
-    this -> da.increaseCapacity();
+    this -> da.append(this -> obj0);
     EXPECT_THROW(ii != this -> da.end(), self::exception);
 }
 

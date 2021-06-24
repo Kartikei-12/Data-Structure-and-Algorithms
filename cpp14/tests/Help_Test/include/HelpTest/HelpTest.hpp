@@ -28,11 +28,11 @@ public:
 
 struct ComparatorClass
 {
-    bool operator()(UDTfT A, UDTfT B);
+    int operator()(UDTfT A, UDTfT B);
 };
 struct InverseComparatorClass
 {
-    bool operator()(UDTfT A, UDTfT B);
+    int operator()(UDTfT A, UDTfT B);
 };
 
 template<typename A, typename B, bool inverse_ = false, typename comparator_ = void>
