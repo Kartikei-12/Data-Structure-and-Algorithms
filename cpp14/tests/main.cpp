@@ -1,5 +1,8 @@
-// @author: Kartikei Mittal
-// @email: kartikeimittal@gmail.com
+/**
+ * @copyright Copyright (C) 2021 by Kartikei Mittal. All Rights MIT Licensed.
+ * @brief GTest test runner.
+ * @author Kartikei Mittal
+*/
 
 #include <iostream>
 #include "gtest/gtest.h"
@@ -34,22 +37,22 @@ public:
         eventListener->OnTestIterationStart(unit_test, iteration);
     }
     virtual void OnEnvironmentsSetUpStart(const UnitTest& unit_test) {
-        if(showEnvironment) {
+        if (showEnvironment) {
             eventListener->OnEnvironmentsSetUpStart(unit_test);
         }
     }
     virtual void OnEnvironmentsSetUpEnd(const UnitTest& unit_test) {
-        if(showEnvironment) {
+        if (showEnvironment) {
             eventListener->OnEnvironmentsSetUpEnd(unit_test);
         }
     }
     virtual void OnTestCaseStart(const TestCase& test_case) {
-        if(showTestCases) {
+        if (showTestCases) {
             eventListener->OnTestCaseStart(test_case);
         }
     }
     virtual void OnTestStart(const TestInfo& test_info) {
-        if(showTestNames) {
+        if (showTestNames) {
             eventListener->OnTestStart(test_info);
         }
     }
@@ -57,22 +60,22 @@ public:
         eventListener->OnTestPartResult(result);
     }
     virtual void OnTestEnd(const TestInfo& test_info) {
-        if((showInlineFailures && test_info.result()->Failed()) || (showSuccesses && !test_info.result()->Failed())) {
+        if ((showInlineFailures && test_info.result()->Failed()) || (showSuccesses && !test_info.result()->Failed())) {
             eventListener->OnTestEnd(test_info);
         }
     }
     virtual void OnTestCaseEnd(const TestCase& test_case) {
-        if(showTestCases) {
+        if (showTestCases) {
             eventListener->OnTestCaseEnd(test_case);
         }
     }
     virtual void OnEnvironmentsTearDownStart(const UnitTest& unit_test) {
-        if(showEnvironment) {
+        if (showEnvironment) {
             eventListener->OnEnvironmentsTearDownStart(unit_test);
         }
     }
     virtual void OnEnvironmentsTearDownEnd(const UnitTest& unit_test) {
-        if(showEnvironment) {
+        if (showEnvironment) {
             eventListener->OnEnvironmentsTearDownEnd(unit_test);
         }
     }

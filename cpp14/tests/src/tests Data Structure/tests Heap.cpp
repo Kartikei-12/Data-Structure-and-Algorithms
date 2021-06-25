@@ -1,6 +1,8 @@
-// @author: Kartikei Mittal
-// @email: kartikeimittal@gmail.com
-// Testing Heap
+/**
+ * @copyright Copyright (C) 2021 by Kartikei Mittal. All Rights MIT Licensed.
+ * @brief Heap tests.
+ * @author Kartikei Mittal
+*/
 
 #include "gtest/gtest.h"
 #include "Utility/Utility.hpp"
@@ -176,4 +178,4 @@ using HeapTestTypes = ::testing::Types<
 >;
 INSTANTIATE_TYPED_TEST_SUITE_P(HeapTestPrefix, HeapTest, HeapTestTypes);
 
-}
+} // namespace self

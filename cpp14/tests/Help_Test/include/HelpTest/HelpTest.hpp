@@ -1,40 +1,109 @@
-// @author: Kartikei Mittal
-// @email: kartikeimittal@gmail.com
-// Some Utility for testing purpose header
+/**
+ * @headerfile HelpTest.hpp
+ * @copyright Copyright (C) 2021 by Kartikei Mittal. All Rights MIT Licensed.
+ * @brief Utilities to help in testing.
+ * @author Kartikei Mittal
+*/
 
+#pragma once
 #ifndef __self_HelpTest
 #define __self_HelpTest
-#pragma once
 
 #include <ostream>
 
+/**
+ * @namespace self
+ * @brief Project Namespace.
+*/
 namespace self
 {
 
-class UDTfT // User Defined Data Type for Testing
+/**
+ * @class UDTft
+ * @brief User Defined Data Type for Testing.
+*/
+class UDTfT
 {
-    int a; char b; double c;
+    int a; /// int a
+    char b; /// char b
+    double c; /// char c
 public:
+    /// Counstructor
     UDTfT(int a_ = 0, char b_ = ' ', double c_ = 1.5);
+    /// Copy Counstructor
     UDTfT(const UDTfT& other);
+    /**
+     * @brief Setter method.
+     * @param a_ Integer
+     * @param b_ Chracter
+     * @param c_ Double
+    */
     void set(int a_, char b_, double c_);
+    /**
+     * @brief Addition + operator overload.
+     * @param first First element
+     * @param other Second Element
+    */
     friend UDTfT operator+(const UDTfT& first, const UDTfT& other);
+    /**
+     * @brief Equality == operator overload.
+     * @param first First element
+     * @param other Second Element
+    */
     friend bool operator==(const UDTfT& first, const UDTfT& other);
+    /**
+     * @brief Inequality != operator overload.
+     * @param first First element
+     * @param other Second Element
+    */
     friend bool operator!=(const UDTfT& first, const UDTfT& other);
+    /// Comparator class
     friend struct ComparatorClass;
+    /// Inverse Comparator class
     friend struct InverseComparatorClass;
-    friend std::ostream& operator<<(std::ostream& os, const UDTfT& dt);
+    /**
+     * @brief Put to << operator overload.
+     * @param os ostream object
+     * @param ob Data
+    */
+    friend std::ostream& operator<<(std::ostream& os, const UDTfT& ob);
 };
 
+/**
+ * @class ComparatorClass
+ * @brief Comparator class for user defined type.
+*/
 struct ComparatorClass
 {
+    /**
+     * @brief Operator () overload
+     * @param A First user defined type
+     * @param B Second user defined type
+    */
     int operator()(UDTfT A, UDTfT B);
 };
+/**
+ * @class InverseComparatorClass
+ * @brief Inverse Comparator class for user defined type.
+*/
 struct InverseComparatorClass
 {
+    /**
+     * @brief Operator () overload
+     * @param A First user defined type
+     * @param B Second user defined type
+    */
     int operator()(UDTfT A, UDTfT B);
 };
 
+/**
+ * @class Encapsulation
+ * @brief Class used to package types and data for GoogleTest Type Parameterized Test.
+ * @tparam A Primary type
+ * @tparam B Secondary type
+ * @tparam inverse_ Wheather to inverse comparator
+ * @tparam comparator_ Coustom comparatoe
+*/
 template<typename A, typename B, bool inverse_ = false, typename comparator_ = void>
 struct Encapsulation {
     typedef A main_;
@@ -47,6 +116,5 @@ struct Encapsulation {
 #define T_main typename T::main_
 #define T_base typename T::base_
 
-}
-
+} // namespace self
 #endif

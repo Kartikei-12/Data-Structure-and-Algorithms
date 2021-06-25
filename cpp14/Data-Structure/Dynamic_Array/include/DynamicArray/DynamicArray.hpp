@@ -1,5 +1,6 @@
 /**
  * @headerfile DynamicArray.hpp
+ * @copyright Copyright (C) 2021 by Kartikei Mittal. All Rights MIT Licensed.
  * @brief Dynamic Array.
  * @author Kartikei Mittal
 */
@@ -125,7 +126,7 @@ public:
         ++len;
     }
     /**
-     * @brief Apend method for Dynamic Array.
+     * @brief Append method for Dynamic Array.
      * @param elem Element to add
     */
     void append(T elem) { add(elem, -1); }

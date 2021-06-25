@@ -1,6 +1,8 @@
-// @author: Kartikei Mittal
-// @email: kartikeimittal@gmail.com
-// Testing Queue
+/**
+ * @copyright Copyright (C) 2021 by Kartikei Mittal. All Rights MIT Licensed.
+ * @brief Queue tests.
+ * @author Kartikei Mittal
+*/
 
 #include "gtest/gtest.h"
 #include "Utility/Utility.hpp"
@@ -134,4 +136,4 @@ using QueueTestTypes = ::testing::Types<
 >;
 INSTANTIATE_TYPED_TEST_SUITE_P(QueueTestPrefix, QueueTest, QueueTestTypes);
 
-}
+} // namespace self

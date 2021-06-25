@@ -1,6 +1,8 @@
-// @author: Kartikei Mittal
-// @email: kartikeimittal@gmail.com
-// Some Utility for testing purpose source
+/**
+ * @copyright Copyright (C) 2021 by Kartikei Mittal. All Rights MIT Licensed.
+ * @brief Utilities to help in testing SOURCE.
+ * @author Kartikei Mittal
+*/
 
 #include "HelpTest/HelpTest.hpp"
 
@@ -17,13 +19,13 @@ bool operator==(const UDTfT& first, const UDTfT& other) {
     return 
         first.a == other.a &&
         first.b == other.b &&
-        first.c == other.c ;
+        first.c == other.c;
 }
 bool operator!=(const UDTfT& first, const UDTfT& other) {
     return
         first.a != other.a ||
         first.b != other.b ||
-        first.c != other.c ;
+        first.c != other.c;
 }
 std::ostream& operator<<(std::ostream& os, const UDTfT& ob)
 {
@@ -40,4 +42,4 @@ int InverseComparatorClass::operator()(UDTfT A, UDTfT B) {
     return (A.a < B.a)? -1 : 1;
 }
 
-}
+} // namespace self

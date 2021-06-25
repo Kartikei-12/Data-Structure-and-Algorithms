@@ -1,6 +1,8 @@
-// @author: Kartikei Mittal
-// @email: kartikeimittal@gmail.com
-// Testing Binary Search Tree
+/**
+ * @copyright Copyright (C) 2021 by Kartikei Mittal. All Rights MIT Licensed.
+ * @brief Binary Search Tree tests.
+ * @author Kartikei Mittal
+*/
 
 #include "gtest/gtest.h"
 #include "Utility/Utility.hpp"
@@ -175,4 +177,4 @@ using BinarySearchTreeTestTypes = ::testing::Types<
 >;
 INSTANTIATE_TYPED_TEST_SUITE_P(BinarySearchTreeTestPrefix, BinarySearchTreeTest, BinarySearchTreeTestTypes);
 
-}
+} // namespace self

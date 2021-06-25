@@ -1,6 +1,8 @@
-// @author: Kartikei Mittal
-// @email: kartikeimittal@gmail.com
-// Testing Stack
+/**
+ * @copyright Copyright (C) 2021 by Kartikei Mittal. All Rights MIT Licensed.
+ * @brief Stack tests.
+ * @author Kartikei Mittal
+*/
 
 #include "gtest/gtest.h"
 #include "Utility/Utility.hpp"
@@ -122,4 +124,4 @@ using StackTestTypes = ::testing::Types<
 >;
 INSTANTIATE_TYPED_TEST_SUITE_P(StackTestPrefix, StackTest, StackTestTypes);
 
-}
+} // namespace self

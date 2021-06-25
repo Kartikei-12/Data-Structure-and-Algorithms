@@ -1,5 +1,6 @@
 /**
  * @headerfile BinaryTree.hpp
+ * @copyright Copyright (C) 2021 by Kartikei Mittal. All Rights MIT Licensed.
  * @brief Binary tree.
  * @author Kartikei Mittal
 */

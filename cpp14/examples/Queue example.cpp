@@ -1,6 +1,9 @@
-// @author: Kartikei Mittal
-// @email: kartikeimittal@gmail.com
-// Stack Example Application
+/**
+ * @copyright Copyright (C) 2021 by Kartikei Mittal. All Rights MIT Licensed.
+ * @brief Queue Example.
+ * @author Kartikei Mittal
+*/
+
 #include <iostream>
 #include "Queue/Queue.hpp"
 

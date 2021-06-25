@@ -1,6 +1,9 @@
-// @author: Kartikei Mittal
-// @email: kartikeimittal@gmail.com
-// Heap Example Application
+/**
+ * @copyright Copyright (C) 2021 by Kartikei Mittal. All Rights MIT Licensed.
+ * @brief Heap Example.
+ * @author Kartikei Mittal
+*/
+
 #include <iostream>
 #include "Heap/heap.hpp"
 

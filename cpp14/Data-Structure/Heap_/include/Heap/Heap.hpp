@@ -1,5 +1,6 @@
 /**
  * @headerfile Heap.hpp
+ * @copyright Copyright (C) 2021 by Kartikei Mittal. All Rights MIT Licensed.
  * @brief Heap.
  * @author Kartikei Mittal
 */

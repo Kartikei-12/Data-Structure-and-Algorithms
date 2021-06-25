@@ -1,6 +1,9 @@
-// @author: Kartikei Mittal
-// @email: kartikeimittal@gmail.com
-// Binary Search Tree Example Application
+/**
+ * @copyright Copyright (C) 2021 by Kartikei Mittal. All Rights MIT Licensed.
+ * @brief Binary Search Tree Example.
+ * @author Kartikei Mittal
+*/
+
 #include <iostream>
 #include "BinarySearchTree/BinarySearchTree.hpp"
 

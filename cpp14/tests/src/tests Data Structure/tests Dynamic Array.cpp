@@ -1,6 +1,8 @@
-// @author: Kartikei Mittal
-// @email: kartikeimittal@gmail.com
-// Testing Dynamic Array
+/**
+ * @copyright Copyright (C) 2021 by Kartikei Mittal. All Rights MIT Licensed.
+ * @brief Dynamic Array tests.
+ * @author Kartikei Mittal
+*/
 
 #include "gtest/gtest.h"
 #include "Utility/Utility.hpp"
@@ -161,4 +163,4 @@ REGISTER_TYPED_TEST_SUITE_P( DynamicArrayTest,
 );
 INSTANTIATE_TYPED_TEST_SUITE_P(DynamicArrayTestPrefix, DynamicArrayTest, TestTypes);
 
-}
+} // namespace self

@@ -1,6 +1,9 @@
-// @author: Kartikei Mittal
-// @email: kartikeimittal@gmail.com
-// SinglyLinkedList Example Application
+/**
+ * @copyright Copyright (C) 2021 by Kartikei Mittal. All Rights MIT Licensed.
+ * @brief Singly Linked List Example.
+ * @author Kartikei Mittal
+*/
+
 #include <iostream>
 #include "SinglyLinkedList/SinglyLinkedList.hpp"
 
