@@ -7,8 +7,7 @@
 #include <iostream>
 #include "SinglyLinkedList/SinglyLinkedList.hpp"
 
-int main(int argc, char const *argv[])
-{
+int main(int argc, char const *argv[]) {
     std::cout << "Hello Singly Linked List!" << std::endl;
     self::SinglyLinkedList<int> singly_linked_list;
     singly_linked_list = {1, 2};

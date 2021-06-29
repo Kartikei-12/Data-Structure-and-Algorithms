@@ -7,8 +7,7 @@
 #include <iostream>
 #include "Queue/Queue.hpp"
 
-int main(int argc, char const *argv[])
-{
+int main(int argc, char const *argv[]) {
     std::cout << "Hello Queue Array!" << std::endl;
     self::QueueArray<int> que;
     for (int i = 1; i <= 10; ++i) {

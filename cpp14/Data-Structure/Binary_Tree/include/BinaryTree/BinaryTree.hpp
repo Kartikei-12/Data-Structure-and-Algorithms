@@ -115,7 +115,7 @@ public:
     // ================================================= POST ORDER ITERATOR  =================================================
     // ================================================= LEVEL ORDER ITERATOR =================================================
     /**
-     * @class iterator
+     * @class BinaryTree::iterator
      * @brief Binary Tree iterator class.
     */
     class iterator
@@ -132,7 +132,7 @@ public:
          * @param itype_ Type of iterator
          * @throw exception When iterator type is unknown
         */
-        iterator(
+        explicit iterator(
             INTEGER nodeCount_,
             TreeNodePtr curr = nullptr,
             std::string itype_ = "END"
@@ -222,5 +222,5 @@ public:
     // ======================================================================================================================
 };
 
-}
+} // namespace self
 #endif

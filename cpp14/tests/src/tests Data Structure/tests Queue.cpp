@@ -9,12 +9,10 @@
 #include "Queue/Queue.hpp"
 #include "HelpTest/HelpTest.hpp"
 
-namespace self
-{
+namespace self {
 
 template <typename T>
-class QueueTest : public ::testing::Test
-{
+class QueueTest : public ::testing::Test {
 public:
     T_base objA; T_base objB;
     T_base* arr;
@@ -54,7 +52,7 @@ public:
         arr = new T_base[size];
         for (INTEGER i = 0; i < size; ++i) {
             UDTfT obbj;
-            obbj.set(i + 1, 'a' + i, double(double(i + 1) * 2.5));
+            obbj.set(i + 1, 'a' + i, static_cast<double>(i + 1) * 2.5);
             arr[i] = obbj;
         }
     }
@@ -86,14 +84,14 @@ TYPED_TEST_P(QueueTest, sizeTest) {
     this -> que.push(this -> objB);
     EXPECT_EQ(this -> que.size(), 2);
 }
-TYPED_TEST_P (QueueTest, push_popTest) {
+TYPED_TEST_P(QueueTest, push_popTest) {
     this -> que.push(this -> objA);
     this -> que.push(this -> objB);
     EXPECT_EQ(this -> que.top(), this -> objA);
     EXPECT_EQ(this -> que.pop(), this -> objA);
     EXPECT_EQ(this -> que.top(), this -> objB);
 }
-TYPED_TEST_P (QueueTest, rotationTest) {
+TYPED_TEST_P(QueueTest, rotationTest) {
     this -> que.push(this -> objA);
     this -> que.push(this -> objB);
     for (INTEGER i = 0; i < (this -> size - 2); ++i) {
@@ -108,7 +106,7 @@ TYPED_TEST_P (QueueTest, rotationTest) {
         EXPECT_EQ(elem, this -> arr[index++]);
     }
 }
-TYPED_TEST_P (QueueTest, iteratorTest) {
+TYPED_TEST_P(QueueTest, iteratorTest) {
     INTEGER index = 0;
     for (INTEGER i = 0; i < this -> size; ++i) {
         this -> que.push(this -> arr[i]);
@@ -118,8 +116,7 @@ TYPED_TEST_P (QueueTest, iteratorTest) {
     }
 }
 
-REGISTER_TYPED_TEST_SUITE_P(
-    QueueTest,
+REGISTER_TYPED_TEST_SUITE_P(QueueTest,
     sizeTest,
     push_popTest,
     rotationTest,

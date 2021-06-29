@@ -63,7 +63,7 @@ public:
     */
     void _clear() {
         bool attempt = false;
-        while(len > 0) {
+        while (len > 0) {
             attempt = removeLast();
             if (!attempt) { throw exception("Linked List integrity on destruction failed"); }
         }
@@ -120,12 +120,12 @@ public:
         if (index < 0 || index >= len) { throw exception("Illegal Index for insertion on length: " + std::to_string(len)); }
         if (index == 0) {
             add_first(elem);
-            return ;
+            return;
         }
         --index;
         SLL_Node_ptr inFrontOf = head;
         SLL_Node_ptr new_node = new NodeOneChild<T>(elem);
-        while(index--) {
+        while (index--) {
             inFrontOf = inFrontOf -> getNext();
         }
         new_node -> setNext(inFrontOf -> getNext());
@@ -256,7 +256,7 @@ public:
          * @param ptr Node Pointer
          * @param end_ Iterator to end
         */
-        iterator(SLL_Node_ptr ptr, SLL_Node_ptr end_ = NULL): ptr_(ptr), end(end_) { ; }
+        explicit iterator(SLL_Node_ptr ptr, SLL_Node_ptr end_ = NULL): ptr_(ptr), end(end_) { ; }
         /**
          * @brief Iterator increment overload defination.
          * @return iterator Incremented iterator

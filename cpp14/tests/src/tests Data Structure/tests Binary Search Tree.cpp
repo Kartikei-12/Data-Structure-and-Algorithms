@@ -9,19 +9,17 @@
 #include "BinarySearchTree/BinarySearchTree.hpp"
 #include "HelpTest/HelpTest.hpp"
 
-namespace self
-{
+namespace self {
 
 template <typename T>
-class BinarySearchTreeTest : public ::testing::Test
-{
+class BinarySearchTreeTest : public ::testing::Test {
 public:
     INTEGER size, height;
     T_main bst;
     T_base root; T_base obj_1;
     T_base objA; T_base base;
     T_base* pre; T_base* level;
-    
+
     // INTEGER Case
     template<class Q = T_main>
     ENABLE_IF(IS_SAME(Q, BinarySearchTree<INTEGER>), void)
@@ -130,7 +128,7 @@ TYPED_TEST_P(BinarySearchTreeTest, removeTest) {
 TYPED_TEST_P(BinarySearchTreeTest, inOrderIteratorTest) {
     INTEGER ii = 0;
     for (typename TypeParam::main_::iterator i = this -> bst.begin("IN ORDER"); i != this -> bst.end(); ++i, ++ii) {
-        EXPECT_EQ(*i, this -> base + ii);
+        EXPECT_EQ(*i, ((this -> base) + ii));
     }
 }
 TYPED_TEST_P(BinarySearchTreeTest, preOrderIteratorTest) {
@@ -151,7 +149,7 @@ TYPED_TEST_P(BinarySearchTreeTest, levelOrderIteratorTest) {
         EXPECT_EQ(*i, this -> level[ii]);
     }
 }
-TYPED_TEST_P (BinarySearchTreeTest, iteratorInvalidationTest) {
+TYPED_TEST_P(BinarySearchTreeTest, iteratorInvalidationTest) {
     typename TypeParam::main_::iterator ii = this -> bst.begin("IN ORDER");
     this -> bst.add(this -> obj_1);
     EXPECT_THROW(ii != this -> bst.end(), self::exception);

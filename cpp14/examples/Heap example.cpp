@@ -7,8 +7,7 @@
 #include <iostream>
 #include "Heap/heap.hpp"
 
-int main(int argc, char const *argv[])
-{
+int main(int argc, char const *argv[]) {
     std::cout << "Hello Heap!" << std::endl;
     self::Heap<int> hp;
     hp = {10, 9, 8, 7, 6, 5, 4, 3, 2, 1};

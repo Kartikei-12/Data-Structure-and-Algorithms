@@ -9,12 +9,10 @@
 #include "SinglyLinkedList/SinglyLinkedList.hpp"
 #include "HelpTest/HelpTest.hpp"
 
-namespace self
-{
+namespace self {
 
 template <typename T>
-class SinglyLinkedListTest : public ::testing::Test
-{
+class SinglyLinkedListTest : public ::testing::Test {
 public:
     T obj0; T obj1; T obj2; T obj3;
     T obj_1; T obj_2; T objA; T objB;
@@ -62,12 +60,12 @@ public:
         arr = new T[size];
         for (INTEGER i = 0; i < size; ++i) {
             UDTfT obbj;
-            obbj.set(i + 1, 'a' + i, double(double(i + 1) * 2.5));
+            obbj.set(i + 1, 'a' + i, static_cast<double>(i + 1) * 2.5);
             sll.append(obbj);
             arr[i] = obbj;
         }
     }
-    
+
     // Other Case
     template<class Q = T>
     ENABLE_IF(!IS_SAME(Q, char) && !IS_SAME(Q, INTEGER) && !IS_SAME(Q, UDTfT), void)
@@ -88,62 +86,62 @@ TYPED_TEST_P(SinglyLinkedListTest, SizeTest) {
     this -> sll.append(this -> objA);
     EXPECT_EQ(this -> sll.size(), this -> size + 1);
 }
-TYPED_TEST_P (SinglyLinkedListTest, getTest) {
+TYPED_TEST_P(SinglyLinkedListTest, getTest) {
     EXPECT_EQ(this -> sll.get(0), this -> obj0);
     EXPECT_EQ(this -> sll.get(2), this -> obj2);
 }
-TYPED_TEST_P (SinglyLinkedListTest, getSquareBracketTest) {
+TYPED_TEST_P(SinglyLinkedListTest, getSquareBracketTest) {
     EXPECT_EQ(this -> sll[0], this -> obj0);
     EXPECT_EQ(this -> sll[2], this -> obj2);
 }
-TYPED_TEST_P (SinglyLinkedListTest, getNegativeIndexTest) {
+TYPED_TEST_P(SinglyLinkedListTest, getNegativeIndexTest) {
     EXPECT_EQ(this -> sll.get(-1), this -> obj_1);
     EXPECT_EQ(this -> sll.get(-2), this -> obj_2);
 }
-TYPED_TEST_P (SinglyLinkedListTest, getInvalidIndexTest) {
+TYPED_TEST_P(SinglyLinkedListTest, getInvalidIndexTest) {
     EXPECT_THROW(this -> sll.get(this -> negativeIndex), exception);
-    EXPECT_THROW(this -> sll.get(this -> largeIndex), exception);   
+    EXPECT_THROW(this -> sll.get(this -> largeIndex), exception);
 }
-TYPED_TEST_P (SinglyLinkedListTest, setTest) {
+TYPED_TEST_P(SinglyLinkedListTest, setTest) {
     this -> sll.set(this -> objA, this -> setIndex);
     EXPECT_EQ(this -> sll.get(this -> setIndex), this -> objA);
     EXPECT_THROW(this -> sll.set(this -> objA, this -> negativeIndex), exception);
     EXPECT_THROW(this -> sll.set(this -> objA, this -> largeIndex), exception);
 }
-TYPED_TEST_P (SinglyLinkedListTest, addInvalidIndexTest) {
+TYPED_TEST_P(SinglyLinkedListTest, addInvalidIndexTest) {
     EXPECT_THROW(this -> sll.add(this -> objA, this -> negativeIndex), exception);
     EXPECT_THROW(this -> sll.add(this -> objA, this -> largeIndex), exception);
 }
-TYPED_TEST_P (SinglyLinkedListTest, addTest) {
+TYPED_TEST_P(SinglyLinkedListTest, addTest) {
     this -> sll.add(this -> objA, this -> setIndex);
     EXPECT_EQ(this -> sll.get(this -> setIndex), this -> objA);
 }
-TYPED_TEST_P (SinglyLinkedListTest, appendTest) {
+TYPED_TEST_P(SinglyLinkedListTest, appendTest) {
     this -> sll.append(this -> objA);
     EXPECT_EQ(this -> sll.get(this -> size), this -> objA);
 }
-TYPED_TEST_P (SinglyLinkedListTest, addFirstTest) {
+TYPED_TEST_P(SinglyLinkedListTest, addFirstTest) {
     this -> sll.add_first(this -> objA);
     EXPECT_EQ(this -> sll.get(0), this -> objA);
 }
-TYPED_TEST_P (SinglyLinkedListTest, findTest) {
+TYPED_TEST_P(SinglyLinkedListTest, findTest) {
     EXPECT_EQ(this -> sll.find(this -> obj1), 01);
     EXPECT_EQ(this -> sll.find(this -> objA), -1);
     EXPECT_TRUE(this -> sll.contains(this -> obj2));
     EXPECT_FALSE(this -> sll.contains(this -> objA));
 }
-TYPED_TEST_P (SinglyLinkedListTest, removeTest) {
+TYPED_TEST_P(SinglyLinkedListTest, removeTest) {
     EXPECT_TRUE(this -> sll.contains(this -> obj3));
     EXPECT_TRUE(this -> sll.remove(this -> obj3));
     EXPECT_FALSE(this -> sll.contains(this -> obj3));
 }
-TYPED_TEST_P (SinglyLinkedListTest, iteratorTest) {
+TYPED_TEST_P(SinglyLinkedListTest, iteratorTest) {
     INTEGER ii = 0;
     for (TypeParam ele:this -> sll) {
         ASSERT_EQ(ele, this -> arr[ii++]);
     }
 }
-TYPED_TEST_P (SinglyLinkedListTest, iteratorInvalidationTest) {
+TYPED_TEST_P(SinglyLinkedListTest, iteratorInvalidationTest) {
     typename self::SinglyLinkedList<TypeParam>::iterator ii = this -> sll.begin();
     this -> sll.append(this -> obj0);
     EXPECT_THROW(ii != this -> sll.end(), self::exception);

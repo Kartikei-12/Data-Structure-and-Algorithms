@@ -7,8 +7,7 @@
 #include <iostream>
 #include "DynamicArray/DynamicArray.hpp"
 
-int main(int argc, char const *argv[])
-{
+int main(int argc, char const *argv[]) {
     std::cout << "Hello Dynamic Array!" << std::endl;
     self::DynamicArray<int> dynamic_array;
     dynamic_array = {1, 2};

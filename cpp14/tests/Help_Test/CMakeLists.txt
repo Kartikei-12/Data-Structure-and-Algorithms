@@ -6,6 +6,10 @@ project (HelpTest
 add_library(${PROJECT_NAME} src/HelpTest.cpp)
 add_library(self::HelpTest ALIAS ${PROJECT_NAME})
 
+target_link_libraries(${PROJECT_NAME} PUBLIC
+    gtest_main
+)
+
 target_include_directories(${PROJECT_NAME}
     PUBLIC ${PROJECT_SOURCE_DIR}/include
 )

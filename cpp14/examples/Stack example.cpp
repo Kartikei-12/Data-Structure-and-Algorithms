@@ -7,8 +7,7 @@
 #include <iostream>
 #include "Stack/Stack.hpp"
 
-int main(int argc, char const *argv[])
-{
+int main(int argc, char const *argv[]) {
     std::cout << "Hello Stack Array!" << std::endl;
     self::StackArray<int> st;
     for (int i = 1; i <= 10; ++i) {

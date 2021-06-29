@@ -18,7 +18,7 @@ set(AllTestFiles "")
 set(AllLibraryFiles "")
 # Seprate executable for Different Structure
 macro(Test_Macro DStructure File Count)
-    add_executable(${PROJECT_NAME}_${DStructure} "src/tests Data Structure/${File}" main.cpp)
+    add_executable(${PROJECT_NAME}_${DStructure} "src/tests Data Structure/${File}" main_.cpp)
     target_link_libraries(${PROJECT_NAME}_${DStructure} PUBLIC
         self::${DStructure}
         self::Utility
@@ -33,13 +33,6 @@ macro(Test_Macro DStructure File Count)
             COMMAND ${PROJECT_NAME}_${DStructure} --gtest_filter=*${DStructure}Test/${i}*
         )
     endforeach(i)
-    # Uncomment following to generate seprate executable for each test suite
-    # add_custom_command(
-    #     TARGET ${PROJECT_NAME}_${DStructure}
-    #     COMMENT "Running ${File} tests"
-    #     POST_BUILD
-    #     COMMAND ${PROJECT_NAME}_${DStructure}
-    # )
 endmacro(Test_Macro)
 
 Test_Macro(DynamicArray "tests Dynamic Array.cpp" 2)
@@ -49,6 +42,7 @@ Test_Macro(Stack "tests Stack.cpp" 5)
 Test_Macro(Queue "tests Queue.cpp" 5)
 Test_Macro(BinarySearchTree "tests Binary Search Tree.cpp" 2)
 
+# Modified GoogleTest Output Executable 
 add_executable(${PROJECT_NAME}_ALL ${AllTestFiles} main.cpp)
 target_link_libraries(${PROJECT_NAME}_ALL PUBLIC
     ${AllLibraryFiles}
@@ -58,7 +52,7 @@ target_link_libraries(${PROJECT_NAME}_ALL PUBLIC
 )
 add_custom_command(
     TARGET ${PROJECT_NAME}_ALL
-    COMMENT "Running ALL tests"
+    COMMENT "Running ALL tests WITH Modified output"
     POST_BUILD
     COMMAND ${PROJECT_NAME}_ALL
 )

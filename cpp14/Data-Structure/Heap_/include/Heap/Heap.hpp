@@ -32,7 +32,7 @@ namespace self
 template <typename T, bool inverse = false, typename compare_ = void>
 class Heap
 {
-    const static INTEGER DEFAULT_CAPACITY = 16; /// Default capacity of the Heap
+    static const INTEGER DEFAULT_CAPACITY = 16; /// Default capacity of the Heap
     
     /**
      * @brief Comparator class enabled if comparator class NOT supplied.

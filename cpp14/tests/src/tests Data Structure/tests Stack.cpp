@@ -9,12 +9,10 @@
 #include "Stack/Stack.hpp"
 #include "HelpTest/HelpTest.hpp"
 
-namespace self
-{
+namespace self {
 
 template <typename T>
-class StackTest : public ::testing::Test
-{
+class StackTest : public ::testing::Test {
 public:
     T_base objA; T_base objB;
     T_base* arr; T_base top1;
@@ -52,7 +50,7 @@ public:
         arr = new T_base[size];
         for (INTEGER i = 0; i < size; ++i) {
             UDTfT obbj;
-            obbj.set(i + 1, 'a' + i, double(double(i + 1) * 2.5));
+            obbj.set(i + 1, 'a' + i, static_cast<double>(i + 1) * 2.5);
             arr[i] = obbj;
         }
     }
@@ -83,20 +81,20 @@ TYPED_TEST_P(StackTest, sizeTest) {
     this -> st.push(this -> objB);
     EXPECT_EQ(this -> st.size(), 2);
 }
-TYPED_TEST_P (StackTest, pushTest) {
+TYPED_TEST_P(StackTest, pushTest) {
     this -> st.push(this -> objA);
     EXPECT_EQ(this -> st.top(), this -> objA);
     this -> st.push(this -> objB);
     EXPECT_EQ(this -> st.top(), this -> objB);
 }
-TYPED_TEST_P (StackTest, popTest) {
+TYPED_TEST_P(StackTest, popTest) {
     this -> st.push(this -> objA);
     this -> st.push(this -> objB);
     EXPECT_EQ(this -> st.top(), this -> objB);
     EXPECT_EQ(this -> st.pop(), this -> objB);
     EXPECT_EQ(this -> st.pop(), this -> objA);
 }
-TYPED_TEST_P (StackTest, iteratorTest) {
+TYPED_TEST_P(StackTest, iteratorTest) {
     INTEGER index = 0;
     for (INTEGER i = 0; i < this -> size; ++i) {
         this -> st.push(this -> arr[i]);

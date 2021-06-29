@@ -36,7 +36,7 @@ public:
      * @param cap Capacity of array
      * @throw exception If 0 or negative capacity is supplied
     */
-    DynamicArray(INTEGER cap = DEFAULT_CAPACITY): capacity(cap), len(0) {
+    explicit DynamicArray(INTEGER cap = DEFAULT_CAPACITY): capacity(cap), len(0) {
         if (cap <= 0) { throw exception("Illegal Capacity: " + std::to_string(cap));  }
         arr = new T[cap];
     }
@@ -188,7 +188,7 @@ public:
          * @param arr__ Array Pointer
          * @param end_ Iterator to end
         */
-        iterator(T* arr__, T* end_ = nullptr): arr_(arr__), end(end_) { ; }
+        explicit iterator(T* arr__, T* end_ = nullptr): arr_(arr__), end(end_) { ; }
         /**
          * @brief Iterator increment overload defination.
          * @return iterator Incremented iterator
@@ -217,5 +217,5 @@ public:
     // ============================================================================================================================
 };
 
-}
+} // namespace self
 #endif

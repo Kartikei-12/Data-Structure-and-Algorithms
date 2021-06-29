@@ -7,8 +7,7 @@
 #include <iostream>
 #include "BinarySearchTree/BinarySearchTree.hpp"
 
-int main(int argc, char const *argv[])
-{
+int main(int argc, char const *argv[]) {
     std::cout << "Hello Binary Search Tree!" << std::endl;
     self::BinarySearchTree<int> tree;
     int arr[] = {8, 4, 12, 2, 6, 10, 14, 1, 3, 5, 7, 9, 11, 13, 15};
@@ -37,7 +36,7 @@ int main(int argc, char const *argv[])
         std::cout << *i << ", ";
     }
     std::cout << std::endl << "--------------------------------------------------------------------" << std::endl;
-    
+
     std::cout << "Count: " << tree.size() << std::endl;
     std::cout << "Contains 1: " << tree.contains(1) << std::endl;
     std::cout << "Contains 22: " << tree.contains(22) << std::endl;
@@ -61,7 +60,7 @@ int main(int argc, char const *argv[])
         std::cout << *i << ", ";
     }
     std::cout << std::endl << "--------------------------------------------------------------------" << std::endl;
-    
+
     std::cout << "Count: " << tree.size() << std::endl;
     std::cout << "Contains 1: " << tree.contains(1) << std::endl;
     std::cout << "Contains 22: " << tree.contains(22) << std::endl;

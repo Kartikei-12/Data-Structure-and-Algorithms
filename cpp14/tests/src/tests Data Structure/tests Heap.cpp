@@ -9,12 +9,10 @@
 #include "Heap/Heap.hpp"
 #include "HelpTest/HelpTest.hpp"
 
-namespace self
-{
+namespace self {
 
 template <typename T>
-class HeapTest : public ::testing::Test
-{
+class HeapTest : public ::testing::Test {
 public:
     INTEGER size;
     T_main hp;
@@ -75,7 +73,7 @@ public:
         T_base *arr_ = new T_base[size];
         UDTfT obj;
         for (INTEGER i = 0; i < size; ++i) {
-            obj.set(i + 1, 'a' + i, double(double(i + 1) * 1.5));
+            obj.set(i + 1, 'a' + i, static_cast<double>(i + 1) * 1.5);
             hp.add(obj);
             arr_[i] = arr[i] = obj;
         }
@@ -144,14 +142,13 @@ TYPED_TEST_P(HeapTest, removeTest) {
     EXPECT_TRUE(this -> hp.remove(this -> top2));
     EXPECT_EQ(this -> hp.find(this -> top2), -1);
 }
-TYPED_TEST_P(HeapTest, iteratorTest)
-{    
+TYPED_TEST_P(HeapTest, iteratorTest) {
     INTEGER index = 0;
     for (typename TypeParam::base_ elem : this -> hp) {
         EXPECT_EQ(elem, this -> arr[index++]);
     }
 }
-TYPED_TEST_P (HeapTest, iteratorInvalidationTest) {
+TYPED_TEST_P(HeapTest, iteratorInvalidationTest) {
     typename TypeParam::main_::iterator ii = this -> hp.begin();
     this -> hp.add(this -> top1);
     EXPECT_THROW(ii != this -> hp.end(), self::exception);

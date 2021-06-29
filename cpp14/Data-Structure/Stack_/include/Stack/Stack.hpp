@@ -96,7 +96,7 @@ public:
          * @brief Iterator Counstructor function.
          * @param ptr Dynamic Array Iterator
         */
-        iterator(typename DynamicArray<T>::iterator ptr): ptr_(ptr) {}
+        explicit iterator(typename DynamicArray<T>::iterator ptr): ptr_(ptr) {}
         /**
          * @brief Iterator increment overload defination.
          * @return iterator Incremented iterator

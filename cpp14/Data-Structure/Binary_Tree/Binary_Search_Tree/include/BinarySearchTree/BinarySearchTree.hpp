@@ -66,13 +66,15 @@ class BinarySearchTree: public BinaryTree<T> {
         while (curr != nullptr) {
             if (element == curr -> getData()) {
                 return curr;
-            } // Wally FOUND
+            // Wally FOUND
+            } 
             if (compare(element, curr -> getData()) > 0) {
                 curr = curr -> getLeft();
-            } // Move Left
-            else {
+            // Move Left
+            } else {
                 curr = curr -> getRight();
-            } // Move Right
+            // Move Right
+            }
         }
         return nullptr; // NOT Found
     }
@@ -177,5 +179,5 @@ public:
     }
 };
 
-}
+} // namespace self
 #endif
