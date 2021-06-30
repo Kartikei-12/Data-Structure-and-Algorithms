@@ -17,21 +17,18 @@
  * @namespace self
  * @brief Project Namespace.
 */
-namespace self
-{
+namespace self {
 
 /**
  * @class Stack
  * @brief Stack Template Class.
  * @tparam T Type used for Stack
 */
-template <typename T> class Stack
-{
+template <typename T> class Stack {
 public:
-    // Stack() {;}
     virtual INTEGER size() = 0; /// Size of stack
     virtual bool isEmpty() = 0; /// Is Stack Empty
-    virtual void push(T data) = 0; /// Add element to stack 
+    virtual void push(T data) = 0; /// Add element to stack
     virtual T pop() = 0; /// Pop element from stack
     virtual T top() = 0; /// Get top element of stack
 };
@@ -41,13 +38,11 @@ public:
  * @brief Stack Template Class, Using Array Implementation.
  * @tparam T Type used for Stack
 */
-template <typename T> class StackArray : public Stack<T>
-{
+template <typename T> class StackArray : public Stack<T> {
     DynamicArray<T> st; /// Array object for stack
 public:
     /// Default Counstructor
     StackArray() = default;
-
     /**
      * @brief Expose size of Stack.
      * @return int Number of elements in Stack
@@ -62,7 +57,7 @@ public:
      * @brief Push Function to add elements to the top of StackArray.
      * @param data Element to add to the StackArray
     */
-    void push (T data) { st.append(data); }
+    void push(T data) { st.append(data); }
     /**
      * @brief Pop Function to remove elements from StackArray.
      * @return T Element to popped from the StackArray
@@ -88,8 +83,7 @@ public:
      * @class StackArray::iterator
      * @brief StackArray iterator class.
     */
-    class iterator
-    {
+    class iterator {
         typename DynamicArray<T>::iterator ptr_; /// Dynamic Array Iterator
     public:
         /**
@@ -112,7 +106,7 @@ public:
          * @brief Element access overload method.
          * @return T Data at current pointer
         */
-        const T operator*() const { return *ptr_; }    
+        const T operator*() const { return *ptr_; }
     };
     /// Begin Iterator
     iterator begin() { return iterator(st.begin()); }
@@ -126,12 +120,10 @@ public:
  * @brief Stack Template Class, Using Linked List Implementation.
  * @tparam T Type used for Stack
 */
-template <typename T> class StackLinkedList : public Stack<T>
-{
+template <typename T> class StackLinkedList : public Stack<T> {
     SinglyLinkedList<T> st; /// Linked List Memeber
 public:
     StackLinkedList() = default;
-
     /**
      * @brief Expose size of Stack.
      * @return int Number of elements in Stack
@@ -146,7 +138,7 @@ public:
      * @brief Push Function to add elements to the StackLinkedList.
      * @param data Element to add to the StackLinkedList
     */
-    void push (T data) { st.append(data); }
+    void push(T data) { st.append(data); }
     /**
      * @brief Pop Function to remove elements from the StackLinkedList.
      * @return T Element to popped from the StackLinkedList
@@ -172,8 +164,7 @@ public:
      * @class StackLinkedList::iterator
      * @brief StackLinkedList iterator class.
     */
-    class iterator
-    {
+    class iterator {
         INTEGER len_; /// Length of Stack
         typename SinglyLinkedList<T>::iterator ptr_; // Linked List Iterator
     public:
@@ -195,7 +186,7 @@ public:
          * @throw exception Stack Iterator Invalidation
         */
         bool operator!=(const iterator & other) const {
-            if (len_ != other.len_) { throw exception("Stack Iterator Invalidation"); };
+            if (len_ != other.len_) { throw exception("Stack Iterator Invalidation"); }
             return ptr_ != other.ptr_;
         }
         /**

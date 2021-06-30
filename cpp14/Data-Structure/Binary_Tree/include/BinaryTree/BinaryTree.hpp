@@ -9,6 +9,7 @@
 #ifndef __self_BinaryTree
 #define __self_BinaryTree 1
 
+#include <string>
 #include "Utility/Utility.hpp"
 #include "NodeTwoChild/NodeTwoChild.hpp"
 #include "Stack/Stack.hpp"
@@ -18,8 +19,7 @@
  * @namespace self
  * @brief Project Namespace.
 */
-namespace self
-{
+namespace self {
 
 /**
  * @class BinaryTree
@@ -65,7 +65,7 @@ class BinaryTree
 public:
     BinaryTree(): count(0), root(nullptr) { ; } /// Default Counstructor
     ~BinaryTree() { _delete(root); count = 0;} /// Destructor
-    
+
     /**
      * @brief Checks for emptiness of binary tree.
      * @return bool True if tree empty, fals otherwise 
@@ -81,7 +81,7 @@ public:
      * @param element Element to look for
      * @return bool True if element present
     */
-    bool contains(T element) { return find(element, root) != nullptr; }    
+    bool contains(T element) { return find(element, root) != nullptr; }
     /**
      * @brief Calculate height of the tree.
      * @param curr Node to start from
@@ -118,8 +118,7 @@ public:
      * @class BinaryTree::iterator
      * @brief Binary Tree iterator class.
     */
-    class iterator
-    {
+    class iterator {
         INTEGER nodeCount; /// Expected node count of tree
         std::string itype; /// Type of iterator
         StackArray<TreeNodePtr> stack; /// Stack
@@ -213,7 +212,7 @@ public:
             if (itype == "END") { throw exception("Access end iterator data."); }
             if (itype == "LEVEL ORDER") { return que.top() -> getData(); }
             return stack.top() -> getData();
-        }    
+        }
     };
     /// Begin Iterator
     iterator begin(std::string itype) { return iterator(count, root, itype); }

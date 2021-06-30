@@ -9,14 +9,14 @@
 #ifndef __self_Heap
 #define __self_Heap 1
 
+#include <algorithm>
 #include "Utility/Utility.hpp"
 
 /**
  * @namespace self
  * @brief Project Namespace.
 */
-namespace self
-{
+namespace self {
 
 /**
  * @class DynamicArray
@@ -30,10 +30,8 @@ namespace self
  * @tparam compare_ Compare class to be used instead of defallt less than operator
 */
 template <typename T, bool inverse = false, typename compare_ = void>
-class Heap
-{
+class Heap {
     static const INTEGER DEFAULT_CAPACITY = 16; /// Default capacity of the Heap
-    
     /**
      * @brief Comparator class enabled if comparator class NOT supplied.
      * @tparam Q Used to route Compare Class.
@@ -81,14 +79,12 @@ public:
      * @brief Overload assignment operator.
      * @param list Brace enclosed list
     */
-    void operator=(std::initializer_list<T> list)
-    {
+    void operator=(std::initializer_list<T> list) {
         capacity = list.size() * 2;
         delete [] hp;
         hp = new T[capacity];
         len = list.size();
         std::copy(list.begin(), list.end(), hp);
-        
         for (INTEGER i = (len / 2) - 1; i >= 0; --i) {
             heapify(i);
         }
@@ -309,8 +305,7 @@ public:
      * @class Heap::iterator
      * @brief Heap iterator class.
     */
-    class iterator
-    {
+    class iterator {
         T *hp_; T *end; /// Current and End Pointer
     public:
         /**
@@ -318,7 +313,7 @@ public:
          * @param hp__ Heap Pointer
          * @param end_ Iterator to end
         */
-        iterator(T* hp__, T* end_ = nullptr): hp_(hp__), end(end_) {}
+        explicit iterator(T* hp__, T* end_ = nullptr): hp_(hp__), end(end_) {}
         /**
          * @brief Iterator increment overload defination.
          * @return iterator Incremented iterator
@@ -338,7 +333,7 @@ public:
          * @brief Element access overload method.
          * @return T Data at current pointer
         */
-        const T operator*() const { return *hp_; }    
+        const T operator*() const { return *hp_; }
     };
     /// Begin Iterator
     iterator begin() { return iterator(hp, hp + size()); }
@@ -347,5 +342,5 @@ public:
     // ============================================================================================================================
 };
 
-}
+} // namespace self
 #endif

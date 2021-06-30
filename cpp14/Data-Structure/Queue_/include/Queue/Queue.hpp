@@ -9,6 +9,7 @@
 #ifndef __self_Queue
 #define __self_Queue 1
 
+#include <algorithm>
 #include "DynamicArray/DynamicArray.hpp"
 #include "SinglyLinkedList/SinglyLinkedList.hpp"
 #include "Utility/Utility.hpp"
@@ -17,16 +18,15 @@
  * @namespace self
  * @brief Project Namespace.
 */
-namespace self
-{
+namespace self {
 
 /**
  * @class Queue
  * @brief Queue Template Class.
  * @tparam T Type used for Queue
 */
-template <typename T> class Queue
-{public:
+template <typename T> class Queue {
+public:
     // Queue() {;}  Counstructor
     virtual INTEGER size() = 0; /// Size of Queue
     virtual bool isEmpty() = 0; /// Is Queue Empty
@@ -40,9 +40,8 @@ template <typename T> class Queue
  * @brief Queue Template Class, Using Array Implementation.
  * @tparam T Type used for Queue
 */
-template <typename T> class QueueArray : public Queue<T>
-{
-    const static INTEGER DEFAULT_CAPACITY = 8; /// Default Capacity of Queue
+template <typename T> class QueueArray : public Queue<T> {
+    static const INTEGER DEFAULT_CAPACITY = 8; /// Default Capacity of Queue
     INTEGER front; /// Place to remove element from
     INTEGER back; /// Place of NEXT element
     INTEGER len, capacity; /// Length and Capacity of the Queue
@@ -56,7 +55,6 @@ public:
         capacity(DEFAULT_CAPACITY), st(new T[DEFAULT_CAPACITY]) { ; }
     /// Destructor
     ~QueueArray() { len = back = front = 0; delete [] st; }
-
     /**
      * @brief Expose size of Queue.
      * @return int Number of elements in Queue
@@ -71,7 +69,7 @@ public:
      * @brief Push Function to add elements to the back of QueueArray.
      * @param data Element to add to the QueueArray
     */
-    void push(T data) { 
+    void push(T data) {
         if (len == capacity) {
             T* new_arr = new T[capacity * 2];
             INTEGER index = 0;
@@ -120,8 +118,7 @@ public:
      * @class QueueArray::iterator
      * @brief QueueArray iterator class.
     */
-    class iterator
-    {
+    class iterator {
         bool traversed; /// Flag to mark traversal in empty queue
         T *ptr; /// Pointer to Current element
         T *begin_; /// Pointer to first element
@@ -168,7 +165,9 @@ public:
         */
         const T operator*() const { return *ptr; }
     };
+    /// Begin Iterator
     iterator begin() { return iterator(st + front, st, st + capacity, len); }
+    /// End Iterator
     iterator end() { return iterator(st + back); }
     // ============================================================================================================================
 };
@@ -178,12 +177,10 @@ public:
  * @brief Queue Template Class, Using Linked List Implementation.
  * @tparam T Type used for Queue
 */
-template <typename T> class QueueLinkedList : public Queue<T>
-{
+template <typename T> class QueueLinkedList : public Queue<T> {
     SinglyLinkedList<T> st; /// Linked List Member
 public:
     QueueLinkedList() = default; /// Default Counstructor
-  
     /**
      * @brief Expose size of Queue.
      * @return int Number of elements in Queue
@@ -198,7 +195,7 @@ public:
      * @brief Push Function to add elements to the back of QueueLinkedList.
      * @param data Element to add to the QueueLinkedList
     */
-    void push (T data) { st.append(data); }
+    void push(T data) { st.append(data); }
     /**
      * @brief Pop Function to remove elements from the back of QueueLinkedList.
      * @return T Element to popped from the QueueLinkedList
@@ -224,15 +221,14 @@ public:
      * @class QueueLinkedList::iterator
      * @brief QueueLinkedList iterator class.
     */
-    class iterator
-    {
+    class iterator {
         typename SinglyLinkedList<T>::iterator ptr; /// Linked List Iterator
     public:
         /**
          * @brief Iterator counstructor.
          * @param ptr Linked List Iterator
         */
-        iterator(typename SinglyLinkedList<T>::iterator ptr): ptr(ptr) { ; }
+        explicit iterator(typename SinglyLinkedList<T>::iterator ptr): ptr(ptr) { ; }
         /**
          * @brief Iterator Increment operator
          * @return iterator Incremented Iterator

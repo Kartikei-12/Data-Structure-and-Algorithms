@@ -16,8 +16,7 @@
  * @namespace self
  * @brief Project Namespace.
 */
-namespace self
-{
+namespace self {
 
 /**
  * @class SinglyLinkedList
@@ -25,8 +24,7 @@ namespace self
  * @tparam T Type used for SinglyLinkedList
 */
 template <typename T>
-class SinglyLinkedList
-{
+class SinglyLinkedList {
     typedef NodeOneChild<T>* SLL_Node_ptr; /// Create Linked List Node Pointer
     INTEGER len; /// Size of Linked List
     SLL_Node_ptr head; SLL_Node_ptr tail; /// Pointer to head and tail
@@ -53,7 +51,7 @@ public:
 
     /// Delete Copy Counstructor
     SinglyLinkedList(const SinglyLinkedList&) = delete;
-    /// Delete copy through assignment 
+    /// Delete copy through assignment
     SinglyLinkedList& operator=(const SinglyLinkedList&) = delete;
     /// Destructor
     ~SinglyLinkedList() { _clear(); }
@@ -247,9 +245,8 @@ public:
      * @class SinglyLinkedList::iterator
      * @brief Singly Linked List iterator class.
     */
-    class iterator
-    {
-        SLL_Node_ptr ptr_; SLL_Node_ptr end; /// Pointer to current and 
+    class iterator {
+        SLL_Node_ptr ptr_; SLL_Node_ptr end; /// Pointer to current and end
     public:
         /**
          * @brief Iterator Counstructor
@@ -276,7 +273,7 @@ public:
          * @brief Element access overload method.
          * @return T Data at current pointer
         */
-        const T operator*() const { return ptr_ -> getData(); }    
+        const T operator*() const { return ptr_ -> getData(); }
     };
     /// Begin Iterator
     iterator begin() { return iterator(head, tail); }

@@ -28,7 +28,7 @@ class exception : public std::exception {
    std::string s; /// Exception message string
 public:
    explicit exception(std::string ss): s(ss) { ; }
-   ~exception() throw (){ ; }
+   ~exception() throw() { ; }
    const char* what() const throw() { return ("Exception: " + s).c_str(); }
 };
 #define ENABLE_IF(condition, type_) typename std::enable_if<condition, type_>::type

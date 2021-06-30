@@ -24,7 +24,6 @@ std::ostream& operator<<(std::ostream& os, const UDTfT& ob) {
     os << "(" << ob.a << ", " << ob.b << ", " << ob.c << ")";
     return os;
 }
-
 int ComparatorClass::operator()(UDTfT A, UDTfT B) {
     if (A.a == B.a) { return 0; }
     return (A.a < B.a)? 1 : -1;
@@ -33,7 +32,7 @@ int InverseComparatorClass::operator()(UDTfT A, UDTfT B) {
     if (A.a == B.a) { return 0; }
     return (A.a < B.a)? -1 : 1;
 }
-
+// ----------------------------------------------------------------
 ConfigurableEventListener::ConfigurableEventListener(
     TestEventListener* theEventListener,
     bool a, bool b, bool c, bool d, bool e
@@ -43,7 +42,6 @@ ConfigurableEventListener::ConfigurableEventListener(
     showEnvironment(e)
 { ; }
 ConfigurableEventListener::~ConfigurableEventListener() { delete eventListener; }
-
 void ConfigurableEventListener::OnTestProgramStart(const testing::UnitTest& unit_test) {
     eventListener -> OnTestProgramStart(unit_test);
 }

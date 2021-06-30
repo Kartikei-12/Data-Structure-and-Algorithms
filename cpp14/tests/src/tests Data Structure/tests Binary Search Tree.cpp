@@ -54,29 +54,29 @@ public:
         root.set(15 + 1, 'a', 2.0); base.set(1, 'a', 2.0);
         objA.set(40, ' ', 5.0); obj_1.set(15, 'a', 2.0);
 
-        bst.add(UDTfT(16, 'a', 2.0)); bst.add(UDTfT( 8, 'a', 2.0)); bst.add(UDTfT(20, 'a', 2.0));
-        bst.add(UDTfT( 4, 'a', 2.0)); bst.add(UDTfT(12, 'a', 2.0)); bst.add(UDTfT(18, 'a', 2.0));
-        bst.add(UDTfT(21, 'a', 2.0)); bst.add(UDTfT( 2, 'a', 2.0)); bst.add(UDTfT( 6, 'a', 2.0));
+        bst.add(UDTfT(16, 'a', 2.0)); bst.add(UDTfT(8,  'a', 2.0)); bst.add(UDTfT(20, 'a', 2.0));
+        bst.add(UDTfT(4,  'a', 2.0)); bst.add(UDTfT(12, 'a', 2.0)); bst.add(UDTfT(18, 'a', 2.0));
+        bst.add(UDTfT(21, 'a', 2.0)); bst.add(UDTfT(2,  'a', 2.0)); bst.add(UDTfT(6,  'a', 2.0));
         bst.add(UDTfT(10, 'a', 2.0)); bst.add(UDTfT(14, 'a', 2.0)); bst.add(UDTfT(17, 'a', 2.0));
-        bst.add(UDTfT(19, 'a', 2.0)); bst.add(UDTfT( 1, 'a', 2.0)); bst.add(UDTfT( 3, 'a', 2.0));
-        bst.add(UDTfT( 5, 'a', 2.0)); bst.add(UDTfT( 7, 'a', 2.0)); bst.add(UDTfT( 9, 'a', 2.0));
+        bst.add(UDTfT(19, 'a', 2.0)); bst.add(UDTfT(1,  'a', 2.0)); bst.add(UDTfT(3,  'a', 2.0));
+        bst.add(UDTfT(5,  'a', 2.0)); bst.add(UDTfT(7,  'a', 2.0)); bst.add(UDTfT(9,  'a', 2.0));
         bst.add(UDTfT(11, 'a', 2.0)); bst.add(UDTfT(13, 'a', 2.0)); bst.add(UDTfT(15, 'a', 2.0));
         pre = new T_base[size]{
-            UDTfT(16, 'a', 2.0), UDTfT( 8, 'a', 2.0), UDTfT( 4, 'a', 2.0),
-            UDTfT( 2, 'a', 2.0), UDTfT( 1, 'a', 2.0), UDTfT( 3, 'a', 2.0),
-            UDTfT( 6, 'a', 2.0), UDTfT( 5, 'a', 2.0), UDTfT( 7, 'a', 2.0),
-            UDTfT(12, 'a', 2.0), UDTfT(10, 'a', 2.0), UDTfT( 9, 'a', 2.0),
+            UDTfT(16, 'a', 2.0), UDTfT(8,  'a', 2.0), UDTfT(4,  'a', 2.0),
+            UDTfT(2,  'a', 2.0), UDTfT(1,  'a', 2.0), UDTfT(3,  'a', 2.0),
+            UDTfT(6,  'a', 2.0), UDTfT(5,  'a', 2.0), UDTfT(7,  'a', 2.0),
+            UDTfT(12, 'a', 2.0), UDTfT(10, 'a', 2.0), UDTfT(9,  'a', 2.0),
             UDTfT(11, 'a', 2.0), UDTfT(14, 'a', 2.0), UDTfT(13, 'a', 2.0),
             UDTfT(15, 'a', 2.0), UDTfT(20, 'a', 2.0), UDTfT(18, 'a', 2.0),
             UDTfT(17, 'a', 2.0), UDTfT(19, 'a', 2.0), UDTfT(21, 'a', 2.0)
         };
         level = new T_base[size]{
-            UDTfT(16, 'a', 2.0), UDTfT( 8, 'a', 2.0), UDTfT(20, 'a', 2.0),
-            UDTfT( 4, 'a', 2.0), UDTfT(12, 'a', 2.0), UDTfT(18, 'a', 2.0),
-            UDTfT(21, 'a', 2.0), UDTfT( 2, 'a', 2.0), UDTfT( 6, 'a', 2.0),
+            UDTfT(16, 'a', 2.0), UDTfT(8,  'a', 2.0), UDTfT(20, 'a', 2.0),
+            UDTfT(4,  'a', 2.0), UDTfT(12, 'a', 2.0), UDTfT(18, 'a', 2.0),
+            UDTfT(21, 'a', 2.0), UDTfT(2,  'a', 2.0), UDTfT(6,  'a', 2.0),
             UDTfT(10, 'a', 2.0), UDTfT(14, 'a', 2.0), UDTfT(17, 'a', 2.0),
-            UDTfT(19, 'a', 2.0), UDTfT( 1, 'a', 2.0), UDTfT( 3, 'a', 2.0),
-            UDTfT( 5, 'a', 2.0), UDTfT( 7, 'a', 2.0), UDTfT( 9, 'a', 2.0),
+            UDTfT(19, 'a', 2.0), UDTfT(1,  'a', 2.0), UDTfT(3,  'a', 2.0),
+            UDTfT(5,  'a', 2.0), UDTfT(7,  'a', 2.0), UDTfT(9,  'a', 2.0),
             UDTfT(11, 'a', 2.0), UDTfT(13, 'a', 2.0), UDTfT(15, 'a', 2.0)
         };
     }
@@ -119,11 +119,13 @@ TYPED_TEST_P(BinarySearchTreeTest, addTest) {
     EXPECT_FALSE(this -> bst.contains(this -> objA));
     this -> bst.add(this -> objA);
     EXPECT_TRUE(this -> bst.contains(this -> objA));
+    EXPECT_EQ(this -> bst.size(), this -> size + 1);
 }
 TYPED_TEST_P(BinarySearchTreeTest, removeTest) {
     EXPECT_TRUE(this -> bst.contains(this -> obj_1));
     this -> bst.remove(this -> obj_1);
     EXPECT_FALSE(this -> bst.contains(this -> obj_1));
+    EXPECT_EQ(this -> bst.size(), this -> size - 1);
 }
 TYPED_TEST_P(BinarySearchTreeTest, inOrderIteratorTest) {
     INTEGER ii = 0;

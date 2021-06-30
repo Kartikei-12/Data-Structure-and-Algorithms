@@ -17,7 +17,6 @@
  * @brief Project Namespace.
 */
 namespace self {
-
 /**
  * @class UDTft
  * @brief User Defined Data Type for Testing.
@@ -72,8 +71,7 @@ public:
  * @class ComparatorClass
  * @brief Comparator class for user defined type.
 */
-struct ComparatorClass
-{
+struct ComparatorClass {
     /**
      * @brief Operator () overload
      * @param A First user defined type
@@ -85,8 +83,7 @@ struct ComparatorClass
  * @class InverseComparatorClass
  * @brief Inverse Comparator class for user defined type.
 */
-struct InverseComparatorClass
-{
+struct InverseComparatorClass {
     /**
      * @brief Operator () overload
      * @param A First user defined type
@@ -115,8 +112,7 @@ struct Encapsulation {
 #define T_main typename T::main_
 #define T_base typename T::base_
 
-class ConfigurableEventListener : public testing::TestEventListener
-{
+class ConfigurableEventListener : public testing::TestEventListener {
 protected:
     TestEventListener* eventListener;
     bool showTestCases;
@@ -130,7 +126,6 @@ public:
         bool a, bool b, bool c, bool d, bool e
     );
     virtual ~ConfigurableEventListener();
-    
     virtual void OnTestProgramStart(const testing::UnitTest& unit_test);
     virtual void OnTestIterationStart(const testing::UnitTest& unit_test, int iteration);
     virtual void OnEnvironmentsSetUpStart(const testing::UnitTest& unit_test);

@@ -15,8 +15,7 @@
  * @namespace self
  * @brief Project Namespace.
 */
-namespace self
-{
+namespace self {
 
 /**
  * @class BinarySearchTree
@@ -27,7 +26,7 @@ namespace self
 template <typename T, typename comprator_ = void>
 class BinarySearchTree: public BinaryTree<T> {
     typedef NodeTwoChild<T>* TreeNodePtr; /// @typedef TreeNodePtr
-    
+
     /**
      * @brief Comparator class enabled if comparator class supplied.
      * @tparam Q Used to route comprator_.
@@ -67,7 +66,7 @@ class BinarySearchTree: public BinaryTree<T> {
             if (element == curr -> getData()) {
                 return curr;
             // Wally FOUND
-            } 
+            }
             if (compare(element, curr -> getData()) > 0) {
                 curr = curr -> getLeft();
             // Move Left
@@ -107,7 +106,6 @@ class BinarySearchTree: public BinaryTree<T> {
         if (curr -> getData() == element) {
             if (curr -> getLeft() == nullptr) { return curr -> getRight(); }
             if (curr -> getRight() == nullptr) { return curr -> getLeft(); }
-            
             INTEGER leftHeight = BinaryTree<T>::height(curr -> getLeft());
             INTEGER rightHeight = BinaryTree<T>::height(curr -> getRight());
             TreeNodePtr temp;

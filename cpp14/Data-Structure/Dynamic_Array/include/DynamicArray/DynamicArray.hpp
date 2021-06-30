@@ -9,6 +9,9 @@
 #ifndef __self_DynamicArray
 #define __self_DynamicArray
 
+#include <algorithm>
+// ^ For std::copy
+#include <memory>
 #include <string>
 #include "Utility/Utility.hpp"
 
@@ -16,8 +19,7 @@
  * @namespace self
  * @brief Project Namespace.
 */
-namespace self
-{
+namespace self {
 
 /**
  * @class DynamicArray
@@ -25,9 +27,8 @@ namespace self
  * @tparam T Type used for Dynamic Array
 */
 template <typename T>
-class DynamicArray
-{
-    const static INTEGER DEFAULT_CAPACITY = 8; /// Default capacity of the array
+class DynamicArray {
+    static const INTEGER DEFAULT_CAPACITY = 8; /// Default capacity of the array
     INTEGER len, capacity; /// Length and Capacity of the Dynamic Array
     T* arr; /// Dynamic Array
 public:
@@ -52,7 +53,7 @@ public:
         std::copy(list.begin(), list.end(), arr);
     }
     /// Destructor
-    ~DynamicArray() { 
+    ~DynamicArray() {
         len = 0;
         delete [] arr;
     }
@@ -179,8 +180,7 @@ public:
      * @class DynamicArray::iterator
      * @brief Dynamic Array iterator class.
     */
-    class iterator
-    {
+    class iterator {
         T *arr_; T *end; /// Array and End Pointer
     public:
         /**
@@ -202,7 +202,7 @@ public:
         */
         bool operator!=(const iterator & other) const {
             if (end != other.arr_) { throw exception("Iterator Invalidation."); }
-            return arr_ != other.arr_; 
+            return arr_ != other.arr_;
         }
         /**
          * @brief Element access overload method.

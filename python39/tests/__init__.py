@@ -4,4 +4,5 @@
 
 __author__ = "Kartikei Mittal"
 
-from .test_Dynamic_Array import *
+from .test_Dynamic_Array import DynamicArrayTest
+from .test_Singly_Linked_List import SinglyLinkedListTest

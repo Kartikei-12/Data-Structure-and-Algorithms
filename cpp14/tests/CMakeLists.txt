@@ -55,4 +55,5 @@ add_custom_command(
     COMMENT "Running ALL tests WITH Modified output"
     POST_BUILD
     COMMAND ${PROJECT_NAME}_ALL
+    # --gtest_output=json:${PROJECT_SOURCE_DIR}/report.json
 )

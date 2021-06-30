@@ -116,9 +116,11 @@ TYPED_TEST_P(DynamicArrayTest, setUsingGetTest) {
 TYPED_TEST_P(DynamicArrayTest, addTest) {
     this -> da0.append(this -> objA);
     EXPECT_EQ(this -> da0.get(0), this -> objA);
+    EXPECT_EQ(this -> da0.size(), 1);
     this -> da.add(this -> objA, (this -> size) - 1);
     EXPECT_EQ(this -> da.get((this -> size) - 1), this -> objA);
     EXPECT_EQ(this -> da.get(this -> size), this -> obj_1);
+    EXPECT_EQ(this -> da.size(), this -> size + 1);
     EXPECT_THROW(this -> da.add(this -> objA, this -> negativeIndex), exception);
     EXPECT_THROW(this -> da.add(this -> objA, this -> largeIndex), exception);
 }
@@ -132,6 +134,7 @@ TYPED_TEST_P(DynamicArrayTest, removeTest) {
     EXPECT_TRUE(this -> da.contains(this -> obj3));
     EXPECT_TRUE(this -> da.remove(this -> obj3));
     EXPECT_FALSE(this -> da.contains(this -> obj3));
+    EXPECT_EQ(this -> da.size(), this -> size - 1);
 }
 TYPED_TEST_P(DynamicArrayTest, iteratorTest) {
     INTEGER ii = 0;

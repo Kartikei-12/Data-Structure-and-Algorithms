@@ -12,16 +12,14 @@
  * @namespace self
  * @brief Project Namespace.
 */
-namespace self
-{
+namespace self {
 
 /**
  * @class NodeTowChild
  * @brief Node Two Child Template Class.
  * @tparam T Type used for Node
 */
-template <typename T> class NodeTwoChild
-{
+template <typename T> class NodeTwoChild {
     T data; /// Node Data
     NodeTwoChild* left; /// Node left child
     NodeTwoChild* right; /// Node right child
