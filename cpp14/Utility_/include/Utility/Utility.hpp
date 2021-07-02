@@ -25,15 +25,16 @@ using INTEGER = int64_t;
  * @brief Exception class for the project.
 */
 class exception : public std::exception {
-   std::string s; /// Exception message string
-public:
-   explicit exception(std::string ss): s(ss) { ; }
-   ~exception() throw() { ; }
-   const char* what() const throw() { return ("Exception: " + s).c_str(); }
+    std::string s;  /// Exception message string
+ public:
+    explicit exception(std::string ss): s(ss) { ; }
+    ~exception() throw() { ; }
+    const char* what() const throw() { return ("Exception: " + s).c_str(); }
 };
-#define ENABLE_IF(condition, type_) typename std::enable_if<condition, type_>::type
+#define ENABLE_IF(condition, type_) typename std::enable_if_t<condition, type_>
 #define IS_SAME(a, b) std::is_same<a, b>::value
+enum Imple_Type {Array, LinkedList};
 
-} // namespace self
+}  // namespace self
 
 #endif

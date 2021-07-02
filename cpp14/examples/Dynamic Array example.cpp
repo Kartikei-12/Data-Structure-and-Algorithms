@@ -12,7 +12,7 @@ int main(int argc, char const *argv[]) {
     self::DynamicArray<int> dynamic_array;
     dynamic_array = {1, 2};
     dynamic_array.append(25);
-    for (int i:dynamic_array) {
+    for (int i : dynamic_array) {
         std::cout << i << std::endl;
     }
     return 0;

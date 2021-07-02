@@ -13,11 +13,12 @@ namespace self {
 
 template <typename T>
 class SinglyLinkedListTest : public ::testing::Test {
-public:
+ public:
     T obj0; T obj1; T obj2; T obj3;
     T obj_1; T obj_2; T objA; T objB;
     T* arr;
-    // All T object is independently defined because for same types T a, b placment,
+    // All T object is independently defined,
+    // because for same types T a, b placment,
     // may change meaning, for example pointer types
     INTEGER size, setIndex, largeIndex = 100, negativeIndex = -16;
     self::SinglyLinkedList<T> sll;
@@ -68,12 +69,15 @@ public:
 
     // Other Case
     template<class Q = T>
-    ENABLE_IF(!IS_SAME(Q, char) && !IS_SAME(Q, INTEGER) && !IS_SAME(Q, UDTfT), void)
+    ENABLE_IF(
+        !IS_SAME(Q,    char) &&
+        !IS_SAME(Q, INTEGER) &&
+        !IS_SAME(Q,   UDTfT),
+    void)
     initialize_dependent() {
         throw exception(
             "Unrecognized type for Singly Linked List Test:" +
-            std::string(typeid(Q()).name())
-        );
+            std::string(typeid(Q()).name()));
     }
     void initialize_independent() { ; }
     void SetUp() override { initialize_dependent(); initialize_independent(); }
@@ -105,24 +109,27 @@ TYPED_TEST_P(SinglyLinkedListTest, getInvalidIndexTest) {
 TYPED_TEST_P(SinglyLinkedListTest, setTest) {
     this -> sll.set(this -> objA, this -> setIndex);
     EXPECT_EQ(this -> sll.get(this -> setIndex), this -> objA);
-    EXPECT_THROW(this -> sll.set(this -> objA, this -> negativeIndex), exception);
-    EXPECT_THROW(this -> sll.set(this -> objA, this -> largeIndex), exception);
+    EXPECT_THROW(this->sll.set(this->objA, this->negativeIndex), exception);
+    EXPECT_THROW(this->sll.set(this->objA, this->largeIndex), exception);
 }
 TYPED_TEST_P(SinglyLinkedListTest, addInvalidIndexTest) {
-    EXPECT_THROW(this -> sll.add(this -> objA, this -> negativeIndex), exception);
-    EXPECT_THROW(this -> sll.add(this -> objA, this -> largeIndex), exception);
+    EXPECT_THROW(this->sll.add(this->objA, this->negativeIndex), exception);
+    EXPECT_THROW(this->sll.add(this->objA, this->largeIndex), exception);
 }
 TYPED_TEST_P(SinglyLinkedListTest, addTest) {
     this -> sll.add(this -> objA, this -> setIndex);
     EXPECT_EQ(this -> sll.get(this -> setIndex), this -> objA);
+    EXPECT_EQ(this -> sll.size(), this -> size + 1);
 }
 TYPED_TEST_P(SinglyLinkedListTest, appendTest) {
     this -> sll.append(this -> objA);
     EXPECT_EQ(this -> sll.get(this -> size), this -> objA);
+    EXPECT_EQ(this -> sll.size(), this -> size + 1);
 }
 TYPED_TEST_P(SinglyLinkedListTest, addFirstTest) {
     this -> sll.add_first(this -> objA);
     EXPECT_EQ(this -> sll.get(0), this -> objA);
+    EXPECT_EQ(this -> sll.size(), this -> size + 1);
 }
 TYPED_TEST_P(SinglyLinkedListTest, findTest) {
     EXPECT_EQ(this -> sll.find(this -> obj1), 01);
@@ -134,15 +141,16 @@ TYPED_TEST_P(SinglyLinkedListTest, removeTest) {
     EXPECT_TRUE(this -> sll.contains(this -> obj3));
     EXPECT_TRUE(this -> sll.remove(this -> obj3));
     EXPECT_FALSE(this -> sll.contains(this -> obj3));
+    EXPECT_EQ(this -> sll.size(), this -> size - 1);
 }
 TYPED_TEST_P(SinglyLinkedListTest, iteratorTest) {
     INTEGER ii = 0;
-    for (TypeParam ele:this -> sll) {
+    for (TypeParam ele : this -> sll) {
         ASSERT_EQ(ele, this -> arr[ii++]);
     }
 }
 TYPED_TEST_P(SinglyLinkedListTest, iteratorInvalidationTest) {
-    typename self::SinglyLinkedList<TypeParam>::iterator ii = this -> sll.begin();
+    typename self::SinglyLinkedList<TypeParam>::iterator ii = this->sll.begin();
     this -> sll.append(this -> obj0);
     EXPECT_THROW(ii != this -> sll.end(), self::exception);
 }
@@ -163,6 +171,9 @@ REGISTER_TYPED_TEST_SUITE_P(SinglyLinkedListTest,
     iteratorTest,
     iteratorInvalidationTest
 );
-INSTANTIATE_TYPED_TEST_SUITE_P(SinglyLinkedListTestPrefix, SinglyLinkedListTest, TestTypes);
+INSTANTIATE_TYPED_TEST_SUITE_P(
+    SinglyLinkedListTestPrefix,
+    SinglyLinkedListTest,
+    TestTypes);
 
-} // namespace self
+}  // namespace self

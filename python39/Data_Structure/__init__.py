@@ -6,3 +6,4 @@ __author__ = "Kartikei Mittal"
 
 from .DynamicArray import DynamicArray
 from .SinglyLinkedList import SinglyLinkedList
+from .Heap import Heap

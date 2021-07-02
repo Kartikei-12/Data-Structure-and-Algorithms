@@ -1,13 +1,13 @@
-# @author: Kartikei Mittal
-# @email: kartikeimittal@gmail.com
-# Testing Dynamic Array
+"""@author: Kartikei Mittal
+@email: kartikeimittal@gmail.com
+Testing Dynamic Array"""
 
 __author__ = "Kartikei Mittal"
 
 import unittest
 from parameterized import parameterized_class, parameterized
-from utility import UDTfT
 from Data_Structure import DynamicArray
+from utility import UDTfT
 
 @parameterized_class([{
     "size": 8, "set_index": 7,
@@ -32,11 +32,14 @@ from Data_Structure import DynamicArray
     "arr": list(),
     "objA": UDTfT(51, '*', 16.5),
     "obj0": UDTfT(1, 'a', 2.5), "obj2": UDTfT(3, 'c', 7.5),
-    "obj_1": UDTfT(12, 'l', 30.0), "obj_2": UDTfT(11, 'k', 27.5)    
-}], class_name_func = lambda cls, num, params_dict: cls.__name__ + '.' + parameterized.to_safe_name(params_dict["type_"]))
+    "obj_1": UDTfT(12, 'l', 30.0), "obj_2": UDTfT(11, 'k', 27.5)
+}], class_name_func = lambda cls, num, params_dict:
+    cls.__name__ + '.' +
+    parameterized.to_safe_name(params_dict["type_"])
+)
 class DynamicArrayTest(unittest.TestCase):
     """Dynamic Array Test Class"""
-    
+
     def setUp(self):
         """Dynamic Array Test Set Up"""
         self.arr_ = DynamicArray()
@@ -51,7 +54,8 @@ class DynamicArrayTest(unittest.TestCase):
 
     def test_counstructorException(self):
         """Counstructor Exceptuion Test"""
-        with self.assertRaises(ValueError) as _: DynamicArray(-1)
+        with self.assertRaises(ValueError) as _:
+            DynamicArray(-1)
     def test_size(self):
         """Size Test"""
         self.assertEqual(len(self.arr_), self.size_)
@@ -67,15 +71,19 @@ class DynamicArrayTest(unittest.TestCase):
         """Testing setter method"""
         self.arr_.setValue(self.set_index, self.objA)
         self.assertEqual(self.arr_[self.set_index], self.objA)
-        with self.assertRaises(ValueError) as _: self.arr_.setValue(self.neg_index, self.objA)
-        with self.assertRaises(ValueError) as _: self.arr_.setValue(self.large_index, self.objA)
+        with self.assertRaises(ValueError) as _:
+            self.arr_.setValue(self.neg_index, self.objA)
+        with self.assertRaises(ValueError) as _:
+            self.arr_.setValue(self.large_index, self.objA)
     def test_add(self):
         """Testing add method"""
         self.arr_.add(self.size_ - 1, self.objA)
         self.assertEqual(self.arr_[self.size_ - 1], self.objA)
         self.assertEqual(self.arr_[self.size_], self.obj_1)
-        with self.assertRaises(ValueError) as _: self.arr_.add(self.neg_index, self.objA)
-        with self.assertRaises(ValueError) as _: self.arr_.add(self.large_index, self.objA)
+        with self.assertRaises(ValueError) as _:
+            self.arr_.add(self.neg_index, self.objA)
+        with self.assertRaises(ValueError) as _:
+            self.arr_.add(self.large_index, self.objA)
     def test_find(self):
         """Testing Find"""
         self.assertEqual(self.arr_.find(self.obj2),  2)
@@ -98,8 +106,9 @@ class DynamicArrayTest(unittest.TestCase):
         """Testing for Iterator Invalidation"""
         obj = iter(self.arr_)
         self.arr_.append(self.objA)
-        with self.assertRaises(ValueError) as _: _ = next(obj)
-    
+        with self.assertRaises(ValueError) as _:
+            _ = next(obj)
+
     def tearDown(self):
         """Dynamic Array Test Tear Down"""
         del self.arr_

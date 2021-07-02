@@ -13,7 +13,7 @@ namespace self {
 
 template <typename T>
 class StackTest : public ::testing::Test {
-public:
+ public:
     T_base objA; T_base objB;
     T_base* arr; T_base top1;
     T_main st;
@@ -21,7 +21,10 @@ public:
 
     // INTEGER Case
     template<class Q = T_main>
-    ENABLE_IF(IS_SAME(Q, StackArray<INTEGER>) || IS_SAME(Q, StackLinkedList<INTEGER>), void)
+    ENABLE_IF((
+        std::is_same<Q, Stack<INTEGER, /* */Array>>::value ||
+        std::is_same<Q, Stack<INTEGER, LinkedList>>::value),
+    void)
     initialize_dependent() {
         objA = 12; objB = 16; top1 = 1;
         T_base _arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
@@ -32,10 +35,15 @@ public:
 
     // char Case
     template<class Q = T_main>
-    ENABLE_IF(IS_SAME(Q, StackArray<char>) || IS_SAME(Q, StackLinkedList<char>), void)
+    ENABLE_IF((
+        std::is_same<Q, Stack<char, /* */Array>>::value ||
+        std::is_same<Q, Stack<char, LinkedList>>::value),
+    void)
     initialize_dependent() {
         objA = 'n'; objB = 'p';
-        T_base _arr[] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l'};
+        T_base _arr[] = {'a', 'b', 'c', 'd',
+                'e', 'f', 'g', 'h',
+                'i', 'j', 'k', 'l'};
         size = sizeof(_arr) / sizeof(_arr[0]);
         arr = new T_base[size];
         std::copy(_arr, _arr + size, arr);
@@ -43,7 +51,10 @@ public:
 
     // UDTfT Case
     template<class Q = T_main>
-    ENABLE_IF(IS_SAME(Q, StackArray<UDTfT>) || IS_SAME(Q, StackLinkedList<UDTfT>), void)
+    ENABLE_IF((
+        std::is_same<Q, Stack<UDTfT, /* */Array>>::value ||
+        std::is_same<Q, Stack<UDTfT, LinkedList>>::value),
+    void)
     initialize_dependent() {
         objA.set(51, 'z', 16.0); objB.set(25, 'y', 14.0);
         size = 8;
@@ -57,11 +68,14 @@ public:
 
     // Other Case
     template<class Q = T_main>
-    ENABLE_IF(
-        !IS_SAME(Q, StackArray<   char>) && !IS_SAME(Q, StackLinkedList<   char>) &&
-        !IS_SAME(Q, StackArray<  UDTfT>) && !IS_SAME(Q, StackLinkedList<  UDTfT>) &&
-        !IS_SAME(Q, StackArray<INTEGER>) && !IS_SAME(Q, StackLinkedList<INTEGER>)
-    , void)
+    ENABLE_IF((
+        !std::is_same<Q, Stack<   char,      Array>>::value &&
+        !std::is_same<Q, Stack<   char, LinkedList>>::value &&
+        !std::is_same<Q, Stack<INTEGER,      Array>>::value &&
+        !std::is_same<Q, Stack<INTEGER, LinkedList>>::value &&
+        !std::is_same<Q, Stack<  UDTfT,      Array>>::value &&
+        !std::is_same<Q, Stack<  UDTfT, LinkedList>>::value),
+    void)
     initialize_dependent() {
         throw exception(
             "Unrecognized type for Stack Test:" +
@@ -86,6 +100,7 @@ TYPED_TEST_P(StackTest, pushTest) {
     EXPECT_EQ(this -> st.top(), this -> objA);
     this -> st.push(this -> objB);
     EXPECT_EQ(this -> st.top(), this -> objB);
+    EXPECT_EQ(this -> st.size(), 2);
 }
 TYPED_TEST_P(StackTest, popTest) {
     this -> st.push(this -> objA);
@@ -93,6 +108,7 @@ TYPED_TEST_P(StackTest, popTest) {
     EXPECT_EQ(this -> st.top(), this -> objB);
     EXPECT_EQ(this -> st.pop(), this -> objB);
     EXPECT_EQ(this -> st.pop(), this -> objA);
+    EXPECT_EQ(this -> st.size(), 0);
 }
 TYPED_TEST_P(StackTest, iteratorTest) {
     INTEGER index = 0;
@@ -113,13 +129,13 @@ REGISTER_TYPED_TEST_SUITE_P(
 );
 
 using StackTestTypes = ::testing::Types<
-    Encapsulation<     StackArray<INTEGER>, INTEGER>,
-    Encapsulation<StackLinkedList<INTEGER>, INTEGER>,
-    Encapsulation<     StackArray<   char>,    char>,
-    Encapsulation<StackLinkedList<   char>,    char>,
-    Encapsulation<     StackArray<  UDTfT>,   UDTfT>,
-    Encapsulation<StackLinkedList<  UDTfT>,   UDTfT>
+    Encapsulation<Stack<INTEGER, /* */Array>, INTEGER>,
+    Encapsulation<Stack<INTEGER, LinkedList>, INTEGER>,
+    Encapsulation<Stack<   char, /* */Array>,    char>,
+    Encapsulation<Stack<   char, LinkedList>,    char>,
+    Encapsulation<Stack<  UDTfT, /* */Array>,   UDTfT>,
+    Encapsulation<Stack<  UDTfT, LinkedList>,   UDTfT>
 >;
 INSTANTIATE_TYPED_TEST_SUITE_P(StackTestPrefix, StackTest, StackTestTypes);
 
-} // namespace self
+}  // namespace self

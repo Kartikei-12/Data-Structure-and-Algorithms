@@ -13,11 +13,12 @@ namespace self {
 
 template <typename T>
 class DynamicArrayTest : public ::testing::Test {
-public:
+ public:
     T obj0; T obj1; T obj2; T obj3;
     T obj_1; T obj_2; T objA;
     T* arr;
-    // All T object is independently defined because for same types T a, b placment,
+    // All T object is independently defined,
+    // because for same types T a, b placment,
     // may change meaning, for example pointer types
     INTEGER size, setIndex, largeIndex = 100, negativeIndex = -16;
     self::DynamicArray<T> da;
@@ -68,12 +69,13 @@ public:
 
     // Other Case
     template<class Q = T>
-    ENABLE_IF(!IS_SAME(Q, char) && !IS_SAME(Q, INTEGER) && !IS_SAME(Q, UDTfT), void)
+    ENABLE_IF(
+        !IS_SAME(Q, char) && !IS_SAME(Q, INTEGER)
+        && !IS_SAME(Q, UDTfT), void)
     initialize_dependent() {
         throw exception(
             "Unrecognized type for Dynamic Array Test:" +
-            std::string(typeid(Q()).name())
-        );
+            std::string(typeid(Q()).name()));
     }
 
     void initialize_independent() { ; }
@@ -106,8 +108,8 @@ TYPED_TEST_P(DynamicArrayTest, getInvalidIndexTest) {
 TYPED_TEST_P(DynamicArrayTest, setTest) {
     this -> da.set(this -> objA, this -> setIndex);
     EXPECT_EQ(this -> da.get(this -> setIndex), this -> objA);
-    EXPECT_THROW(this -> da.set(this -> objA, this -> negativeIndex), exception);
-    EXPECT_THROW(this -> da.set(this -> objA, this -> largeIndex), exception);
+    EXPECT_THROW(this -> da.set(this -> objA, this->negativeIndex), exception);
+    EXPECT_THROW(this -> da.set(this -> objA, this->largeIndex), exception);
 }
 TYPED_TEST_P(DynamicArrayTest, setUsingGetTest) {
     this -> da[this -> setIndex] = this -> objA;
@@ -121,8 +123,8 @@ TYPED_TEST_P(DynamicArrayTest, addTest) {
     EXPECT_EQ(this -> da.get((this -> size) - 1), this -> objA);
     EXPECT_EQ(this -> da.get(this -> size), this -> obj_1);
     EXPECT_EQ(this -> da.size(), this -> size + 1);
-    EXPECT_THROW(this -> da.add(this -> objA, this -> negativeIndex), exception);
-    EXPECT_THROW(this -> da.add(this -> objA, this -> largeIndex), exception);
+    EXPECT_THROW(this -> da.add(this -> objA, this->negativeIndex), exception);
+    EXPECT_THROW(this -> da.add(this -> objA, this->largeIndex), exception);
 }
 TYPED_TEST_P(DynamicArrayTest, findTest) {
     EXPECT_EQ(this -> da.find(this -> obj1), 01);
@@ -138,7 +140,7 @@ TYPED_TEST_P(DynamicArrayTest, removeTest) {
 }
 TYPED_TEST_P(DynamicArrayTest, iteratorTest) {
     INTEGER ii = 0;
-    for (TypeParam ele:this -> da) {
+    for (TypeParam ele : this -> da) {
         ASSERT_EQ(ele, this -> arr[ii++]);
     }
 }
@@ -162,6 +164,9 @@ REGISTER_TYPED_TEST_SUITE_P(DynamicArrayTest,
     iteratorTest,
     iteratorInvalidationTest
 );
-INSTANTIATE_TYPED_TEST_SUITE_P(DynamicArrayTestPrefix, DynamicArrayTest, TestTypes);
+INSTANTIATE_TYPED_TEST_SUITE_P(
+    DynamicArrayTestPrefix,
+    DynamicArrayTest,
+    TestTypes);
 
-} // namespace self
+}  // namespace self

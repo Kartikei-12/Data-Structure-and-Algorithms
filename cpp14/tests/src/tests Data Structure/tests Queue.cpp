@@ -13,20 +13,26 @@ namespace self {
 
 template <typename T>
 class QueueTest : public ::testing::Test {
-public:
+ public:
     T_base objA; T_base objB;
     T_base* arr;
-    // All T object is independently defined because for same types T a, b placment,
+    // All T object is independently defined,
+    // because for same types T a, b placment,
     // may change meaning, for example pointer types
     T_main que;
     INTEGER size;
 
     // char Case
     template<class Q = T_main>
-    ENABLE_IF(IS_SAME(Q, QueueArray<char>) || IS_SAME(Q, QueueLinkedList<char>), void)
+    ENABLE_IF((
+        std::is_same<Q, Queue<char,      Array>>::value ||
+        std::is_same<Q, Queue<char, LinkedList>>::value),
+    void)
     initialize_dependent() {
         objA = 'n'; objB = 'p';
-        T_base _arr[] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l'};
+        T_base _arr[] = {'a', 'b', 'c', 'd',
+                'e', 'f', 'g', 'h',
+                'i', 'j', 'k', 'l'};
         size = sizeof(_arr) / sizeof(_arr[0]);
         arr = new T_base[size];
         std::copy(_arr, _arr + size, arr);
@@ -34,7 +40,10 @@ public:
 
     // INTEGER Case
     template<class Q = T_main>
-    ENABLE_IF(IS_SAME(Q, QueueArray<INTEGER>) || IS_SAME(Q, QueueLinkedList<INTEGER>), void)
+    ENABLE_IF((
+        std::is_same<Q, Queue<INTEGER,      Array>>::value ||
+        std::is_same<Q, Queue<INTEGER, LinkedList>>::value),
+    void)
     initialize_dependent() {
         objA = 12; objB = 16;
         T_base _arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
@@ -45,7 +54,10 @@ public:
 
     // UDTfT Case
     template<class Q = T_main>
-    ENABLE_IF(IS_SAME(Q, QueueArray<UDTfT>) || IS_SAME(Q, QueueLinkedList<UDTfT>), void)
+    ENABLE_IF((
+        std::is_same<Q, Queue<UDTfT,      Array>>::value ||
+        std::is_same<Q, Queue<UDTfT, LinkedList>>::value),
+    void)
     initialize_dependent() {
         objA.set(51, 'z', 16.0); objB.set(25, 'y', 14.0);
         size = 8;
@@ -59,16 +71,18 @@ public:
 
     // Other Case
     template<class Q = T_main>
-    ENABLE_IF(
-        !IS_SAME(Q, QueueArray<   char>) && !IS_SAME(Q, QueueLinkedList<   char>) &&
-        !IS_SAME(Q, QueueArray<  UDTfT>) && !IS_SAME(Q, QueueLinkedList<  UDTfT>) &&
-        !IS_SAME(Q, QueueArray<INTEGER>) && !IS_SAME(Q, QueueLinkedList<INTEGER>)
+    ENABLE_IF((
+        !std::is_same<Q, Queue<   char,      Array>>::value &&
+        !std::is_same<Q, Queue<   char, LinkedList>>::value &&
+        !std::is_same<Q, Queue<INTEGER,      Array>>::value &&
+        !std::is_same<Q, Queue<INTEGER, LinkedList>>::value &&
+        !std::is_same<Q, Queue<  UDTfT,      Array>>::value &&
+        !std::is_same<Q, Queue<  UDTfT, LinkedList>>::value)
     , void)
     initialize_dependent() {
         throw exception(
             "Unrecognized type for Queue Test:" +
-            std::string(typeid(Q()).name())
-        );
+            std::string(typeid(Q()).name()));
     }
 
     void initialize_independent() { ; }
@@ -90,6 +104,7 @@ TYPED_TEST_P(QueueTest, push_popTest) {
     EXPECT_EQ(this -> que.top(), this -> objA);
     EXPECT_EQ(this -> que.pop(), this -> objA);
     EXPECT_EQ(this -> que.top(), this -> objB);
+    EXPECT_EQ(this -> que.size(), 1);
 }
 TYPED_TEST_P(QueueTest, rotationTest) {
     this -> que.push(this -> objA);
@@ -124,13 +139,13 @@ REGISTER_TYPED_TEST_SUITE_P(QueueTest,
 );
 
 using QueueTestTypes = ::testing::Types<
-    Encapsulation<     QueueArray<INTEGER>, INTEGER>,
-    Encapsulation<QueueLinkedList<INTEGER>, INTEGER>,
-    Encapsulation<     QueueArray<   char>,    char>,
-    Encapsulation<QueueLinkedList<   char>,    char>,
-    Encapsulation<     QueueArray<  UDTfT>,   UDTfT>,
-    Encapsulation<QueueLinkedList<  UDTfT>,   UDTfT>
+    Encapsulation<Queue<INTEGER,      Array>, INTEGER>,
+    Encapsulation<Queue<INTEGER, LinkedList>, INTEGER>,
+    Encapsulation<Queue<   char,      Array>,    char>,
+    Encapsulation<Queue<   char, LinkedList>,    char>,
+    Encapsulation<Queue<  UDTfT,      Array>,   UDTfT>,
+    Encapsulation<Queue<  UDTfT, LinkedList>,   UDTfT>
 >;
 INSTANTIATE_TYPED_TEST_SUITE_P(QueueTestPrefix, QueueTest, QueueTestTypes);
 
-} // namespace self
+}  // namespace self

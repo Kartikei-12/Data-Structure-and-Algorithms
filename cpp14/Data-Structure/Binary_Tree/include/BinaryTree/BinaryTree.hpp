@@ -29,20 +29,17 @@ namespace self {
 template <typename T>
 class BinaryTree
 {protected:
-    typedef NodeTwoChild<T>* TreeNodePtr; /// @typedef TreeNodePtr
-    INTEGER count; /// count Number of nodes in binary tree
-    TreeNodePtr root; /// Node Pointer to root
-
+    typedef NodeTwoChild<T>* TreeNodePtr;  /// @typedef TreeNodePtr
+    INTEGER count;  /// count Number of nodes in binary tree
+    TreeNodePtr root;  /// Node Pointer to root
     /**
      * @brief Default find member function.
      * @param element Element to look for
      * @param curr Current node to search
      * @return Node data found at
     */
-    virtual TreeNodePtr find(T& element, TreeNodePtr curr) {
-        if (curr -> getData() == element) {
-            return curr;
-        }
+    virtual TreeNodePtr find(const T& element, TreeNodePtr curr) {
+        if (curr -> getData() == element) { return curr; }
         TreeNodePtr temp = nullptr;
         temp = find(element, curr -> getLeft());
         if (temp != nullptr) { return temp; }
@@ -50,7 +47,6 @@ class BinaryTree
         if (temp != nullptr) { return temp; }
         return nullptr;
     }
-
     /**
      * @brief Recusive delete function.
      * @param curr Current Node to delete
@@ -62,10 +58,10 @@ class BinaryTree
             delete curr;
         }
     }
-public:
-    BinaryTree(): count(0), root(nullptr) { ; } /// Default Counstructor
-    ~BinaryTree() { _delete(root); count = 0;} /// Destructor
 
+ public:
+    BinaryTree(): count(0), root(nullptr) { ; }  /// Default Counstructor
+    ~BinaryTree() { _delete(root); count = 0;}  /// Destructor
     /**
      * @brief Checks for emptiness of binary tree.
      * @return bool True if tree empty, fals otherwise 
@@ -94,36 +90,41 @@ public:
         QueueLinkedList<TreeNodePtr> que;
         que.push(curr);
         while (!que.isEmpty()) {
-            nodeCount = que.size(); // Nodes in current Level
+            nodeCount = que.size();  // Nodes in current Level
             ++ans;
             while (nodeCount--) {
-            // For all nodes of Current Level, Remove them, Add their children if any(millennials you know)
+            // For all nodes of Current Level, Remove them,
+            // Add their children if any(millennials you know)
                 curr = que.pop();
-                if (curr -> getLeft() != nullptr) { que.push(curr -> getLeft()); }
-                if (curr -> getRight() != nullptr) { que.push(curr -> getRight()); }
+                if (curr -> getLeft()) { que.push(curr -> getLeft()); }
+                if (curr -> getRight()) { que.push(curr -> getRight()); }
             }
         }
         return ans;
     }
 
-    virtual void add(T element) = 0; /// Pure virtual function add
-    virtual bool remove(T element) = 0; /// Pure virtual function remove
-    virtual void operator=(std::initializer_list<T> list) = 0; /// Pure virtual function overload operator =
-    // =================================================   ITERATOR CLASSS    =================================================
-    // =================================================  INN ORDER ITERATOR  =================================================
-    // =================================================  PRE ORDER ITERATOR  =================================================
-    // ================================================= POST ORDER ITERATOR  =================================================
-    // ================================================= LEVEL ORDER ITERATOR =================================================
+    /// Pure virtual function add
+    virtual void add(T element) = 0;
+    /// Pure virtual function remove
+    virtual bool remove(T element) = 0;
+    /// Pure virtual function overload assignment = operator
+    virtual void operator=(std::initializer_list<T> list) = 0;
+    // =========================   ITERATOR CLASSS    =========================
+    // =========================  INN ORDER ITERATOR  =========================
+    // =========================  PRE ORDER ITERATOR  =========================
+    // ========================= POST ORDER ITERATOR  =========================
+    // ========================= LEVEL ORDER ITERATOR =========================
     /**
      * @class BinaryTree::iterator
      * @brief Binary Tree iterator class.
     */
     class iterator {
-        INTEGER nodeCount; /// Expected node count of tree
-        std::string itype; /// Type of iterator
-        StackArray<TreeNodePtr> stack; /// Stack
-        QueueArray<TreeNodePtr> que; /// Queue
-    public:
+        INTEGER nodeCount;  /// Expected node count of tree
+        std::string itype;  /// Type of iterator
+        Stack<TreeNodePtr, Array> stack;  /// Stack
+        QueueArray<TreeNodePtr> que;  /// Queue
+
+     public:
         /**
          * @brief Iterator class counstructor function.
          * @param nodeCount_ Initial node count of the tree
@@ -134,8 +135,7 @@ public:
         explicit iterator(
             INTEGER nodeCount_,
             TreeNodePtr curr = nullptr,
-            std::string itype_ = "END"
-        ):
+            std::string itype_ = "END"):
             itype(itype_), nodeCount(nodeCount_) {
             if (itype == "IN ORDER") {
                 while (curr != nullptr) {
@@ -166,8 +166,8 @@ public:
                 }
             } else if (itype == "PRE ORDER") {
                 curr = stack.pop();
-                if (curr -> getLeft() != nullptr) { stack.push(curr -> getLeft()); }
-                if (curr -> getRight() != nullptr) { stack.push(curr -> getRight()); }
+                if (curr -> getLeft()) { stack.push(curr -> getLeft()); }
+                if (curr -> getRight()) { stack.push(curr -> getRight()); }
             } else if (itype == "POST ORDER") {
                 curr = stack.pop();
                 if (stack.size() != 0 && curr != stack.top() -> getRight()) {
@@ -179,8 +179,8 @@ public:
                 }
             } else if (itype == "LEVEL ORDER") {
                 curr = que.pop();
-                if (curr -> getLeft() != nullptr) { que.push(curr -> getLeft()); }
-                if (curr -> getRight() != nullptr) { que.push(curr -> getRight()); }
+                if (curr -> getLeft()) { que.push(curr -> getLeft()); }
+                if (curr -> getRight()) { que.push(curr -> getRight()); }
             }
             return *this;
         }
@@ -200,7 +200,9 @@ public:
         */
         bool operator!=(const iterator & other) {
             if (itype == "END") { return false; }
-            if (nodeCount != other.nodeCount) { throw exception("BST Iterator Invalidation."); }
+            if (nodeCount != other.nodeCount) {
+                throw exception("BST Iterator Invalidation.");
+            }
             return isEnd();
         }
         /**
@@ -209,7 +211,7 @@ public:
          * @throw exception Accessing End iterator data
         */
         const T operator*() {
-            if (itype == "END") { throw exception("Access end iterator data."); }
+            if (itype == "END") { throw exception("End iterator data"); }
             if (itype == "LEVEL ORDER") { return que.top() -> getData(); }
             return stack.top() -> getData();
         }
@@ -221,5 +223,5 @@ public:
     // ======================================================================================================================
 };
 
-} // namespace self
+}  // namespace self
 #endif

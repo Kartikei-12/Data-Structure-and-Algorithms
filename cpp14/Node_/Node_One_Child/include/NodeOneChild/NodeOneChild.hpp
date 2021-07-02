@@ -21,9 +21,10 @@ namespace self {
  * @tparam T Type used for Node
 */
 template <typename T> class NodeOneChild {
-    T data; /// Node Data
-    NodeOneChild* next; /// Node Child
-public:
+    T data;  /// Node Data
+    NodeOneChild* next;  /// Node Child
+
+ public:
     /**
      * @brief Counstructor.
      * @param elem Data to be stored in node
@@ -51,5 +52,5 @@ public:
     void setNext(NodeOneChild* next_) { next = next_; }
 };
 
-} // namespace self
+}  // namespace self
 #endif

@@ -13,7 +13,7 @@ namespace self {
 
 template <typename T>
 class BinarySearchTreeTest : public ::testing::Test {
-public:
+ public:
     INTEGER size, height;
     T_main bst;
     T_base root; T_base obj_1;
@@ -28,8 +28,10 @@ public:
         root = 8; base = 1;
         objA = 16; obj_1 = 15;
         bst = {8, 4, 12, 2, 6, 10, 14, 1, 3, 5, 7, 9, 11, 13, 15};
-        pre =   new T_base[size]{8, 12, 14, 15, 13, 10, 11, 9, 4, 6, 7, 5, 2, 3, 1};
-        level = new T_base[size]{8, 4, 12, 2, 6, 10, 14, 1, 3, 5, 7, 9, 11, 13, 15};
+        pre = new T_base[size]
+            {8, 12, 14, 15, 13, 10, 11, 9, 4, 6, 7, 5, 2, 3, 1};
+        level = new T_base[size]
+            {8, 4, 12, 2, 6, 10, 14, 1, 3, 5, 7, 9, 11, 13, 15};
     }
 
     // char Case
@@ -54,13 +56,17 @@ public:
         root.set(15 + 1, 'a', 2.0); base.set(1, 'a', 2.0);
         objA.set(40, ' ', 5.0); obj_1.set(15, 'a', 2.0);
 
-        bst.add(UDTfT(16, 'a', 2.0)); bst.add(UDTfT(8,  'a', 2.0)); bst.add(UDTfT(20, 'a', 2.0));
-        bst.add(UDTfT(4,  'a', 2.0)); bst.add(UDTfT(12, 'a', 2.0)); bst.add(UDTfT(18, 'a', 2.0));
-        bst.add(UDTfT(21, 'a', 2.0)); bst.add(UDTfT(2,  'a', 2.0)); bst.add(UDTfT(6,  'a', 2.0));
-        bst.add(UDTfT(10, 'a', 2.0)); bst.add(UDTfT(14, 'a', 2.0)); bst.add(UDTfT(17, 'a', 2.0));
-        bst.add(UDTfT(19, 'a', 2.0)); bst.add(UDTfT(1,  'a', 2.0)); bst.add(UDTfT(3,  'a', 2.0));
-        bst.add(UDTfT(5,  'a', 2.0)); bst.add(UDTfT(7,  'a', 2.0)); bst.add(UDTfT(9,  'a', 2.0));
-        bst.add(UDTfT(11, 'a', 2.0)); bst.add(UDTfT(13, 'a', 2.0)); bst.add(UDTfT(15, 'a', 2.0));
+        bst.add(UDTfT(16, 'a', 2.0)); bst.add(UDTfT(8,  'a', 2.0));
+        bst.add(UDTfT(20, 'a', 2.0)); bst.add(UDTfT(4,  'a', 2.0));
+        bst.add(UDTfT(12, 'a', 2.0)); bst.add(UDTfT(18, 'a', 2.0));
+        bst.add(UDTfT(21, 'a', 2.0)); bst.add(UDTfT(2,  'a', 2.0));
+        bst.add(UDTfT(6,  'a', 2.0)); bst.add(UDTfT(10, 'a', 2.0));
+        bst.add(UDTfT(14, 'a', 2.0)); bst.add(UDTfT(17, 'a', 2.0));
+        bst.add(UDTfT(19, 'a', 2.0)); bst.add(UDTfT(1,  'a', 2.0));
+        bst.add(UDTfT(3,  'a', 2.0)); bst.add(UDTfT(5,  'a', 2.0));
+        bst.add(UDTfT(7,  'a', 2.0)); bst.add(UDTfT(9,  'a', 2.0));
+        bst.add(UDTfT(11, 'a', 2.0)); bst.add(UDTfT(13, 'a', 2.0));
+        bst.add(UDTfT(15, 'a', 2.0));
         pre = new T_base[size]{
             UDTfT(16, 'a', 2.0), UDTfT(8,  'a', 2.0), UDTfT(4,  'a', 2.0),
             UDTfT(2,  'a', 2.0), UDTfT(1,  'a', 2.0), UDTfT(3,  'a', 2.0),
@@ -91,8 +97,7 @@ public:
     initialize_dependent() {
         throw exception(
             "Unrecognized type for Binary Search Tree Test: " +
-            std::string(typeid(Q()).name())
-        );
+            std::string(typeid(Q()).name()));
     }
 
     void initialize_independent() { ; }
@@ -129,25 +134,33 @@ TYPED_TEST_P(BinarySearchTreeTest, removeTest) {
 }
 TYPED_TEST_P(BinarySearchTreeTest, inOrderIteratorTest) {
     INTEGER ii = 0;
-    for (typename TypeParam::main_::iterator i = this -> bst.begin("IN ORDER"); i != this -> bst.end(); ++i, ++ii) {
+    for (
+        typename TypeParam::main_::iterator i = this -> bst.begin("IN ORDER");
+        i != this -> bst.end(); ++i, ++ii) {
         EXPECT_EQ(*i, ((this -> base) + ii));
     }
 }
 TYPED_TEST_P(BinarySearchTreeTest, preOrderIteratorTest) {
     INTEGER ii = 0;
-    for (typename TypeParam::main_::iterator i = this -> bst.begin("PRE ORDER"); i != this -> bst.end(); ++i, ++ii) {
+    for (
+        typename TypeParam::main_::iterator i = this -> bst.begin("PRE ORDER");
+        i != this -> bst.end(); ++i, ++ii) {
         EXPECT_EQ(*i, this -> pre[ii]);
     }
 }
 TYPED_TEST_P(BinarySearchTreeTest, postOrderIteratorTest) {
     INTEGER ii = 0;
-    for (typename TypeParam::main_::iterator i = this -> bst.begin("POST ORDER"); i != this -> bst.end(); ++i, ++ii) {
+    for (
+        typename TypeParam::main_::iterator i = this -> bst.begin("POST ORDER");
+        i != this -> bst.end(); ++i, ++ii) {
         EXPECT_EQ(*i, this -> pre[this -> size - ii - 1]);
     }
 }
 TYPED_TEST_P(BinarySearchTreeTest, levelOrderIteratorTest) {
     INTEGER ii = 0;
-    for (typename TypeParam::main_::iterator i = this -> bst.begin("LEVEL ORDER"); i != this -> bst.end(); ++i, ++ii) {
+    for (
+        typename TypeParam::main_::iterator i = this->bst.begin("LEVEL ORDER");
+        i != this -> bst.end(); ++i, ++ii) {
         EXPECT_EQ(*i, this -> level[ii]);
     }
 }
@@ -175,6 +188,9 @@ using BinarySearchTreeTestTypes = ::testing::Types<
     Encapsulation<BinarySearchTree<   char,            void>,    char>,
     Encapsulation<BinarySearchTree<  UDTfT, ComparatorClass>,   UDTfT>
 >;
-INSTANTIATE_TYPED_TEST_SUITE_P(BinarySearchTreeTestPrefix, BinarySearchTreeTest, BinarySearchTreeTestTypes);
+INSTANTIATE_TYPED_TEST_SUITE_P(
+    BinarySearchTreeTestPrefix,
+    BinarySearchTreeTest,
+    BinarySearchTreeTestTypes);
 
-} // namespace self
+}  // namespace self

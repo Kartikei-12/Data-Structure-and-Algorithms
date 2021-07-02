@@ -21,35 +21,20 @@
 namespace self {
 
 /**
- * @class Queue
- * @brief Queue Template Class.
- * @tparam T Type used for Queue
-*/
-template <typename T> class Queue {
-public:
-    // Queue() {;}  Counstructor
-    virtual INTEGER size() = 0; /// Size of Queue
-    virtual bool isEmpty() = 0; /// Is Queue Empty
-    virtual void push(T data) = 0; /// Add Element to the queue
-    virtual T pop() = 0; /// Pop Element from queue
-    virtual T top() = 0; /// Top Elelement of queue
-};
-
-/**
  * @class QueueArray
  * @brief Queue Template Class, Using Array Implementation.
  * @tparam T Type used for Queue
 */
-template <typename T> class QueueArray : public Queue<T> {
-    static const INTEGER DEFAULT_CAPACITY = 8; /// Default Capacity of Queue
-    INTEGER front; /// Place to remove element from
-    INTEGER back; /// Place of NEXT element
-    INTEGER len, capacity; /// Length and Capacity of the Queue
-    T* st; /// Pointer to Queue Array
-public:
-    /**
-     * @brief Queue using Array Default Counstuctor.
-    */
+template <typename T>
+class QueueArray {
+    static const INTEGER DEFAULT_CAPACITY = 8;  /// Default Capacity of Queue
+    /// Place "to remove element from" and "of NEXT element"
+    INTEGER front, back;
+    INTEGER len, capacity;  /// Length and Capacity of the Queue
+    T* st;  /// Pointer to Queue Array
+
+ public:
+    /// Counstructor
     QueueArray():
         front(0), back(0), len(0),
         capacity(DEFAULT_CAPACITY), st(new T[DEFAULT_CAPACITY]) { ; }
@@ -113,17 +98,17 @@ public:
         if (len == 0) { throw exception("Queue Underflow."); }
         return st[front];
     }
-    // ========================================================== ITERATOR CLASS ======================================================
+    // ============================ ITERATOR CLASS ============================
     /**
      * @class QueueArray::iterator
      * @brief QueueArray iterator class.
     */
     class iterator {
-        bool traversed; /// Flag to mark traversal in empty queue
-        T *ptr; /// Pointer to Current element
-        T *begin_; /// Pointer to first element
-        T *end_; /// Pointer to last element
-    public:
+        bool traversed;  /// Flag to mark traversal in empty queue
+        T *ptr;  /// Pointer to Current element
+        T *begin_; T *end_;  /// Pointer to first and last element
+
+     public:
         /**
          * @brief Iterator Counstructor function.
          * @param ptr_ Pointer for Iterator
@@ -133,10 +118,10 @@ public:
         */
         iterator(
             T *ptr_,
-            T *b = NULL,
-            T *e = NULL,
-            INTEGER len_ = 0
-        ): ptr(ptr_), begin_(b), end_(e) { traversed = (len_ != 0); }
+            T *b = NULL, T *e = NULL,
+            INTEGER len_ = 0):
+            ptr(ptr_), begin_(b),
+            end_(e), traversed(len_ != 0) { ; }
         /**
          * @brief Iterator increment overload defination.
          * @return iterator Incremented iterator
@@ -165,11 +150,8 @@ public:
         */
         const T operator*() const { return *ptr; }
     };
-    /// Begin Iterator
     iterator begin() { return iterator(st + front, st, st + capacity, len); }
-    /// End Iterator
     iterator end() { return iterator(st + back); }
-    // ============================================================================================================================
 };
 
 /**
@@ -177,10 +159,12 @@ public:
  * @brief Queue Template Class, Using Linked List Implementation.
  * @tparam T Type used for Queue
 */
-template <typename T> class QueueLinkedList : public Queue<T> {
-    SinglyLinkedList<T> st; /// Linked List Member
-public:
-    QueueLinkedList() = default; /// Default Counstructor
+template <typename T>
+class QueueLinkedList {
+    SinglyLinkedList<T> st;  /// Linked List Member
+
+ public:
+    QueueLinkedList() = default;  /// Default Counstructor
     /**
      * @brief Expose size of Queue.
      * @return int Number of elements in Queue
@@ -216,19 +200,22 @@ public:
         if (st.isEmpty()) { throw exception("Queue Underflow."); }
         return st.get(0);
     }
-    // ========================================================== ITERATOR CLASS ======================================================
+    // ============================ ITERATOR CLASS ============================
     /**
      * @class QueueLinkedList::iterator
      * @brief QueueLinkedList iterator class.
     */
     class iterator {
-        typename SinglyLinkedList<T>::iterator ptr; /// Linked List Iterator
-    public:
+        /// Linked List Iterator
+        typename SinglyLinkedList<T>::iterator ptr;
+
+     public:
         /**
          * @brief Iterator counstructor.
          * @param ptr Linked List Iterator
         */
-        explicit iterator(typename SinglyLinkedList<T>::iterator ptr): ptr(ptr) { ; }
+        explicit iterator(typename SinglyLinkedList<T>::iterator ptr):
+            ptr(ptr) { ; }
         /**
          * @brief Iterator Increment operator
          * @return iterator Incremented Iterator
@@ -239,19 +226,23 @@ public:
          * @param other Other iterator to check inequality against
          * @return bool True if end of iteration is reached
         */
-        bool operator!=(const iterator &other) const { return ptr != other.ptr; }
+        bool operator!=(const iterator &other) { return ptr != other.ptr; }
         /**
          * @brief Element access overload method.
          * @return T Data at current pointer
         */
         const T operator*() const { return *ptr; }
     };
-    /// Begin Iterator
     iterator begin() { return iterator(st.begin()); }
-    /// End Iterator
     iterator end() { return iterator(st.end()); }
-    // ============================================================================================================================
 };
 
-} // namespace self
+template<typename T, Imple_Type impl_type>
+using Queue = std::conditional_t<
+        impl_type == Array, QueueArray<T>,
+    std::conditional_t<
+        impl_type == LinkedList, QueueLinkedList<T>,
+void>>;
+
+}  // namespace self
 #endif

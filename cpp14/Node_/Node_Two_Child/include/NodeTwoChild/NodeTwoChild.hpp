@@ -20,15 +20,17 @@ namespace self {
  * @tparam T Type used for Node
 */
 template <typename T> class NodeTwoChild {
-    T data; /// Node Data
-    NodeTwoChild* left; /// Node left child
-    NodeTwoChild* right; /// Node right child
-public:
+    T data;  /// Node Data
+    NodeTwoChild* left;  /// Node left child
+    NodeTwoChild* right;  /// Node right child
+
+ public:
     /**
      * @brief Counstructor.
      * @param elem Data to be stored in node
     */
-    explicit NodeTwoChild(T elem): data(elem), left(nullptr), right(nullptr) { ; }
+    explicit NodeTwoChild(T elem):
+        data(elem), left(nullptr), right(nullptr) { ; }
     /**
      * @brief Getter Method for data.
      * @return T Data in node
@@ -61,5 +63,5 @@ public:
     void setRight(NodeTwoChild* right_) { right = right_; }
 };
 
-} // namespace self
+}  // namespace self
 #endif

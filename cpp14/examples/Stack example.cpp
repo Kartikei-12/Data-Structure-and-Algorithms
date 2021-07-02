@@ -9,7 +9,7 @@
 
 int main(int argc, char const *argv[]) {
     std::cout << "Hello Stack Array!" << std::endl;
-    self::StackArray<int> st;
+    self::Stack<int, self::Array> st;
     for (int i = 1; i <= 10; ++i) {
         st.push(i);
     }
@@ -18,7 +18,7 @@ int main(int argc, char const *argv[]) {
     } std::cout << std::endl;
     // -----------------------------------------------------------------------------------
     std::cout << "Hello Stack Linked List!" << std::endl;
-    self::StackLinkedList<int> st_;
+    self::Stack<int, self::LinkedList> st_;
     for (int i = 1; i <= 10; ++i) {
         st_.push(i);
     }

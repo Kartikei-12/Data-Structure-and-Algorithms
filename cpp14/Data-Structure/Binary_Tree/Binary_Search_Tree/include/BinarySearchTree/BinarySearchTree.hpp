@@ -25,7 +25,7 @@ namespace self {
 */
 template <typename T, typename comprator_ = void>
 class BinarySearchTree: public BinaryTree<T> {
-    typedef NodeTwoChild<T>* TreeNodePtr; /// @typedef TreeNodePtr
+    typedef NodeTwoChild<T>* TreeNodePtr;  /// @typedef TreeNodePtr
 
     /**
      * @brief Comparator class enabled if comparator class supplied.
@@ -60,22 +60,18 @@ class BinarySearchTree: public BinaryTree<T> {
      * @param curr Current node to search
      * @return TreeNodePtr Pointer to node with required data
     */
-    TreeNodePtr find(T& element, TreeNodePtr curr) {
+    TreeNodePtr find(const T& element, TreeNodePtr curr) {
         curr = BinaryTree<T>::root;
         while (curr != nullptr) {
             if (element == curr -> getData()) {
-                return curr;
-            // Wally FOUND
+                return curr;  // Wally FOUND
             }
             if (compare(element, curr -> getData()) > 0) {
-                curr = curr -> getLeft();
-            // Move Left
+                curr = curr -> getLeft();  // Move Left
             } else {
-                curr = curr -> getRight();
-            // Move Right
+                curr = curr -> getRight();  // Move Right
             }
-        }
-        return nullptr; // NOT Found
+        } return nullptr;  // NOT Found
     }
     /**
      * @brief Find minimum child of given node.
@@ -112,9 +108,7 @@ class BinarySearchTree: public BinaryTree<T> {
             if (leftHeight < rightHeight) {
                 temp = findMinChild(curr -> getRight());
                 curr -> setData(temp -> getData());
-                curr -> setRight(
-                    remove(curr -> getRight(), curr -> getData())
-                );
+                curr -> setRight(remove(curr -> getRight(), curr -> getData()));
             } else {
                 temp = findMaxChild(curr -> getLeft());
                 curr -> setData(temp -> getData());
@@ -126,9 +120,9 @@ class BinarySearchTree: public BinaryTree<T> {
             curr -> setRight(remove(curr -> getRight(), element));
         } return curr;
     }
-public:
-    BinarySearchTree(): BinaryTree<T>() { ; } /// Counstrunctor
 
+ public:
+    BinarySearchTree(): BinaryTree<T>() { ; }  /// Counstrunctor
     /**
      * @brief Overload assignment operator.
      * @param list Brace enclosed list
@@ -136,7 +130,7 @@ public:
     void operator=(std::initializer_list<T> list) {
         BinaryTree<T>::_delete(BinaryTree<T>::root);
         BinaryTree<T>::root = nullptr;
-        for (T element: list) { add(element); }
+        for (T element : list) { add(element); }
     }
     /**
      * @brief Add method for Binary Search Tree
@@ -153,14 +147,12 @@ public:
                 if (curr -> getLeft() == nullptr) {
                     curr -> setLeft(new NodeTwoChild<T>(element));
                     break;
-                }
-                curr = curr -> getLeft();
+                } curr = curr -> getLeft();
             } else {
                 if (curr -> getRight() == nullptr) {
                     curr -> setRight(new NodeTwoChild<T>(element));
                     break;
-                }
-                curr = curr -> getRight();
+                } curr = curr -> getRight();
             }
         }
     }
@@ -177,5 +169,5 @@ public:
     }
 };
 
-} // namespace self
+}  // namespace self
 #endif

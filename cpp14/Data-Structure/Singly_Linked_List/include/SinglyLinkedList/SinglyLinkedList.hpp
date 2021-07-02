@@ -25,10 +25,11 @@ namespace self {
 */
 template <typename T>
 class SinglyLinkedList {
-    typedef NodeOneChild<T>* SLL_Node_ptr; /// Create Linked List Node Pointer
-    INTEGER len; /// Size of Linked List
-    SLL_Node_ptr head; SLL_Node_ptr tail; /// Pointer to head and tail
-public:
+    typedef NodeOneChild<T>* SLL_Node_ptr;  /// Create Linked List Node Pointer
+    INTEGER len;  /// Size of Linked List
+    SLL_Node_ptr head; SLL_Node_ptr tail;  /// Pointer to head and tail
+
+ public:
     /**
      * @brief Default Singly Linked List Counstructor.
     */
@@ -43,7 +44,11 @@ public:
         if (list_.size() == 0) { return ; }
         ++len;
         head = tail = new NodeOneChild<T>(*list_.begin());
-        for (typename std::initializer_list<T>::iterator i = list_.begin() + 1; i != list_.end(); ++i, ++len) {
+        for (
+            typename std::initializer_list<T>::iterator i = list_.begin() + 1;
+            i != list_.end();
+            ++i, ++len
+        ) {
             tail -> setNext(new NodeOneChild<T>(*i));
             tail = tail -> getNext();
         }
@@ -63,7 +68,7 @@ public:
         bool attempt = false;
         while (len > 0) {
             attempt = removeLast();
-            if (!attempt) { throw exception("Linked List integrity on destruction failed"); }
+            if (!attempt) { throw exception("Linked List Integrity Failed"); }
         }
     }
 
@@ -86,7 +91,9 @@ public:
     */
     T get(INTEGER index) {
         if (index < 0) { index += size(); }
-        if (index < 0 || index >= len) { throw exception("Illegal Index on length: " + std::to_string(len)); }
+        if (index < 0 || index >= len) {
+            throw exception("Illegal Index on length: " + std::to_string(len));
+        }
         SLL_Node_ptr curr = head;
         while (index--) {
             curr = curr -> getNext();
@@ -101,7 +108,9 @@ public:
     */
     T operator[](INTEGER index) { return get(index); }
     void set(T elem, INTEGER index) {
-        if (index < 0 || index >= len) { throw exception("Illegal Index on length: " + std::to_string(len)); }
+        if (index < 0 || index >= len) {
+            throw exception("Illegal Index on length: " + std::to_string(len));
+        }
         SLL_Node_ptr curr = head;
         while (index--) {
             curr = curr -> getNext();
@@ -115,7 +124,9 @@ public:
      * @throw exception If an invalid index is recieved
     */
     void add(T elem, INTEGER index) {
-        if (index < 0 || index >= len) { throw exception("Illegal Index for insertion on length: " + std::to_string(len)); }
+        if (index < 0 || index >= len) {
+            throw exception("Illegal Index Insertion: " + std::to_string(len));
+        }
         if (index == 0) {
             add_first(elem);
             return;
@@ -162,7 +173,11 @@ public:
     INTEGER find(T elem) {
         INTEGER ans = -1;
         SLL_Node_ptr curr = head;
-        for (INTEGER index = 0; index < len && curr != nullptr; ++index, curr = curr -> getNext()) {
+        for (
+            INTEGER index = 0;
+            index < len && curr != nullptr;
+            ++index, curr = curr -> getNext()
+        ) {
             if (curr -> getData() == elem) {
                 ans = index;
                 break;
@@ -181,14 +196,14 @@ public:
      * @return bool If successfull removal 
     */
     bool remove(T elem) {
-        if (head -> getData() == elem) { return removeFirst(); } // Found at Start
-        if (tail -> getData() == elem) { return removeLast(); } // Found at End
+        if (head -> getData() == elem) { return removeFirst(); }  // Found Start
+        if (tail -> getData() == elem) { return removeLast(); }  // Found End
         SLL_Node_ptr curr = head;
         SLL_Node_ptr curr_next = nullptr;
         while (curr -> getData() != elem && curr != nullptr) {
             curr = curr -> getNext();
         }
-        if (curr == nullptr) { return false; } // Not Found
+        if (curr == nullptr) { return false; }  // Not Found
         curr_next = curr -> getNext();
         curr -> setData(curr_next -> getData());
         curr -> setNext(curr_next -> getNext());
@@ -240,20 +255,22 @@ public:
         --len;
         return true;
     }
-    // ========================================================== ITERATOR CLASS ======================================================
+    // ============================ ITERATOR CLASS ========================
     /**
      * @class SinglyLinkedList::iterator
      * @brief Singly Linked List iterator class.
     */
     class iterator {
-        SLL_Node_ptr ptr_; SLL_Node_ptr end; /// Pointer to current and end
-    public:
+        SLL_Node_ptr ptr_; SLL_Node_ptr end;  /// Pointer to current and end
+
+     public:
         /**
          * @brief Iterator Counstructor
          * @param ptr Node Pointer
          * @param end_ Iterator to end
         */
-        explicit iterator(SLL_Node_ptr ptr, SLL_Node_ptr end_ = NULL): ptr_(ptr), end(end_) { ; }
+        explicit iterator(SLL_Node_ptr ptr, SLL_Node_ptr end_ = NULL):
+            ptr_(ptr), end(end_) { ; }
         /**
          * @brief Iterator increment overload defination.
          * @return iterator Incremented iterator
@@ -266,7 +283,9 @@ public:
          * @throw exception Iterator Invalidation exception
         */
         bool operator!=(const iterator & other) const {
-            if (end != other.ptr_) { throw exception("Iterator Invalidation."); }
+            if (end != other.ptr_) {
+                throw exception("Iterator Invalidation.");
+            }
             return ptr_ != other.ptr_;
         }
         /**
@@ -282,5 +301,5 @@ public:
     // ============================================================================================================================
 };
 
-} // namespace self
+}  // namespace self
 #endif

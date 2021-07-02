@@ -15,27 +15,37 @@ int main(int argc, char const *argv[]) {
     for (int i = 0; i < size; ++i) {
         tree.add(arr[i]);
     }
-    std::cout << std::endl << "--------------------------------------------------------------------" << std::endl;
+    std::cout << std::endl
+              << "------------------------------------------------------------"
+              << std::endl;
     std::cout << "IN order" << std::endl;
     for (auto i = tree.begin("IN ORDER"); !i.isEnd(); ++i) {
         std::cout << *i << ", ";
     }
-    std::cout << std::endl << "--------------------------------------------------------------------" << std::endl;
+    std::cout << std::endl
+              << "------------------------------------------------------------"
+              << std::endl;
     std::cout << "PRE order" << std::endl;
     for (auto i = tree.begin("PRE ORDER"); !i.isEnd(); ++i) {
         std::cout << *i << ", ";
     }
-    std::cout << std::endl << "--------------------------------------------------------------------" << std::endl;
+    std::cout << std::endl
+              << "------------------------------------------------------------"
+              << std::endl;
     std::cout << "POST order" << std::endl;
     for (auto i = tree.begin("POST ORDER"); !i.isEnd(); ++i) {
         std::cout << *i << ", ";
     }
-    std::cout << std::endl << "--------------------------------------------------------------------" << std::endl;
+    std::cout << std::endl
+              << "------------------------------------------------------------"
+              << std::endl;
     std::cout << "LEVEL order" << std::endl;
     for (auto i = tree.begin("LEVEL ORDER"); !i.isEnd(); ++i) {
         std::cout << *i << ", ";
     }
-    std::cout << std::endl << "--------------------------------------------------------------------" << std::endl;
+    std::cout << std::endl
+              << "------------------------------------------------------------"
+              << std::endl;
 
     std::cout << "Count: " << tree.size() << std::endl;
     std::cout << "Contains 1: " << tree.contains(1) << std::endl;
@@ -44,22 +54,30 @@ int main(int argc, char const *argv[]) {
 
 
     tree.remove(8);
-    std::cout << std::endl << "*******************************************************************" << std::endl;
+    std::cout << std::endl
+              << "------------------------------------------------------------"
+              << std::endl;
     std::cout << "IN order" << std::endl;
     for (auto i = tree.begin("IN ORDER"); !i.isEnd(); ++i) {
         std::cout << *i << ", ";
     }
-    std::cout << std::endl << "--------------------------------------------------------------------" << std::endl;
+    std::cout << std::endl
+              << "------------------------------------------------------------"
+              << std::endl;
     std::cout << "PRE order" << std::endl;
     for (auto i = tree.begin("PRE ORDER"); !i.isEnd(); ++i) {
         std::cout << *i << ", ";
     }
-    std::cout << std::endl << "--------------------------------------------------------------------" << std::endl;
+    std::cout << std::endl
+              << "------------------------------------------------------------"
+              << std::endl;
     std::cout << "POST order" << std::endl;
     for (auto i = tree.begin("POST ORDER"); !i.isEnd(); ++i) {
         std::cout << *i << ", ";
     }
-    std::cout << std::endl << "--------------------------------------------------------------------" << std::endl;
+    std::cout << std::endl
+              << "------------------------------------------------------------"
+              << std::endl;
 
     std::cout << "Count: " << tree.size() << std::endl;
     std::cout << "Contains 1: " << tree.contains(1) << std::endl;

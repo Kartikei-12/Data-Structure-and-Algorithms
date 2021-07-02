@@ -13,7 +13,7 @@ namespace self {
 
 template <typename T>
 class HeapTest : public ::testing::Test {
-public:
+ public:
     INTEGER size;
     T_main hp;
     T_base *arr;
@@ -31,11 +31,23 @@ public:
         top1 = (T::inverse)? 'p':'a';
         top2 = (T::inverse)? 'o':'b';
         objA = 'A'; objB = 'B';
-        hp = {'j', 'k', 'a', 'e', 'f', 'g', 'h', 'i', 'b', 'c', 'd', 'l', 'm', 'n', 'o', 'p'};
+        hp = {
+            'j', 'k', 'a', 'e',
+            'f', 'g', 'h', 'i',
+            'b', 'c', 'd', 'l',
+            'm', 'n', 'o', 'p'};
         if (T::inverse) {
-            arr = new T_base[size]{'p', 'k', 'o', 'j', 'f', 'm', 'n', 'i', 'b', 'c', 'd', 'l', 'g', 'a', 'h', 'e'};
+            arr = new T_base[size]
+                {'p', 'k', 'o', 'j',
+                'f', 'm', 'n', 'i',
+                'b', 'c', 'd', 'l',
+                'g', 'a', 'h', 'e'};
         } else {
-            arr = new T_base[size]{'a', 'b', 'g', 'e', 'c', 'j', 'h', 'i', 'k', 'f', 'd', 'l', 'm', 'n', 'o', 'p'};
+            arr = new T_base[size]
+                {'a', 'b', 'g', 'e',
+                'c', 'j', 'h', 'i',
+                'k', 'f', 'd', 'l',
+                'm', 'n', 'o', 'p'};
         }
     }
 
@@ -78,14 +90,10 @@ public:
             arr_[i] = arr[i] = obj;
         }
         if (T::inverse) {
-            arr[0] = arr_[7];
-            arr[1] = arr_[6];
-            arr[2] = arr_[5];
-            arr[3] = arr_[3];
-            arr[4] = arr_[2];
-            arr[5] = arr_[1];
-            arr[6] = arr_[4];
-            arr[7] = arr_[0];
+            arr[0] = arr_[7]; arr[1] = arr_[6];
+            arr[2] = arr_[5]; arr[3] = arr_[3];
+            arr[4] = arr_[2]; arr[5] = arr_[1];
+            arr[6] = arr_[4]; arr[7] = arr_[0];
         }
         delete [] arr_;
     }
@@ -93,18 +101,17 @@ public:
     // Other Case
     template<class Q = T_main>
     ENABLE_IF(
-        !(std::is_same<Q, Heap<INTEGER, false  /*                  */>>::value) &&
-        !(std::is_same<Q, Heap<INTEGER,  true  /*                  */>>::value) &&
-        !(std::is_same<Q, Heap<   char, false  /*                  */>>::value) &&
-        !(std::is_same<Q, Heap<   char,  true  /*                  */>>::value) &&
-        !(std::is_same<Q, Heap<  UDTfT, false,        ComparatorClass>>::value) &&
-        !(std::is_same<Q, Heap<  UDTfT,  true, InverseComparatorClass>>::value)
+      !(std::is_same<Q, Heap<INTEGER, false  /*                 */>>::value) &&
+      !(std::is_same<Q, Heap<INTEGER,  true  /*                 */>>::value) &&
+      !(std::is_same<Q, Heap<   char, false  /*                 */>>::value) &&
+      !(std::is_same<Q, Heap<   char,  true  /*                 */>>::value) &&
+      !(std::is_same<Q, Heap<  UDTfT, false,       ComparatorClass>>::value) &&
+      !(std::is_same<Q, Heap<  UDTfT,  true, InverseComparatorClass>>::value)
     , void)
     initialize_dependent() {
         throw exception(
             "Unrecognized type for Heap Test: " +
-            std::string(typeid(Q()).name())
-        );
+            std::string(typeid(Q()).name()));
     }
 
     void initialize_independent() { ; }
@@ -132,15 +139,18 @@ TYPED_TEST_P(HeapTest, addTest) {
     } else {
         EXPECT_EQ(this -> hp.top(), this -> objA);
     }
+    EXPECT_EQ(this -> hp.size(), this -> size + 1);
 }
 TYPED_TEST_P(HeapTest, popTest) {
     EXPECT_EQ(this -> hp.pop(), this -> top1);
     EXPECT_EQ(this -> hp.pop(), this -> top2);
+    EXPECT_EQ(this -> hp.size(), this -> size - 2);
 }
 TYPED_TEST_P(HeapTest, removeTest) {
     EXPECT_TRUE(this -> hp.find(this -> top2));
     EXPECT_TRUE(this -> hp.remove(this -> top2));
     EXPECT_EQ(this -> hp.find(this -> top2), -1);
+    EXPECT_EQ(this -> hp.size(), this -> size - 1);
 }
 TYPED_TEST_P(HeapTest, iteratorTest) {
     INTEGER index = 0;
@@ -166,13 +176,20 @@ REGISTER_TYPED_TEST_SUITE_P(HeapTest,
 );
 
 using HeapTestTypes = ::testing::Types<
-    Encapsulation<Heap<INTEGER, false  /*                  */>, INTEGER, false  /*                  */>,
-    Encapsulation<Heap<INTEGER,  true  /*                  */>, INTEGER,  true  /*                  */>,
-    Encapsulation<Heap<   char, false  /*                  */>,    char, false  /*                  */>,
-    Encapsulation<Heap<   char,  true  /*                  */>,    char,  true  /*                  */>,
-    Encapsulation<Heap<  UDTfT, false,        ComparatorClass>,   UDTfT, false,        ComparatorClass>,
-    Encapsulation<Heap<  UDTfT,  true, InverseComparatorClass>,   UDTfT,  true, InverseComparatorClass>
+    Encapsulation<
+        Heap<INTEGER, false>, INTEGER, false>,
+    Encapsulation<
+        Heap<INTEGER, true>, INTEGER, true>,
+    Encapsulation<
+        Heap<char, false >, char, false >,
+    Encapsulation<
+        Heap<char, true >, char, true>,
+    Encapsulation<
+        Heap<UDTfT, false, ComparatorClass>, UDTfT, false, ComparatorClass>,
+    Encapsulation<
+        Heap<UDTfT, true, InverseComparatorClass>,
+        UDTfT, true, InverseComparatorClass>
 >;
 INSTANTIATE_TYPED_TEST_SUITE_P(HeapTestPrefix, HeapTest, HeapTestTypes);
 
-} // namespace self
+}  // namespace self

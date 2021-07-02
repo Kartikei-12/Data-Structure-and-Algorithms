@@ -31,7 +31,8 @@ namespace self {
 */
 template <typename T, bool inverse = false, typename compare_ = void>
 class Heap {
-    static const INTEGER DEFAULT_CAPACITY = 16; /// Default capacity of the Heap
+    /// Default capacity of the Heap
+    static const INTEGER DEFAULT_CAPACITY = 16;
     /**
      * @brief Comparator class enabled if comparator class NOT supplied.
      * @tparam Q Used to route Compare Class.
@@ -46,10 +47,7 @@ class Heap {
     ENABLE_IF(IS_SAME(Q, void), INTEGER)
     campare(T a, T b) const {
         if (a == b) { return 0; }
-        if (inverse) {
-            return (a < b)? -1 : 1;
-        }
-        return (a < b)? 1 : -1;
+        return ((a < b)? 1 : -1) * ((inverse)? -1:1);
     }
     /**
      * @brief Comparator class enabled if comparator class supplied.
@@ -63,14 +61,12 @@ class Heap {
     */
     template<typename Q = compare_>
     ENABLE_IF(!IS_SAME(Q, void), INTEGER)
-    campare(T a, T b) const {
-        compare_ cmp;
-        return cmp(a, b);
-    }
+    campare(T a, T b) const { compare_ cmp; return cmp(a, b); }
 
-    INTEGER len, capacity; /// Length and Capacity of the Dynamic Array
-    T* hp; /// Heap
-public:
+    INTEGER len, capacity;  /// Length and Capacity of the Dynamic Array
+    T* hp;  /// Heap
+
+ public:
     /**
      * @brief Heap Default Counstructor.
     */
@@ -91,7 +87,8 @@ public:
     }
     /// Destructor
     ~Heap() { delete [] hp; len = 0; }
-private:
+
+ private:
     /**
      * @brief Element Swap method.
      * @param a Index of first element
@@ -109,7 +106,9 @@ private:
      * @retval -1 If no paraent
      * @retval (curr-1)/2 If paraent 
     */
-    static INTEGER getParentIndex(INTEGER curr) { return (curr != 0)? ((curr - 1) / 2) : -1; }
+    static INTEGER getParentIndex(INTEGER curr) {
+        return (curr != 0)? ((curr - 1) / 2) : -1;
+    }
     /**
      * @brief Static Method to get Left Child index.
      * @param curr Index of member
@@ -150,9 +149,12 @@ private:
      * @return bool True if Heap Invariant is satisfied
     */
     bool isHeapInvariant(INTEGER index) {
-        bool   par = (getParentIndex(index) >= 0  )? (campare(getParent(index), hp[index]      ) >= 0): true;
-        bool  left = (     getLeftIn(index) <  len)? (campare(hp[index]       , getLeft(index) ) >= 0): true;
-        bool right = (    getRightIn(index) <  len)? (campare(hp[index]       , getRight(index)) >= 0): true;
+        bool   par = (getParentIndex(index) >= 0)?
+            (campare(getParent(index), hp[index]) >= 0): true;
+        bool  left = (getLeftIn(index) < len)?
+            (campare(hp[index], getLeft(index) ) >= 0): true;
+        bool right = (getRightIn(index) < len)?
+            (campare(hp[index], getRight(index)) >= 0): true;
         return par && left && right;
     }
     /**
@@ -190,7 +192,8 @@ private:
     INTEGER settleDown(INTEGER index) {
         INTEGER child;
         if (getRightIn(index) < len) {
-            child = (campare(getRight(index), getLeft(index))>= 0)? getRightIn(index) : getLeftIn(index);
+            child = (campare(getRight(index), getLeft(index))>= 0)?
+                getRightIn(index) : getLeftIn(index);
         } else {
             child = getLeftIn(index);
         }
@@ -203,14 +206,18 @@ private:
     */
     void balance(INTEGER index) {
         while (!isHeapInvariant(index)) {
-            if (getParentIndex(index) >= 0 && campare(hp[index], getParent(index)) >= 0) {
+            if (
+                getParentIndex(index) >= 0 &&
+                campare(hp[index], getParent(index)) >= 0
+            ) {
                 index = bubbleUp(index);
             } else {
                 index = settleDown(index);
             }
         }
     }
-public:
+
+ public:
     /**
      * @brief Checks for emptiness of Heap.
      * @return bool True if array empty, fals otherwise 
@@ -296,18 +303,21 @@ public:
      * @return bool True Heap Invariant satisfied
     */
     bool isHeap(INTEGER index = 0) {
-        bool l = (getLeftIn(index) >= 0 && getLeftIn(index) < len)? isHeap(getLeftIn(index)):true;
-        bool r = (getRightIn(index) >= 0 && getRightIn(index) < len)? isHeap(getRightIn(index)):true;
+        bool l = (getLeftIn(index) >= 0 && getLeftIn(index) < len)?
+            isHeap(getLeftIn(index)):true;
+        bool r = (getRightIn(index) >= 0 && getRightIn(index) < len)?
+            isHeap(getRightIn(index)):true;
         return l && r;
     }
-    // ========================================================== ITERATOR CLASS ======================================================
+    // ============================= ITERATOR CLASS =========================
     /**
      * @class Heap::iterator
      * @brief Heap iterator class.
     */
     class iterator {
-        T *hp_; T *end; /// Current and End Pointer
-    public:
+        T *hp_; T *end;  /// Current and End Pointer
+
+     public:
         /**
          * @brief Iterator Counstructor
          * @param hp__ Heap Pointer
@@ -342,5 +352,5 @@ public:
     // ============================================================================================================================
 };
 
-} // namespace self
+}  // namespace self
 #endif

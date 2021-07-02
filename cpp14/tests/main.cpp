@@ -9,12 +9,13 @@
 
 int main(int argc, char **argv) {
     ::testing::InitGoogleTest(&argc, argv);
-    testing::TestEventListeners& listeners = testing::UnitTest::GetInstance()->listeners();
-    auto default_printer = listeners.Release(listeners.default_result_printer());
-    self::ConfigurableEventListener *listener = new self::ConfigurableEventListener(
+    testing::TestEventListeners& listeners = testing::
+        UnitTest::GetInstance()->listeners();
+    auto default_printer = listeners.Release(
+        listeners.default_result_printer());
+    auto *listener = new self::ConfigurableEventListener(
         default_printer,
-        false, false, false, true, true
-    );
+        false, false, false, true, true);
     listeners.Append(listener);
     return RUN_ALL_TESTS();
 }

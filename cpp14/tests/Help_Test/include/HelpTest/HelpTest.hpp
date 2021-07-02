@@ -22,10 +22,11 @@ namespace self {
  * @brief User Defined Data Type for Testing.
 */
 class UDTfT {
-    int a; /// int a
-    char b; /// char b
-    double c; /// char c
-public:
+    int a;  /// int a
+    char b;  /// char b
+    double c;  /// char c
+
+ public:
     /// Counstructor
     UDTfT(int a_ = 0, char b_ = ' ', double c_ = 1.5);
     /// Copy Counstructor
@@ -100,7 +101,11 @@ struct InverseComparatorClass {
  * @tparam inverse_ Wheather to inverse comparator
  * @tparam comparator_ Coustom comparatoe
 */
-template<typename A, typename B, bool inverse_ = false, typename comparator_ = void>
+template<
+    typename A, typename B,
+    bool inverse_ = false,
+    typename comparator_ = void
+>
 struct Encapsulation {
     typedef A main_;
     typedef B base_;
@@ -113,21 +118,23 @@ struct Encapsulation {
 #define T_base typename T::base_
 
 class ConfigurableEventListener : public testing::TestEventListener {
-protected:
+ protected:
     TestEventListener* eventListener;
     bool showTestCases;
     bool showTestNames;
     bool showSuccesses;
     bool showInlineFailures;
     bool showEnvironment;
-public:
+
+ public:
     explicit ConfigurableEventListener(
         TestEventListener* theEventListener,
-        bool a, bool b, bool c, bool d, bool e
-    );
+        bool a, bool b, bool c, bool d, bool e);
     virtual ~ConfigurableEventListener();
     virtual void OnTestProgramStart(const testing::UnitTest& unit_test);
-    virtual void OnTestIterationStart(const testing::UnitTest& unit_test, int iteration);
+    virtual void OnTestIterationStart(
+        const testing::UnitTest& unit_test,
+        int iteration);
     virtual void OnEnvironmentsSetUpStart(const testing::UnitTest& unit_test);
     virtual void OnEnvironmentsSetUpEnd(const testing::UnitTest& unit_test);
     virtual void OnTestCaseStart(const testing::TestCase& test_case);
@@ -135,12 +142,15 @@ public:
     virtual void OnTestPartResult(const testing::TestPartResult& result);
     virtual void OnTestEnd(const testing::TestInfo& test_info);
     virtual void OnTestCaseEnd(const testing::TestCase& test_case);
-    virtual void OnEnvironmentsTearDownStart(const testing::UnitTest& unit_test);
+    virtual void OnEnvironmentsTearDownStart(
+        const testing::UnitTest& unit_test);
     virtual void OnEnvironmentsTearDownEnd(const testing::UnitTest& unit_test);
-    virtual void OnTestIterationEnd(const testing::UnitTest& unit_test, int iteration);
+    virtual void OnTestIterationEnd(
+        const testing::UnitTest& unit_test,
+        int iteration);
     virtual void OnTestProgramEnd(const testing::UnitTest& unit_test);
     virtual void OnTestSuiteStart(const testing::TestSuite& test_suite);
 };
 
-} // namespace self
+}  // namespace self
 #endif

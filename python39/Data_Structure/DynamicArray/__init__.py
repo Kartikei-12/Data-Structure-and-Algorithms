@@ -5,7 +5,11 @@
 __author__ = "Kartikei Mittal"
 
 class DynamicArray:
-    """"""
+    """Dynamic ARRAY Class
+    Args:
+        cap (int): Capcity of array
+    Raises:
+        ValueError: Invalid Dynamic Array Capacity when cap <= 0"""
     DEFAULT_CAPACITY = 8
     def __init__(self, cap = DEFAULT_CAPACITY):
         """Counstructor
@@ -13,10 +17,10 @@ class DynamicArray:
             cap (int): Initial Size of dynamic array
         Raises:
             ValueError: When value of argument cap is less than or equal to zero."""
-        self.len_ = 0
-        self.index_ = -1
-        self.capacity = cap
         if cap <= 0: raise ValueError("Invalid Dynamic Array Capacity")
+        self.len_=0
+        self.index_=-1
+        self.capacity = cap
         self.arr = list()
 
     def size(self):
@@ -65,17 +69,17 @@ class DynamicArray:
         self.len_ += len(attachment)
         return self
     def add(self, index, element):
-        """Adde method
+        """Add method
         Args:
             index (int): Index to add element at
             element : Element to add to array
         Raises:
-            valueError: If index not in [0, len)"""
+            ValueError: If index not in [0, len)"""
         if index < 0 or index >= self.len_: raise ValueError("Invalid ADD index")
         self.arr.insert(index, element)
         self.len_ += 1
     def append(self, element):
-        """Appens given element to the array
+        """Append given element to the array
         Args:
             element : Element to append"""
         self.arr.append(element)
@@ -112,15 +116,27 @@ class DynamicArray:
         if index < 0 or index >= self.len_: raise ValueError("Invalid Remove Ats index")
         del self.arr[index]
         self.len_ -= 1
+
+    class iterator:
+        """Iterator Class
+        Args:
+            array (DynamicArray): Array the iterator for"""
+        def __init__(self, array):
+            """Iterator Counstructor"""
+            self.index_ = -1
+            self.array = array
+            self.expectedCount = len(array)
+        def __next__(self):
+            """Next method for Iterator
+            Returns:
+                () : Element at appropriate position"""
+            if self.expectedCount != self.array.len_: raise ValueError("Dynamic Array Iterator Invalidation")
+            self.index_ += 1
+            if self.index_ >= self.array.len_:
+                raise StopIteration()
+            return self.array.arr[self.index_]
     def __iter__(self):
-        """Iterable Method"""
-        self.expectedCount = self.len_
-        self.index_ = -1
-        return self
-    def __next__(self):
-        """Next method for Iterator"""
-        if self.expectedCount != self.len_: raise ValueError("Dynamic Array Iterator Invalidation")
-        self.index_ += 1
-        if self.index_ >= self.len_:
-            raise StopIteration()
-        return self.arr[self.index_]
+        """Iterable Method
+        Returns:
+            self : Returns self.iterator object"""
+        return self.iterator(self)

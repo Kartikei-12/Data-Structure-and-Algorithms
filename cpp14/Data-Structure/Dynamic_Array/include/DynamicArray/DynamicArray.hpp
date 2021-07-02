@@ -28,17 +28,20 @@ namespace self {
 */
 template <typename T>
 class DynamicArray {
-    static const INTEGER DEFAULT_CAPACITY = 8; /// Default capacity of the array
-    INTEGER len, capacity; /// Length and Capacity of the Dynamic Array
-    T* arr; /// Dynamic Array
-public:
+    static const INTEGER DEFAULT_CAP = 8;  /// Default capacity
+    INTEGER len, capacity;  /// Length and Capacity of the Dynamic Array
+    T* arr;  /// Dynamic Array
+
+ public:
     /**
      * @brief Dynamic Array Default Counstructor.
      * @param cap Capacity of array
      * @throw exception If 0 or negative capacity is supplied
     */
-    explicit DynamicArray(INTEGER cap = DEFAULT_CAPACITY): capacity(cap), len(0) {
-        if (cap <= 0) { throw exception("Illegal Capacity: " + std::to_string(cap));  }
+    explicit DynamicArray(INTEGER cap = DEFAULT_CAP): capacity(cap), len(0) {
+        if (cap <= 0) {
+            throw exception("Illegal Capacity: " + std::to_string(cap));
+        }
         arr = new T[cap];
     }
     /**
@@ -66,7 +69,7 @@ public:
         if (margin == -1) { margin = capacity; }
         capacity += margin;
         T* arr_new = new T[capacity];
-        std::copy(arr, arr + len, arr_new); // OLD_FIRST, OLD_LAST, NEW
+        std::copy(arr, arr + len, arr_new);  // OLD_FIRST, OLD_LAST, NEW
         delete[] arr;
         arr = new T[capacity];
         std::copy(arr_new, arr_new + len, arr);
@@ -92,7 +95,9 @@ public:
     */
     T& get(INTEGER index) {
         if (index < 0) { index += size(); }
-        if (index < 0 || index >= len) { throw exception("Illegal Index on length: " + std::to_string(len)); }
+        if (index < 0 || index >= len) {
+            throw exception("Illegal Index on length: " + std::to_string(len));
+        }
         return arr[index];
     }
     /**
@@ -109,7 +114,9 @@ public:
      * @throw exception If an invalid index is recieved
     */
     void set(T elem, INTEGER index) {
-        if (index < 0 || index >= len) { throw exception("Illegal Index on length: " + std::to_string(len)); }
+        if (index < 0 || index >= len) {
+            throw exception("Illegal Index on length: " + std::to_string(len));
+        }
         arr[index] = elem;
     }
     /**
@@ -120,9 +127,12 @@ public:
     */
     void add(T elem, INTEGER index) {
         if (index == -1) { index = len; }
-        if (index < 0 || index > len) { throw exception("Illegal Index for insertion on length: " + std::to_string(len)); }
+        if (index < 0 || index > len) {
+            throw exception("Illegal Insertion: " + std::to_string(len));
+        }
         if (len == capacity) { increaseCapacity(); }
-        std::copy(arr + index, arr + len, arr + index + 1); // SHIFTING from arr[index, len) to arr[index + 1, len + 1)
+        // SHIFTING from arr[index, len) to arr[index + 1, len + 1)
+        std::copy(arr + index, arr + len, arr + index + 1);
         arr[index] = elem;
         ++len;
     }
@@ -169,26 +179,30 @@ public:
      * @throw exception If an invalid index is recieved
     */
     T removeAt(INTEGER index) {
-        if (index < 0 || index >= len) { throw exception("Illegal Index for deletion on length: " + std::to_string(len)); }
+        if (index < 0 || index >= len) {
+            throw exception("Illegal Deletion Index: " + std::to_string(len));
+        }
         T elem = arr[index];
         std::copy(arr + index + 1, arr + len, arr + index);
         --len;
         return elem;
     }
-    // ========================================================== ITERATOR CLASS ======================================================
+    // ============================= ITERATOR CLASS ========================
     /**
      * @class DynamicArray::iterator
      * @brief Dynamic Array iterator class.
     */
     class iterator {
-        T *arr_; T *end; /// Array and End Pointer
-    public:
+        T *arr_; T *end;  /// Array and End Pointer
+
+     public:
         /**
          * @brief Iterator Counstructor
          * @param arr__ Array Pointer
          * @param end_ Iterator to end
         */
-        explicit iterator(T* arr__, T* end_ = nullptr): arr_(arr__), end(end_) { ; }
+        explicit iterator(T* arr__, T* end_ = nullptr):
+            arr_(arr__), end(end_) { ; }
         /**
          * @brief Iterator increment overload defination.
          * @return iterator Incremented iterator
@@ -201,7 +215,9 @@ public:
          * @throw exception Iterator Invalidation exception
         */
         bool operator!=(const iterator & other) const {
-            if (end != other.arr_) { throw exception("Iterator Invalidation."); }
+            if (end != other.arr_) {
+                throw exception("Iterator Invalidation.");
+            }
             return arr_ != other.arr_;
         }
         /**
@@ -217,5 +233,5 @@ public:
     // ============================================================================================================================
 };
 
-} // namespace self
+}  // namespace self
 #endif

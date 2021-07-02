@@ -1,6 +1,6 @@
-# @author: Kartikei Mittal
-# @email: kartikeimittal@gmail.com
-# Testing Utility
+"""@author: Kartikei Mittal
+@email: kartikeimittal@gmail.com
+Testing Utility"""
 
 __author__ = "Kartikei Mittal"
 
@@ -11,7 +11,6 @@ class UDTfT:
         self.a = a
         self.b = b
         self.c = c
-
     def __eq__(self, other):
         """Overload == Operator"""
         return self.a == other.a and self.b == other.b and self.c == other.c
@@ -21,3 +20,6 @@ class UDTfT:
     def __repr__(self):
         """Support print"""
         return "UDTfT({}, {}, {})".format(self.a, self.b, self.c)
+
+Comparator = lambda A, B: 0 if A.a == B.a else 1 if A.a < B.a else -1
+InverseComparator = lambda A, B: 0 if A.a == B.a else -1 if A.a < B.a else 1
